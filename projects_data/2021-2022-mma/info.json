@@ -1,0 +1,15 @@
+{
+  "id": "torshus",
+  "title": "Torshus",
+  "category": "school",
+  "isProject": false,
+  "hideOnMobile": true,
+  "start": "2021-07",
+  "end": "2022-07",
+  "shortDescription": "Et folkehøyskoleår på Torshus (MMA-linja). Mest matter og hansker, men ble på et eller annet vis også et overraskende antall game-jam-prosjekter på kveldstid.",
+  "tags": [
+    "folkehøyskole"
+  ],
+  "types": [],
+  "importance": 22
+}

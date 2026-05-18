@@ -1,0 +1,38 @@
+{
+  "id": "4g-car-2025",
+  "title": "4G-RC-bil",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2025-07",
+  "shortDescription": "RC-bil som streamer to kamerakilder over 4G, med en egen UDP-hole-punching-protokoll for lavlatens P2P-video uten behov for statiske IP-er.",
+  "tags": [
+    "nettverk",
+    "UDP",
+    "videostreaming",
+    "maskinvare",
+    "RC"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 78,
+  "projectPage": "projects/4g-car",
+  "externalLinks": [
+    {
+      "label": "Tidlig innendørs-demo",
+      "url": "https://youtube.com/shorts/g1MPa4ORc44",
+      "type": "youtube"
+    },
+    {
+      "label": "Utendørs følgedemo",
+      "url": "https://youtube.com/shorts/RsilI_ro8J4",
+      "type": "youtube"
+    },
+    {
+      "label": "Langdistanse-demo",
+      "url": "https://youtube.com/shorts/bM9p-2OPraI",
+      "type": "youtube"
+    }
+  ]
+}

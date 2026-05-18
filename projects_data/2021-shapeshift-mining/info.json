@@ -1,0 +1,18 @@
+{
+  "id": "shapeshift-mining-2021",
+  "title": "Shape-shift-miner",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2022-04",
+  "shortDescription": "Python-spill om gruvedrift og oppgraderinger der selve OS-vinduet er en del av spillet. Kjøp riktige oppgraderinger, og vinduet sprenger ut nye rektangler i rare vinkler, slik at spillflaten ender opp i en form ingen spill burde ha.",
+  "tags": [
+    "Python",
+    "spilldesign",
+    "OS-vindusmanipulasjon"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 45,
+  "projectPage": "projects/shapeshift-miner"
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signalnivågenerator · Andreas Lindeman</title>
+  <meta name="description" content="ESP32-styrt signalnivågenerator med et potensiometerstyrt forsterkertrinn mellom en forsterker og en programvarestyrt DAC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Apr 2024</span>
+    </div>
+
+    <h1 class="project-title">En signalnivågenerator <em>med en ESP32</em></h1>
+
+    <p class="project-lede">
+      Designprosjekt 1 på NTNUs kurs i elektroniske systemer. Oppgaven: ta inn et analogt
+      sinusformet signal <code>X₁(t)</code> og produsere en utgang <code>X₂(t) =
+      A·X₁(t)</code>, der <code>A</code> settes med et hjul brukeren kan vri på. Hele
+      forsterkningsstyringen går gjennom en ESP32 midt i kjeden: analog inn, analog ut,
+      programvare i mellom.
+    </p>
+
+    <section class="project-section">
+      <h2>Pipelinen</h2>
+      <ul>
+        <li>Inn: en sinus på 229 Hz med 75 mV amplitude.</li>
+        <li>Et analogt forsterker- og nivåskifttrinn mapper det bipolare signalet inn i
+            ESP32-ens ADC-vindu på 0–3,3 V.</li>
+        <li>Inne i ESP32-en: les sampelet <em>og</em> potensiometerposisjonen; multipliser; skriv til den 8-bits DAC-en.</li>
+        <li>Ut: samme sinus, dempet eller forsterket etter hva hjulet til enhver tid forlanger.</li>
+      </ul>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2024-analog-singlal-generator/Signalniv%C3%A5generator_figures/figure3.png" alt="Blokkdiagram av signalnivågeneratoren. Inn 75 mV → LM741 22× forsterker → 1650 mV bipolar → nivåskift til 0–3,3 V → ESP32 ADC + DAC styrt av et potensiometer → ut.">
+        <figcaption>Hele kjeden. LM741 dytter signalet inn i ADC-vinduet, ESP32 multipliserer sampel × pot, DAC rekonstruerer utgangen.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Tall</h2>
+      <ul>
+        <li><strong>Maks forsterkning:</strong> 3300/(75·2) = 22 (≈ 26,85 dB).</li>
+        <li><strong>Maks demping:</strong> (3300/255)/150 = 0,086 (≈ −21,28 dB).</li>
+        <li><strong>Oppløsning:</strong> potensiometeret leses gjennom en 12-bits ADC
+            (4096 steg), så forsterkningsstyringen har et teoretisk steg på
+            (26,85 − (−21,28))/4096 ≈ 0,0118 dB.</li>
+        <li><strong>SNR:</strong> målt på den analoge front-end-en til omtrent
+            24–28 dB, hovedsakelig begrenset av inngangstrinnet og ikke ESP32-en selv.</li>
+      </ul>
+      <p>
+        Den varme løkka er én linje, med vilje:
+      </p>
+      <pre><code>void loop() {
+  dacWrite(25, ((int)analogRead(35) * (int)analogRead(potPin)) &gt;&gt; 16);
+}</code></pre>
+      <p>
+        Cast til <code>int32</code> før multiplikasjonen og deretter bit-shift 16 plasser
+        holder resultatet innenfor DAC-ens 0–255-område uten å betale for en divisjon.
+        Hele greia kjører så fort ADC-en tillater.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2024-analog-singlal-generator/Signalniv%C3%A5generator_figures/figure4.png" alt="Detaljert skjema som viser LM741-koblingen, 22k- og 20k-tilbakekoblingsmotstander, ESP32-strømskinner og potensiometeret på pinne 13.">
+          <figcaption>Endelig kobling. LM741 med 22k/20k-tilbakekobling, ESP32 ADC på det bipolart skiftede signalet, pot inn på pinne 13.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2024-analog-singlal-generator/Signalniv%C3%A5generator_figures/figure5.png" alt="Bygget på koblingsbrett: ESP32, op-amp, potensiometer og en Digilent Analog Discovery-kabel.">
+          <figcaption>Benkebygg. ESP32, LM741, potensiometer, Digilent Analog Discovery mater inngangen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Der det svikter, og neste steg</h2>
+      <p>
+        Ved veldig lav forsterkning dominerer kvantiseringen i DAC-en, og utgangen ser
+        ut som en trapp mellom 0 og 6,47 mV. Et passivt utjevningstrinn på utgangen
+        ville ryddet betydelig opp i det; det er den åpenbare neste iterasjonen.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2024-analog-singlal-generator/Signalniv%C3%A5generator_figures/figure6.png" alt="Oscilloskop: jevn oransje inngangssinus; blå DAC-rekonstruksjon følger den tett, men med synlige trappetrinn på toppene.">
+          <figcaption>Utgang ved middels forsterkning. DAC-stegene er synlige på toppene, men formen følger.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2024-analog-singlal-generator/Signalniv%C3%A5generator_figures/figure7.png" alt="Samme skopbilde ved lav forsterkning: DAC-utgangen er en grov trapp som svinger mellom kun et par kvantiseringsnivåer.">
+          <figcaption>Utgang ved lav forsterkning, der trappekvantisering dominerer. Passiv utjevning på utgangen er den åpenbare neste iterasjonen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Rapport</h2>
+      <div class="project-links">
+        <a href="../projects_data/2024-analog-singlal-generator/Signalniv%C3%A5generator.pdf" target="_blank" rel="noopener" download>Last ned: Signalnivågenerator.pdf</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "id": "first-nn-2018",
+  "title": "Første nevralnett",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2018-10",
+  "shortDescription": "Første selvlærende dype nevralnett. Spilte nettleserspillet Slope ut fra linjer trukket ut av skjermbildet.",
+  "tags": [
+    "maskinlæring",
+    "datasyn",
+    "Python",
+    "reinforcement"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 70,
+  "projectPage": "projects/first-neural-net",
+  "status": "lost",
+  "statusNote": "Koden er arkivert, men ikke tilgjengelig nå."
+}

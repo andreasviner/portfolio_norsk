@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BC547 emitterfølger-buffer · Andreas Lindeman</title>
+  <meta name="description" content="En diskret BC547 emitterfølger-buffer mellom en 5,6 kΩ kilde og en 680 Ω last. Biasert, karakterisert og justert til 90 % forsterkning ved 1 kHz." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Sep 2025</span>
+    </div>
+
+    <h1 class="project-title">En diskret <em>emitterfølger-buffer</em></h1>
+
+    <p class="project-lede">
+      En NPN emitterfølger bygget rundt en BC547 (den klassiske småsignal-transistoren)
+      for å buffre en 500 mV / 1 kHz sinus mellom en 5,6 kΩ kilde og en
+      680 Ω last. Halvparten "design bias-punktet", halvparten "mål hvor mye virkeligheten
+      avviker fra læreboken".
+    </p>
+
+    <section class="project-section">
+      <h2>Designvalgene</h2>
+      <ul>
+        <li><strong>V<sub>CC</sub></strong> = 7 V, med <strong>V<sub>E</sub></strong>
+            satt til 3,5 V, halvveis opp, så signalet får lik svingromrom
+            i begge retninger.</li>
+        <li><strong>I<sub>E</sub></strong> = 1 mA → <strong>R<sub>E</sub></strong> =
+            3,5 kΩ.</li>
+        <li>Basebias fra en spenningsdeler. "Stivhetsfaktoren" k = 3 er på den
+            myke siden, med vilje. Kildemotstanden er 5,6 kΩ, så
+            deleren må ikke laste inngangen. Med k = 3:
+            <strong>R<sub>2</sub></strong> = 280 kΩ, <strong>R<sub>1</sub></strong> =
+            140 kΩ.</li>
+        <li>22 µF AC-koblingskondensatorer ved inngang og utgang.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Tallene</h2>
+      <p>
+        Beregnet inngangsimpedans: ~52 kΩ, som gir en spenningsdeler på kildesiden på
+        <code>52k / (5,6k + 52k) ≈ 0,903</code>. Bufferen burde altså gi basen
+        rundt 90 % av kildeamplituden, og derfra forsterker en emitterfølger
+        signalet nesten med enhetsforsterkning videre til lasten.
+      </p>
+      <p>
+        Målt: inngang 492 mV, utgang 410 mV → forhold 0,83. Under målet. Når
+        <strong>R<sub>E</sub></strong> ble justert ned til 1,52 kΩ (som hever I<sub>E</sub> til
+        ~23 mA, som gir bedre r<sub>e</sub>), kom det opp på 441 mV / 490 mV =
+        <strong>0,90</strong>, akkurat det forutsagte forholdet. Nedre knekkfrekvens fra
+        målingen: f<sub>−3dB</sub> ≈ 13 Hz.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2025-buffer/designnotat_5_figures/figure2.png" alt="Oscilloskop-trasering av kretsen med teoretiske verdier, viser inngangs- og utgangs-sinusoider der utgangen er merkbart mindre enn inngangen.">
+          <figcaption>Designverdier: inngang 492 mV, utgang 410 mV. Forhold 0,83, under målet på 0,90.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2025-buffer/designnotat_5_figures/figure3.png" alt="Oscilloskoptrasering etter at R_E er senket til 1,52 kΩ. Inngang og utgang er nå mye nærmere hverandre i amplitude.">
+          <figcaption>R<sub>E</sub> justert til 1,52 kΩ. 441 mV / 490 mV = 0,90, akkurat det forutsagte forholdet.</figcaption>
+        </figure>
+      </div>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2025-buffer/designnotat_5_figures/figure4.png" alt="Målt frekvensrespons til bufferen: flat over ~20 Hz, faller under, med −3 dB-punktet nær 13 Hz.">
+        <figcaption>Lavfrekvensrespons. −3 dB-knekken på ~13 Hz, satt av 22 µF-koblingskondensatorene.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva jeg ville gjort annerledes</h2>
+      <p>
+        Stivere deler hvis kilden tåler det (5–20× I<sub>B</sub>
+        i stedet for 3×), for mer β-uavhengighet. Større koblingskondensatorer hvis lavfrekvensrespons
+        betyr noe. Og hvis presisjon er målet, ikke bygg en emitterfølger
+        i det hele tatt. Bruk en op-amp med bufret utgang. Den diskrete transistoren var
+        oppgaven, ikke det optimale.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Designnotat</h2>
+      <div class="project-links">
+        <a href="../projects_data/2025-buffer/designnotat_5.pdf" target="_blank" rel="noopener" download>Last ned: designnotat_5.pdf (Buffer)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

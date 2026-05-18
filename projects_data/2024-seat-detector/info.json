@@ -1,0 +1,27 @@
+{
+  "id": "seat-detector-2024",
+  "title": "Tesla-setesensor til smart belysning",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2024",
+  "shortDescription": "Koblet setesensoren fra et Tesla-sete (gjenbrukt som kontorstol) til en ESP32. Når jeg setter meg, blir rommet rødt.",
+  "tags": [
+    "maskinvare",
+    "ESP32",
+    "bil",
+    "smarthus"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 28,
+  "projectPage": "projects/seat-detector",
+  "externalLinks": [
+    {
+      "label": "Demovideo",
+      "url": "https://youtube.com/shorts/sXIeO5_FOLM",
+      "type": "youtube"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Første nevrale nettverk · Andreas Lindeman</title>
+  <meta name="description" content="Et selvlærende nettverk som spilte nettleserspillet Slope ut fra linjer hentet fra skjermbildet." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2018</span>
+      <span class="sep"></span>
+      <span class="status-tag lost">Mistet i tid</span>
+    </div>
+
+    <h1 class="project-title">Mitt første <em>nevrale nettverk</em></h1>
+
+    <p class="project-lede">
+      Et selvlærende nettverk som spilte nettleserspillet <em>Slope</em>. Modellen så
+      ikke piksler direkte. Et håndskrevet preprosesseringspass hentet ut banens geometri
+      først, og nettet lærte å styre ut fra det.
+    </p>
+
+    <section class="project-section">
+      <h2>Hvorfor preprosessere?</h2>
+      <p>
+        Å trene et convnet på rå piksler på en personlig GPU i 2018, som videregåendeelev,
+        gikk bare ikke. Så jeg jukset: et lite datasyn-pass hentet ut banekantene
+        og gjorde dem om til en liten featurevektor. Det nevrale nettet var lite
+        nok til å trene hjemme, og lærte likevel spillet.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Sløyfen</h2>
+      <ul>
+        <li>Skjermfangst festet til nettleservinduet</li>
+        <li>Kantdeteksjon → banelinjer → en featurevektor med fast lengde</li>
+        <li>Nettverket gir ut en styringsbeslutning (venstre / rett frem / høyre)</li>
+        <li>Belønning fra overlevelsestid. Episoder batchet til treningsdata</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva det lærte meg</h2>
+      <p>
+        At representasjon betyr mer enn arkitektur. Modellarkitekturen var
+        et par dense-lag. Magien lå i hvilke features den fikk inn. Jeg tenker fortsatt
+        på det. Det er en lekse som dukker opp igjen i hvert anvendt ML-prosjekt jeg har gjort senere.
+      </p>
+      <p>
+        Kildekoden ligger arkivert et sted på en død harddisk. Hvis jeg graver den frem,
+        dukker den opp her.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

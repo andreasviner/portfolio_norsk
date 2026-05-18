@@ -1,0 +1,21 @@
+{
+  "id": "hexaglow-2018",
+  "title": "Hexaglow",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2018-11",
+  "end": "2019-12",
+  "shortDescription": "Var med å grunnlegge en ungdomsbedrift som solgte konfigurerbare lysende veggpaneler. Jeg skrev Unity/C#-appen som styrte dem.",
+  "tags": [
+    "Unity",
+    "C#",
+    "produkt",
+    "entreprenørskap"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 65,
+  "projectPage": "projects/hexaglow"
+}

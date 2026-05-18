@@ -1,0 +1,18 @@
+{
+  "id": "first-course-2011",
+  "title": "Kodekurs",
+  "category": "school",
+  "isProject": false,
+  "start": "2011",
+  "shortDescription": "Første kodekurs på skolen, ni år gammel. Visuell programmering i Scratch, som var en skuffelse for ni-åringen som allerede hadde drevet med batch-skript, men en nyttig leksjon i hvordan tilgivende syntaks slipper ideene frem.",
+  "tags": [
+    "Scratch",
+    "skole",
+    "tidlige arbeider"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 18,
+  "projectPage": "projects/first-course"
+}

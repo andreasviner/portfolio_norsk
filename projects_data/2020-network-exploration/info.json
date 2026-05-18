@@ -1,0 +1,19 @@
+{
+  "id": "network-exploration-2020",
+  "title": "Nettverksdypdykk",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2020-03",
+  "shortDescription": "Et år med å lære meg selv hvordan nettverk egentlig fungerer. Captive portals, DNS, traffic shaping, autentisering.",
+  "tags": [
+    "nettverk",
+    "Python",
+    "sikkerhet",
+    "selvlært"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 65,
+  "projectPage": "projects/network-exploration-2020"
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elbil-deteksjon · Andreas Lindeman</title>
+  <meta name="description" content="Avgjør om en bil er elektrisk, ved å kjede en YOLOv8-detektor, et eget CNN for skiltlesing og et oppslag mot Statens vegvesen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Mar 2024</span>
+    </div>
+
+    <h1 class="project-title">Er bilen <em>elektrisk?</em></h1>
+
+    <p class="project-lede">
+      Et gruppeprosjekt ved NTNU som avgjør om en bil er elektrisk, ende til ende
+      fra ett enkelt bilde. Jeg bygde datasyn-siden: en finjustert YOLOv8 som finner
+      skiltet, så et CNN trent fra bunnen for å lese det, og til slutt et oppslag mot Statens
+      vegvesen for å løse motortype.
+    </p>
+
+    <section class="project-section">
+      <h2>Pipelinen</h2>
+      <ul>
+        <li><strong>Skiltdeteksjon:</strong> YOLOv8, ettertrent på et lite eget datasett med norske skilt fra varierte vinkler.</li>
+        <li><strong>Skiltlesing:</strong> Et eget CNN trent fra bunnen på utklipp av skilt. Lite, raskt, overraskende treffsikkert.</li>
+        <li><strong>Kjøretøyoppslag:</strong> Skilttegnene sendes til vegvesenets API, som returnerer motortype. Elektrisk eller ikke faller ut direkte.</li>
+      </ul>
+
+      <figure class="project-figure narrow">
+        <img src="../projects_data/2024-ev-detection/IELS2001___Smart_City_Prosjekt_figures/figure6.png" alt="Pipeline i fire steg: bilde fanget, skilt funnet i bildet, skilttegn lest, kjøretøydata hentet. Endelig klassifisering: 'Motor 1: Elektrisk (ELBIL)'.">
+        <figcaption>Ende til ende: fang, finn, les, slå opp. Siste boks er en one-liner fra vegvesen-API-et.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Hvorfor trene en skiltleser fra bunnen</h2>
+      <p>
+        Generell OCR funker på skilt, men det er overkill: for mange parametere, for lite
+        domene. Norske skilt har et fast alfabet, fast font, to forutsigbare
+        utforminger. Et lite CNN med riktig induktiv bias slo standard-OCR på
+        dataen jeg hadde, og kjørte en størrelsesorden raskere.
+      </p>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2024-ev-detection/IELS2001___Smart_City_Prosjekt_figures/figure12.png" alt="Ti-panels treningsdashbord: train/val-loss konvergerer, presisjon og recall klatrer mot 90-tallet, mAP@50 og mAP@50-95.">
+        <figcaption>YOLOv8-finjustering. Loss konvergerer rent, presisjon ~0,98, recall ~0,95, mAP@50 ≈ 0,98.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Resultater ende til ende</h2>
+      <p>
+        På testopptak fra ekte gater i Trondheim merket systemet hver bil med
+        riktig motorklasse i ett bilde. Elbiler ble markert grønt, fossile
+        rødt.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2024-ev-detection/IELS2001___Smart_City_Prosjekt_figures/figure22.png" alt="Server-side visualisering: en svart elbil på en bygate med skiltet markert i grønt, klassifisert som helelektrisk.">
+          <figcaption>Elbil: skiltet lest, vegvesen-API bekrefter elektrisk, boks tegnet grønn.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2024-ev-detection/IELS2001___Smart_City_Prosjekt_figures/figure23.png" alt="Server-side visualisering: en rød bil med skiltet sladdet, klassifisert som ikke-elektrisk.">
+          <figcaption>Ikke-elbil: samme vei, annet svar fra API-et.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Gjennomgang</h2>
+      <div class="video-embed aspect-16-9">
+        <iframe src="https://www.youtube.com/embed/8dSGcUOESZk" title="Elbil-deteksjon: full gjennomgang" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">Full gjennomgang av pipelinen.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva jeg ville forbedret</h2>
+      <p>
+        Klassifikatoren nøler av og til på skilt med mye bevegelsesuskarphet, det du får
+        fra biler som faktisk kjører. En liten tidsstabel med bilder, eller et raskt
+        deblurring-pre-pass, ville lukke det gapet. Vegvesen-API-et var også det tregeste
+        steget med god margin. Caching på skiltprefiks ville hjulpet.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Emnerapport</h2>
+      <p>
+        Smart City-prosjektrapporten (IELS2001), med metode, datasettvalg
+        og resultater, ligger i repoet:
+      </p>
+      <div class="project-links">
+        <a href="../projects_data/2024-ev-detection/IELS2001___Smart_City_Prosjekt.pdf" target="_blank" rel="noopener" download>Last ned: IELS2001 Smart City-prosjekt (PDF)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

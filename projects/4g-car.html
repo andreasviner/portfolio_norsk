@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Langdistanse 4G RC-bil · Andreas Lindeman</title>
+  <meta name="description" content="En RC-bil som strømmer to kameraer over 4G med en egen UDP-hole-punching-protokoll, peer-to-peer-video uten statiske IP-er." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2025</span>
+    </div>
+
+    <h1 class="project-title">En RC-bil som <em>ikke bryr seg</em> om hvor langt du kjører</h1>
+
+    <p class="project-lede">
+      En langdistanse RC-bil som strømmer to kameraer over 4G, kjørt fra en PC hvor som helst på
+      internett. Det interessante er ikke maskinvaren, det er nettverket: en egen
+      UDP-hole-punching-protokoll så bilen og kontrolleren finner hverandre direkte,
+      uten statiske IP-er, uten relé-servere, og med lavest mulig forsinkelse.
+    </p>
+
+    <figure class="project-figure">
+      <img src="../projects_data/2025-4g-car/5g_bil_interface.jpg" alt="Førerstasjonen under kjøring: to store skjermer over en laptop, hver skjerm viser ett av bilens to kameraer (en lav frontvisning ned en vei og en bredere oversiktsvisning). Et bilde-i-bilde-overlegg i hjørnet viser den faktiske RC-bilen på asfalten ved siden av en sko. Laptopskjermen er delt mellom kode til venstre og live telemetri (styring, gass, akseverdier) til høyre.">
+      <figcaption>Førerstasjonen. To kamerafeeds på skjermene, telemetri på laptopen, og et lite vindu med bilen et sted ute i byen.</figcaption>
+    </figure>
+
+    <section class="project-section">
+      <h2>Hvorfor dette ble vanskelig</h2>
+      <p>
+        Hjemme-5G var det som trigget. De fleste mobile abonnementer sitter bak
+        carrier-grade NAT, som betyr: ingen innkommende tilkoblinger, ingen statisk IP, ingen
+        portforwarding. Den vanlige løsningen er en relé-server i midten, men en relé legger på
+        forsinkelse, og forsinkelse dreper RC-kjøring.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Protokollen</h2>
+      <h3>UDP-hole-punching</h3>
+      <ul>
+        <li>Begge endepunkter registrerer seg hos en lett rendezvous-tjeneste som bare bytter offentlige IP- og port-par.</li>
+        <li>Hvert endepunkt sender så UDP-pakker mot den andres par. NAT-mappinger faller på plass på begge sider og trafikken går P2P fra det øyeblikket.</li>
+        <li>Rendezvous-tjenesten er ute av bildet så snart håndtrykket er ferdig.</li>
+      </ul>
+      <h3>Reconnect og dårlige forbindelser</h3>
+      <ul>
+        <li>Periodiske keep-alives holder NAT-mappingene åpne.</li>
+        <li>Når linken faller, gjør begge sider et nytt håndtrykk uten at operatøren må gjøre noe.</li>
+        <li>Mottrykk på videopipelinen så et kort fall ikke gir en lang kø med utdaterte bilder.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Video</h2>
+      <p>
+        To kameraer på bilen (et primært frontkamera og et bredere oversiktskamera),
+        kodet og sendt som parallelle UDP-strømmer. Mottakeren tegner begge feedene side om
+        side. Encoder-bitraten tilpasser seg den målte linkkvaliteten så bildet brytes ned
+        gradvis i stedet for å stoppe helt.
+      </p>
+
+      <figure class="project-figure">
+        <img src="../projects_data/2025-4g-car/car_flask_server.png" alt="Web-dashbord med mørkt tema. Øverst til venstre: et live navigasjonskart over Trondheim med bilens rute tegnet i blått. Øverst til høyre: stor fart 53 km/t og batteriindikator 73,6 %. Under: et linjediagram for effektforbruk i watt. Til høyre vises systemtelemetri: odometer 1245,5 km, oppetid 00:00:27, nettverksping 21 ms, pakketap 0,02 %, omgivelse 12,5 °C, Raspberry Pi 45,0 °C, motor 86,4 °C, batteripakke 31,4 °C.">
+        <figcaption>Operatørdashbordet. Posisjon, linkstatus og temperaturene som avgjør hvor lenge en kjøretur varer.</figcaption>
+      </figure>
+
+      <figure class="project-figure">
+        <img src="../projects_data/2025-4g-car/GUIserver.png" alt="POV-bilde av to hender som holder en Nintendo Switch Pro-kontroller foran en krummet skjerm med live navigasjonskart.">
+        <figcaption>Styreinput kan være hva sjåføren vil: kontroller, ratt, tastatur.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Demoer</h2>
+      <div class="video-stack">
+        <div>
+          <div class="video-embed aspect-9-16">
+            <iframe src="https://www.youtube.com/embed/g1MPa4ORc44" title="Tidlig innendørsdemo" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="video-caption">Tidlig innendørsdemo.</p>
+        </div>
+        <div>
+          <div class="video-embed aspect-9-16">
+            <iframe src="https://www.youtube.com/embed/RsilI_ro8J4" title="Utendørs følge-demo" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="video-caption">Utendørs, fulgt etter på sykkel.</p>
+        </div>
+        <div>
+          <div class="video-embed aspect-9-16">
+            <iframe src="https://www.youtube.com/embed/bM9p-2OPraI" title="Langdistansedemo, kjøring ut av syne" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="video-caption">Langdistanse. Kjørt ut av syne.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva jeg ville endret</h2>
+      <p>
+        Bytte til QUIC for videopathen så jeg får køhåndtering og connection migration
+        gratis. Legge på et forward-error-correction-lag for keyframes, å miste en keyframe
+        på dårlig link er fortsatt verste-tilfelle-feilen. Og, helt forutsigbart, gi bilen en
+        bedre antenne.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

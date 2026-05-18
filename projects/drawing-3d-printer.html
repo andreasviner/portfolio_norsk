@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tegnende 3D-printer · Andreas Lindeman</title>
+  <meta name="description" content="En ødelagt 3D-printer omgjort til pennplotter for tegninger i én sammenhengende linje." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2022</span>
+    </div>
+
+    <h1 class="project-title">En printer som tegner i <em>én sammenhengende linje</em></h1>
+
+    <p class="project-lede">
+      3D-printeren min døde. Før jeg fikset den teipet jeg en sprittusj på ekstruderen, ba
+      den følge en bane generert fra fotografier, og oppdaget en besettelse for
+      tegninger i én sammenhengende linje. Reparasjonen av printeren tok uker lenger enn
+      den burde.
+    </p>
+
+    <div class="video-embed aspect-16-9">
+      <iframe src="https://www.youtube.com/embed/aqdEn8t7d0w" title="Tegnende 3D-printer i bevegelse" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">Demo. Printeren tegner, i bevegelse.</p>
+
+    <section class="project-section">
+      <h2>Pipelinen</h2>
+      <ul>
+        <li><strong>Input:</strong> Et referansefotografi (vanligvis et portrett).</li>
+        <li><strong>Kantkart:</strong> En klassisk kantdeteksjon pluss et terskelet gradientpass.</li>
+        <li><strong>Baneløser:</strong> En heuristikk i stil med handelsreisende finner en rekkefølge som besøker hvert "blekkpunkt" med kortest total reise, og, helt avgjørende, uten å løfte pennen.</li>
+        <li><strong>G-kode:</strong> Send ut bevegelseskommandoer til printeren. Z holder seg flat, bare X/Y beveger seg.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva jeg ville sett på igjen</h2>
+      <p>
+        Baneløseren er en grådig heuristikk. På portretter røper den av og til
+        retningen til første strøk. Et ordentlig two-opt-pass (eller en liten RL-agent) ville rydde
+        det. Jeg ville også gjerne prøve dette med en ekte tusjpenn på en ekte plotter. Tusj-på-printer-riggen
+        gjorde strekene for tykke til å konkurrere med algoritmen.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

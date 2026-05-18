@@ -1,0 +1,19 @@
+{
+  "id": "kaggle-competition-2025",
+  "title": "ML-konkurranse",
+  "category": "work",
+  "isProject": true,
+  "start": "2025-05",
+  "shortDescription": "Designet og ledet en intern ML-konkurranse i Kaggle-stil mellom NTNU-studenter og Hydro-ingeniører. Skrev oppgaven, klargjorde datasettet, satte scoremetrikken, og lærte at metrikken er hele prosjektet.",
+  "tags": [
+    "ledelse",
+    "maskinlæring",
+    "konkurransedesign",
+    "Hydro"
+  ],
+  "types": [
+    "ml"
+  ],
+  "importance": 58,
+  "projectPage": "projects/kaggle-competition"
+}

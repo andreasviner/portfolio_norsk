@@ -1,0 +1,32 @@
+{
+  "id": "omega-clock-2025",
+  "title": "Omega-klokke",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2025-09",
+  "shortDescription": "En klokke modifisert med LED-er og en ESP32, laget som vertskapsgave til en studentforeningsfest. Bygget på en dag.",
+  "tags": [
+    "ESP32",
+    "LED",
+    "maskinvare",
+    "gave"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 30,
+  "externalLinks": [
+    {
+      "label": "Demo av baksiden",
+      "url": "https://youtube.com/shorts/IJQK4zllCUA",
+      "type": "youtube"
+    },
+    {
+      "label": "Demo av forsiden",
+      "url": "https://youtube.com/shorts/NC8yHYJLOcE",
+      "type": "youtube"
+    }
+  ],
+  "projectPage": "projects/omega-clock"
+}

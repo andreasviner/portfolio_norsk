@@ -1,0 +1,20 @@
+{
+  "id": "panasound-2021",
+  "title": "Panasound-internship",
+  "category": "work",
+  "isProject": false,
+  "start": "2021-06",
+  "end": "2021-08",
+  "shortDescription": "Første industrijobb. Sommerintern hos Panasound, en norsk lyd-startup. Go på backenden, Nuxt på frontenden, og første gang koden min måtte overleve at en annen ingeniør leste den.",
+  "tags": [
+    "Go",
+    "Nuxt",
+    "startup",
+    "internship"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 60,
+  "projectPage": "projects/panasound"
+}

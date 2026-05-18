@@ -1,0 +1,20 @@
+{
+  "id": "traffic-light-2024",
+  "title": "Trafikklys",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2024-12",
+  "shortDescription": "Et ekte trafikklys ombygget med Raspberry Pi, Flask-basert webgrensesnitt og en lydreaktiv modus. Bass blir rødt, diskant blir grønt. Festmodusen ble den egentlige hovedfunksjonen.",
+  "tags": [
+    "Raspberry Pi",
+    "maskinvare",
+    "lyd",
+    "web"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 50,
+  "projectPage": "projects/traffic-light"
+}

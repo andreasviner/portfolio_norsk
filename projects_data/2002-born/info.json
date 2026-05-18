@@ -1,0 +1,14 @@
+{
+  "id": "born",
+  "title": "Født",
+  "category": "hobby",
+  "isProject": false,
+  "hideOnMobile": true,
+  "start": "2002-10",
+  "shortDescription": "En ingeniør ankommer. 24. oktober.",
+  "tags": [
+    "opphav"
+  ],
+  "types": [],
+  "importance": 8
+}

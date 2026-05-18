@@ -1,0 +1,18 @@
+{
+  "id": "ntnu-master",
+  "title": "NTNU master",
+  "category": "school",
+  "isProject": false,
+  "start": "2024-07",
+  "end": "present",
+  "shortDescription": "Integrert master i Elektronisk systemdesign og innovasjon ved NTNU. Maskinvare, signalbehandling og systemene som binder dem sammen. En bevisst motvekt til en ren programvarekarriere.",
+  "tags": [
+    "NTNU",
+    "master",
+    "elektronikk",
+    "innovasjon"
+  ],
+  "types": [],
+  "importance": 48,
+  "status": "ongoing"
+}

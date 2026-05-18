@@ -1,0 +1,20 @@
+{
+  "id": "pled-2018",
+  "title": "PLED",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2018-12",
+  "end": "2019-09",
+  "shortDescription": "Andre ungdomsbedrift. Spesiallaget LED-belysning med et spekter tilpasset døgnrytmen: varmere om kvelden, kjøligere om dagen, etter en plan brukeren selv kunne overstyre.",
+  "tags": [
+    "maskinvare",
+    "LED",
+    "biologi",
+    "entreprenørskap"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 60,
+  "projectPage": "projects/pled"
+}

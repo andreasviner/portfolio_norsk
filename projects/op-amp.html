@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diskret operasjonsforsterker · Andreas Lindeman</title>
+  <meta name="description" content="En diskret operasjonsforsterker bygget av BC547- og BC557-transistorer. Differensialpar pluss emitterfølger på utgangen, karakterisert i åpen og lukket sløyfe." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Sep 2025</span>
+    </div>
+
+    <h1 class="project-title">Å bygge en op-amp <em>fra transistorer</em></h1>
+
+    <p class="project-lede">
+      En diskret operasjonsforsterker, satt sammen av en håndfull BC547 NPN-er og
+      BC557 PNP-er på et koblingsbrett, forsynt med ±5 V, og deretter målt i åpen
+      sløyfe, lukket sløyfe og under to forskjellige laster. Poenget var ikke så mye
+      å bruke op-amp-en som å se den fra innsiden.
+    </p>
+
+    <figure class="project-figure narrow">
+      <img src="../projects_data/2025-operasjonsforsterker/designnotat_6_figures/figure3.png" alt="Håndtegnet skjema delt i to halvdeler: «Differensiell forsterker» til venstre og «Buffer» til høyre. Den differensielle halvdelen viser T1/T2 som strømspeil øverst, T3/T4 som PNP-differensialinngangspar, med en haleslyngestrømkilde bygget rundt T5 forspent av R1 (47 kΩ) og R2 mellom V+ og V−. Bufferhalvdelen viser T6 som emitterfølger inn i en kildemotstand R_S på 1 kΩ, med utgang v_o.">
+      <figcaption>Hele skjemaet: differensialpar, strømspeil, halestrøm, emitterfølger.</figcaption>
+    </figure>
+
+    <section class="project-section">
+      <h2>Arkitekturen</h2>
+      <ul>
+        <li><strong>Differensielt inngangspar (T<sub>3</sub>, T<sub>4</sub>):</strong>
+            inngangene legges på basisen av et PNP-par; halestrømstransistoren
+            (T<sub>5</sub>) setter arbeidspunktet.</li>
+        <li><strong>Strømspeil (T<sub>1</sub>, T<sub>2</sub>):</strong> gjør den
+            differensielle strømmen om til et enkeltsidet signal.</li>
+        <li><strong>Emitterfølger på utgang (T<sub>6</sub>):</strong> lav
+            utgangsimpedans, slik at op-amp-en faktisk kan drive en last.</li>
+        <li><strong>Forspenningsnettverk:</strong> R₁/R₂-spenningsdeler setter
+            haletransistorens referanse. R<sub>S</sub> = 1 kΩ ved emitterfølgeren
+            begrenser utgangsstrømmen.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg målte</h2>
+      <p>
+        1 kHz sinus, ±5 V forsyning, to laster (100 kΩ og 100 Ω), åpen sløyfe og med
+        et inverterende tilbakekoblingsnettverk med forsterkning ×10:
+      </p>
+      <table style="border-collapse:collapse;margin:12px 0">
+        <thead>
+          <tr style="border-bottom:1px solid var(--hairline)"><th style="padding:6px 12px;text-align:left">Konfig</th><th style="padding:6px 12px;text-align:right">R<sub>L</sub></th><th style="padding:6px 12px;text-align:right">V<sub>in</sub></th><th style="padding:6px 12px;text-align:right">A</th><th style="padding:6px 12px;text-align:right">THD<sub>ut</sub></th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:4px 12px">Åpen sløyfe</td><td style="padding:4px 12px;text-align:right">100 kΩ</td><td style="padding:4px 12px;text-align:right">1 mV</td><td style="padding:4px 12px;text-align:right">~400</td><td style="padding:4px 12px;text-align:right">4,8 %</td></tr>
+          <tr><td style="padding:4px 12px">Åpen sløyfe</td><td style="padding:4px 12px;text-align:right">100 Ω</td><td style="padding:4px 12px;text-align:right">3 mV</td><td style="padding:4px 12px;text-align:right">~100</td><td style="padding:4px 12px;text-align:right">1,7 %</td></tr>
+          <tr><td style="padding:4px 12px">×10 tilbakekobling</td><td style="padding:4px 12px;text-align:right">100 Ω</td><td style="padding:4px 12px;text-align:right">50 mV</td><td style="padding:4px 12px;text-align:right">9,2</td><td style="padding:4px 12px;text-align:right">0,27 %</td></tr>
+          <tr><td style="padding:4px 12px">×10 tilbakekobling</td><td style="padding:4px 12px;text-align:right">100 kΩ</td><td style="padding:4px 12px;text-align:right">50 mV</td><td style="padding:4px 12px;text-align:right">9,7</td><td style="padding:4px 12px;text-align:right">0,22 %</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Åpen-sløyfe-forsterkningen stuper med en faktor på fire når lasten går fra
+        100 kΩ til 100 Ω. Det diskrete utgangstrinnet klarer ikke å henge med. I lukket
+        sløyfe, med forsterkningen låst til 10 av tilbakekoblingsnettverket, lander
+        begge lastene innenfor et par prosent av målet, og THD faller en størrelsesorden.
+        Tilbakekobling gjør akkurat det læreboken sier, på ekte maskinvare.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2025-operasjonsforsterker/designnotat_6_figures/figure14.png" alt="Den diskrete op-amp-en bygget på et veroboard. Seks småsignaltransistorer presset inn i et hjørne med en floke av røde, gule, oransje og svarte ledninger som går til koblingsbrettet under.">
+          <figcaption>Bygget. Seks transistorer, ett veroboard, flere ledninger enn forventet.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2025-operasjonsforsterker/designnotat_6_figures/figure13.png" alt="To overlappende FFT-er av utgangen: oransje kurve (åpen sløyfe) ligger merkbart høyere enn blå kurve (×10 tilbakekobling). THD-merker i hjørnet: 0,223 % åpen sløyfe mot 0,6633 %; den lukkede versjonen er den blå, mye renere, med lavere amplitude på støygulvet.">
+          <figcaption>FFT, åpen sløyfe (oransje) mot ×10 tilbakekobling (blå). Samme grunntone, men harmonisk gulv faller ca. 20 dB når sløyfen lukkes.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg tok med meg</h2>
+      <p>
+        At det å se lukket-sløyfe-tilbakekobling overstyre komponentvariasjon med egne
+        øyne er mer overbevisende enn et hvilket som helst antall lærebokfigurer.
+        Spennet 9,2 → 9,7 mellom lastene, og 9,2 → 10,7-svingningen jeg fikk da jeg
+        byttet én tilbakekoblingsmotstand med en nominelt identisk del, argumenterte
+        for negativ tilbakekobling bedre enn noen forelesning.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Rapport</h2>
+      <div class="project-links">
+        <a href="../projects_data/2025-operasjonsforsterker/designnotat_6.pdf" target="_blank" rel="noopener" download>Last ned: designnotat_6.pdf (Operasjonsforsterker)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

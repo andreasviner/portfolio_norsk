@@ -1,0 +1,21 @@
+{
+  "id": "helsedir-rag-2024",
+  "title": "Helsedir RAG",
+  "category": "work",
+  "isProject": true,
+  "start": "2024-03",
+  "shortDescription": "RAG-tjeneste for Helsedirektoratet. Embeddings-pipeline, vektor-database, LLM og frontend.",
+  "tags": [
+    "RAG",
+    "LLM",
+    "embeddings",
+    "offentlig sektor"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 72,
+  "status": "nda",
+  "statusNote": "Detaljer er begrenset av kundens NDA."
+}

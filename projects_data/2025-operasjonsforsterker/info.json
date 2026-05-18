@@ -1,0 +1,20 @@
+{
+  "id": "op-amp-2025",
+  "title": "Operasjonsforsterker",
+  "category": "school",
+  "isProject": true,
+  "start": "2025-02",
+  "shortDescription": "Operasjonsforsterker bygget av diskrete BC547/BC557-transistorer: differensialpar, strømspeil, emitterfølger på utgangen. Karakterisert i åpen sløyfe (A cirka 400) og med ti gangers negativ tilbakekobling (A cirka 9,7, THD under 0,3 %).",
+  "tags": [
+    "analog elektronikk",
+    "op-amp",
+    "transistor",
+    "tilbakekobling",
+    "NTNU"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 22,
+  "projectPage": "projects/op-amp"
+}

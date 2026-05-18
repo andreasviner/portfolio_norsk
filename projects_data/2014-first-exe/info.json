@@ -1,0 +1,18 @@
+{
+  "id": "first-exe-2014",
+  "title": "Første .exe",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2014-05",
+  "shortDescription": "Første ordentlige Python-program kompilert til .exe. En roterende ASCII-hodeskalle, elleve år gammel.",
+  "tags": [
+    "Python",
+    "tidlige arbeider",
+    "ASCII-kunst"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 60,
+  "projectPage": "projects/first-exe"
+}

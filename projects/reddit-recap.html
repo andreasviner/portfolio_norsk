@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-innholdskanaler · Andreas Lindeman</title>
+  <meta name="description" content="En helautomatisk innholdspipeline som skrapet toppinnlegg fra Reddit og publiserte videoreferater til YouTube, Instagram og TikTok." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2023</span>
+    </div>
+
+    <h1 class="project-title">AI-<em>innholdskanaler</em></h1>
+
+    <p class="project-lede">
+      En helautomatisk innholdspipeline bygget under året mitt på Solborg folkehøyskole.
+      Den skrapet toppinnlegg fra et utvalg subreddits, genererte fortalte videoreferater
+      og publiserte til YouTube, Instagram og TikTok uten et menneske i løkka.
+    </p>
+
+    <section class="project-section">
+      <h2>Pipelinen</h2>
+      <ul>
+        <li><strong>Skrape:</strong> Hente toppinnlegg og kommentarer fra konfigurerte subreddits etter en tidsplan.</li>
+        <li><strong>Filtrere:</strong> Heuristikker for lengde, språk og innholdssikkerhet.</li>
+        <li><strong>Komponere:</strong> Sy sammen en video med bakgrunns-gameplay, tekstoverlegg, TTS-fortelling og kutt på taktslag.</li>
+        <li><strong>Publisere:</strong> Laste opp til YouTube via API, Instagram og TikTok via kanalene som var tilgjengelige på den tiden.</li>
+        <li><strong>Avstemme:</strong> Holde oversikt over hvilke innlegg som hadde blitt brukt, slik at systemet aldri gjentok innhold.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Plattformene</h2>
+      <p>
+        YouTube var det veloppdragne medlemmet av trioen: ryddig API, forutsigbare
+        rate limits, håndterbare regler. TikTok var brukbar. Instagram bannlyste
+        kontoen, som var prosjektets mest ærlige tilbakemelding.
+      </p>
+      <div class="project-links">
+        <a href="https://www.youtube.com/@RedditRecapV2" target="_blank" rel="noopener">YouTube-kanal</a>
+        <a href="https://www.tiktok.com/@redditrecap2" target="_blank" rel="noopener">TikTok-konto</a>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg lærte</h2>
+      <p>
+        Mesteparten av timene i prosjektet gikk til den kjedelige midten: passe på
+        at samme klipp aldri gikk ut to ganger, at TTS-en ikke kvalte seg på emojier,
+        og at gameplay-bakgrunnen aldri viste en logo som ville fått videoen
+        demonetisert. Modellbitene var nesten en bisak.
+      </p>
+      <p>
+        Det var også mitt første langvarige produksjonssystem. Noe som måtte fortsette
+        å virke når jeg ikke fulgte med. Det endrer hvordan du skriver kode.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

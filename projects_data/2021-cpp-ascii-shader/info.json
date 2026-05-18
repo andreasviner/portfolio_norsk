@@ -1,0 +1,19 @@
+{
+  "id": "cpp-ascii-shader-2021",
+  "title": "ASCII-shader",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2022-02",
+  "shortDescription": "C++-spill med en CUDA-basert ASCII-shader som plukket riktig glyff for hver pikselrute.",
+  "tags": [
+    "C++",
+    "CUDA",
+    "GPU",
+    "grafikk"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 72,
+  "projectPage": "projects/cpp-ascii-shader"
+}

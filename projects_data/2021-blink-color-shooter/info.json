@@ -1,0 +1,21 @@
+{
+  "id": "blink-color-shooter-2021",
+  "title": "Blunkeskyter",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2022-03",
+  "shortDescription": "Python-skytespill der blunk fanget opp av webkameraet flytter deg mellom to fargedimensjoner.",
+  "tags": [
+    "Python",
+    "datasyn",
+    "spill"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 52,
+  "status": "lost",
+  "statusNote": "Python-serverkoden er tapt med tiden.",
+  "projectPage": "projects/blink-shooter"
+}

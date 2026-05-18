@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setesensor fra Tesla · Andreas Lindeman</title>
+  <meta name="description" content="Koblet setesensoren fra et utrangert Tesla-sete til en ESP32, slik at det å sette seg ned utløser en scene på smarte lys." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2024</span>
+    </div>
+
+    <h1 class="project-title">Når du setter deg ned, <em>blir lyset rødt</em></h1>
+
+    <p class="project-lede">
+      Kompisen min Jacob bygde seg en kontorstol av et gammelt Tesla-sete. Setet hadde
+      fortsatt setesensoren i seg, den samme lille pad-en som i bilen vet når den skal
+      begynne å mase om setebeltet. Vi koblet den sensoren til en ESP32 og koblet ESP32-en
+      til de smarte lysene hans. Å sette seg ned gjør nå rommet rødt.
+    </p>
+
+    <div class="video-embed aspect-9-16">
+      <iframe src="https://www.youtube.com/embed/sXIeO5_FOLM" title="Demo av Tesla-setesensor" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">Jacob, setter seg ned, på kommando.</p>
+
+    <section class="project-section">
+      <h2>Delen som allerede fantes</h2>
+      <p>
+        Moderne bilseter har en tilstedeværelsesdetektor i puta (gjerne en trykkmatte
+        eller en kapasitiv pad) koblet til styreenheten, slik at bilen kan avgjøre om
+        den skal utløse airbagen, gi setebelte-pip eller hoppe over passasjeren
+        helt. Når et sete er ute av en bil, er sensoren bare en bryterlignende greie
+        med to ledninger hengende ut. Akkurat den typen del som vil ha et nytt liv
+        som en inngangspinne et sted.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Det vi la til</h2>
+      <ul>
+        <li><strong>ESP32.</strong> Leser sensoren på en GPIO med maskinvare-debounce,
+            slik at en vakling i stolen ikke blir til en stroboeffekt.</li>
+        <li><strong>Lysstyring.</strong> Et lite HTTP-kall ut til smartlys-API-en når
+            han setter seg, og et til når han reiser seg, som bytter mellom scenene
+            «Jacob er ved pulten» og «Jacob er ikke ved pulten».</li>
+        <li><strong>Wi-Fi-reconnect.</strong> Den vanlige ESP32-bunten. Riggen sitter
+            bak stolen, ingen kommer til å trykke på en reset-knapp.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hvorfor det er verdt å snakke om</h2>
+      <p>
+        Det er et fem-minutters-prosjekt som treffer hver del av hjemmeautomasjonsstacken:
+        en sensor i den virkelige verden, en mikrokontroller, et nettverk, et API, en
+        fysisk effekt. Og effekten er god. Det er noe spesielt morsomt med en stol som
+        kunngjør sin bruker ved å endre fargen i rommet. Små prosjekter kan ha høy
+        tetthet.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

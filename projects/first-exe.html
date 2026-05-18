@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Første frittstående Python-program · Andreas Lindeman</title>
+  <meta name="description" content="Det første ekte Python-programmet jeg leverte: en roterende ASCII-skalleanimasjon pakket som frittstående .exe, elleve år gammel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2014</span>
+    </div>
+
+    <h1 class="project-title">Første frittstående <em>.exe</em></h1>
+
+    <p class="project-lede">
+      Jeg var elleve. Jeg hadde skrevet batch-skript og Python i et par år, men
+      dette var det første programmet jeg bygde som kunne forlate datamaskinen min. En ekte,
+      dobbeltklikkbar kjørbar fil.
+    </p>
+
+    <section class="project-section">
+      <h2>Hva den faktisk gjorde</h2>
+      <p>
+        På et hemmelig tastetrykk slo den opp en fullskjerms-terminal og kjørte en roterende
+        ASCII-skalleanimasjon jeg hadde tegnet ramme for ramme. For en elleveåring var det
+        det kuleste man kunne tenke seg.
+      </p>
+      <p>
+        Ærlig kontekst: dette lå inni et større program som også eksperimenterte med
+        input-fangst, et prosjekt jeg ville håndtert helt annerledes i dag. Jeg drev ikke med
+        noe målrettet. Jeg var en unge som kopierte mønstre fra forum og var imponert over
+        det maskinen lot meg gjøre. Jeg tar det med her fordi det er øyeblikket Python sluttet
+        å være lekser og ble et ekte verktøy.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Skallen</h2>
+      <p>
+        Hver rotasjonsramme var et håndtegnet ASCII-rutenett. Animasjonen syklet gjennom dem
+        med et fast sleep mellom rammene. "3D-følelsen" var en illusjon, samme trikset
+        gamle demoscene-intro-er brukte, og den lærte meg en nyttig lekse: et lite sett
+        nøye valgte rammer slår en komplisert renderer i effekt.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Hvorfor det betyr noe nå</h2>
+      <p>
+        To ting satt igjen. Først: spranget fra <em>skript</em> til <em>program noen andre
+        kan kjøre</em>. Pakking, stier, det øyeblikket der det må fungere på en maskin som
+        ikke er din. Deretter: oppdagelsen av at jeg brydde meg mer om håndverket enn om
+        spøken. Jeg har jaktet på håndverket siden.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

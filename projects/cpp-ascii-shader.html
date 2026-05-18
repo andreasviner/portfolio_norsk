@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C++-spill med GPU-ASCII-shader · Andreas Lindeman</title>
+  <meta name="description" content="Et C++-spill med en CUDA-akselerert ASCII-shader som valgte riktig tegn for hver pikselflekk i sanntid." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>Feb 2022</span>
+    </div>
+
+    <h1 class="project-title">Et spill som tegner seg selv i <em>ASCII</em></h1>
+
+    <p class="project-lede">
+      Et C++-spill laget under en folkehøyskole-game-jam, med en CUDA-akselerert ASCII-shader
+      mellom rendereren og skjermen. Shaderen plukket det beste tegnet for
+      hver pikselflekk i sanntid, og den samme kjernen kunne lese webkameraet og gjøre
+      ansiktet ditt om til typografi.
+    </p>
+
+    <section class="project-section">
+      <h2>Ideen</h2>
+      <p>
+        En "kodesone" i spillet vekslet rendereren til ASCII-modus. Ikke det
+        vanlige lyshets-binningstrikset, men en treff-per-flekk mot et lite tegnatlas
+        som kjørte på GPU-en, så det holdt seg på frame-rate.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Hvordan shaderen virker</h2>
+      <ul>
+        <li>Framebufferen deles i flekker på størrelse med en tegncelle.</li>
+        <li>Hvert tegn i atlaset er forhåndsrendret til en tensor i samme størrelse.</li>
+        <li>For hver flekk vurderer kjernen hvert tegn ut fra strukturell likhet og velger det beste treffet.</li>
+        <li>Hvis en flekk er hvit bare langs underkant, lander den på <code>_</code>, fordi det er tegnet hvis massefordeling matcher.</li>
+      </ul>
+      <p>
+        Trikset var å gjøre dette billig nok til å kjøre per bilde. CUDA, scoring per blokk
+        og et lite atlas fikk det godt under et millisekund ved 1080p.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Webkameramodus</h2>
+      <p>
+        Kjernen bryr seg ikke om innholdet, så å gi den et webkamerabilde i stedet for
+        framebufferen fungerer rett ut av boksen. Live ASCII-selfie:
+      </p>
+      <div class="video-embed aspect-16-9">
+        <iframe src="https://www.youtube.com/embed/HsvRGanUB4s" title="Webkamera-ASCII-demo" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">Live ASCII-webkamera, drevet av samme kjerne.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva jeg ville sett på igjen</h2>
+      <p>
+        Matchingen er rent strukturell. Den vet ikke at <code>O</code> og
+        <code>0</code> ser nesten like ut. Et lite perseptuelt ledd, eller å kjøre
+        scoringen mot et kantkart, ville rydde opp i typografien. Atlaset var også
+        bare monospace. Med en proporsjonal font og en smartere pakker er det mer visuell
+        variasjon å hente.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

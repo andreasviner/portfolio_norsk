@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Første 3D-printer · Andreas Lindeman</title>
+  <meta name="description" content="Min første 3D-printer i byggesett, satt sammen i 2016. Startskuddet for et tiår med maskinvarearbeid." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2016</span>
+    </div>
+
+    <h1 class="project-title">Første 3D-printer <em>(i deler, så i en haug, så printet den)</em></h1>
+
+    <p class="project-lede">
+      Min første 3D-printer i byggesett, tretten år gammel. Inngangen til maskinvare. Den lærte meg
+      noe hvert senere maskinvareprosjekt har bekreftet: programvarefeil er høflige,
+      mekaniske feil kaster filament på veggen og lar rommet lukte brent
+      plast.
+    </p>
+
+    <section class="project-section">
+      <h2>Hva det faktisk var</h2>
+      <ul>
+        <li>En kasse med deler som etter en lang helg ble en fungerende kartesisk
+            printer.</li>
+        <li>Ingen auto-bednivellering, ingenting med lukket sløyfe, ingen lett slicer. Du nivellerte
+            med et papirark og følte deg smart når det funket.</li>
+        <li>En egen slicer på PC-en som lagde gcode firmwaren ikke
+            alltid var enig i.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva det lærte meg</h2>
+      <p>
+        At maskinvare ikke er programvare med flere steg. Det er sin egen disiplin. En
+        løs reim ser ut som et kalibreringsproblem. Et kalibreringsproblem ser ut som en
+        firmware-feil. En firmware-feil ser ut som at printeren er besatt. Du lærer å
+        sjekke de billige forklaringene først, i rekkefølge, hver gang. Det er en nyttig vane å ta
+        med tilbake til programvarejobben.
+      </p>
+      <p>
+        I tillegg: oppdagelsen av <em>spaghetti-printen</em> som folkelig begrep, og
+        beroligelsen av å ha brannslukker i nærheten.
+      </p>
+
+      <figure class="project-figure">
+        <img src="../projects_data/2016-3dprinter-1/spagetti.jpg" alt="Printsengen begravd i et virvar av hvitt filament. En print som løsnet midt i jobben og fortsatte å ekstrudere ut i lufta.">
+        <figcaption>Den berømte spaghettien, det som skjer når printen løsner fra sengen og ekstruderen bare fortsetter.</figcaption>
+      </figure>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

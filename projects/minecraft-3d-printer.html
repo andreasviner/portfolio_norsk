@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft 3D-printer · Andreas Lindeman</title>
+  <meta name="description" content="En pipeline som tar inn en hvilken som helst 3D-modell eller skanning og bygger den inne i Minecraft via genererte kommandoer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2021</span>
+    </div>
+
+    <h1 class="project-title">En 3D-printer som printer i <em>Minecraft</em></h1>
+
+    <p class="project-lede">
+      En pipeline som tar inn en hvilken som helst 3D-modell (STL, OBJ, til og med en rå
+      3D-skanning) og genererer en sekvens med Minecraft-kommandoer som bygger modellen i
+      spillet, med fargestøtte og kontroll over blokkpaletten.
+    </p>
+
+    <div class="video-embed aspect-9-16">
+      <iframe src="https://www.youtube.com/embed/uJcUUhq8S-c" title="Demo av Minecraft 3D-printer: 3D-skannet venn, kun stein" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">Demo: en 3D-skannet venn, begrenset til steinblokker for et statue-uttrykk.</p>
+
+    <section class="project-section">
+      <h2>Pipelinen</h2>
+      <ul>
+        <li><strong>Last inn:</strong> Vanlige 3D-formater, inkludert mesh, punktskyer eller fargede 3D-skanninger.</li>
+        <li><strong>Voxeliser:</strong> Resampler modellen til et voxelraster i ønsket oppløsning.</li>
+        <li><strong>Fargematch:</strong> Mapper hver voxels farge til den nærmeste Minecraft-blokken fra en konfigurerbar palett (f.eks. «kun stein» for statue-uttrykk).</li>
+        <li><strong>Generer:</strong> Lager sekvenser av <code>/setblock</code>-kommandoer, batchet slik at Minecraft ikke kveles når du limer dem inn.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Det som var morsomt</h2>
+      <p>
+        Blokkpaletten i Minecraft er liten, men fargerommet er ekte. Å få gode likheter
+        ut av kun stein eller kun ull gjorde prosjektet til en liten øvelse i
+        palettkvantisering, en teknikk som viser seg å gjelde direkte for bildebehandlingsproblemer
+        jeg traff senere.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

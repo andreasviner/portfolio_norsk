@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blink shooter · Andreas Lindeman</title>
+  <meta name="description" content="Et Python-shooter der blunk fanget av webkameraet kaster deg mellom to fargedimensjoner. Bare din egen farge kan skade din egen farge." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>Vår 2022</span>
+      <span class="sep"></span>
+      <span class="status-tag lost">Kildekode mistet</span>
+    </div>
+
+    <h1 class="project-title">Blink shooter <em>(to fargedimensjoner)</em></h1>
+
+    <p class="project-lede">
+      Et Python-shooter, laget under en game jam på Torshus folkehøyskole. Det brukte
+      webkameraet til å oppdage blunk, og hvert blunk kastet spilleren mellom to fargedimensjoner.
+      Bare den fargen du var i kunne skade fiender med samme farge, så
+      du måtte kontrollere blunkene for å bli i riktig dimensjon.
+    </p>
+
+    <div class="video-embed aspect-16-9">
+      <iframe src="https://www.youtube.com/embed/Wzbi65XwbLQ" title="Blink shooter gameplay" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">To minutter gameplay.</p>
+
+    <figure class="project-figure">
+      <img src="../projects_data/2021-blink-color-shooter/Capture.PNG" alt="Topp-ned-skjermbilde av spillet på hvit bakgrunn. Spillerskipet er nederst til høyre. Banen er full av blå og oransje polygonfiender. Et venstrepanel lister ni oppgraderingsslots: bevegelseshastighet, maks helse, helseregenerering, ladetid, kuleskade, kulehastighet, oppdateringsrate, prosjektilskade, prosjektilhastighet. Et høyrepanel viser spillerens blå spesialangrep-ikoner.">
+      <figcaption>Midt i spillet, blå dimensjon. De oransje fiendene er urørlige til neste blunk.</figcaption>
+    </figure>
+
+    <section class="project-section">
+      <h2>Mekanikken</h2>
+      <ul>
+        <li><strong>Blunkdeteksjon fra webkamera.</strong> Enkel eye-aspect-ratio-heuristikk
+            på webkamerastrømmen, kalibrert per spiller.</li>
+        <li><strong>To dimensjoner:</strong> rød og blå. Hvert blunk byttet. Fargen din
+            kunne bare skade fiender av samme farge. Den andre halvparten av banen var
+            urørlig til du blunket igjen.</li>
+        <li><strong>Oppgraderinger.</strong> Vanlig meta-progresjon (skuddhastighet, helse,
+            bevegelseshastighet), men mekanikken som gjorde det rart, var at <em>å la være å blunke</em>
+            ble en ferdighet.</li>
+        <li>En lasteskjerm med spinnende piler som var helt unødvendig, og
+            helt verdt det.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva jeg lærte</h2>
+      <p>
+        At en spills "kjernemekanikk" er det spilleren fortsatt snakker om dagen
+        etter. Ingen husket oppgraderingstreet. Alle husket at de prøvde å la være
+        å blunke. Begrensningsdrevet design slår funksjonsdrevet design.
+      </p>
+      <p>
+        Python-serverkoden er borte. Folkehøyskolefilene overlevde ikke flyttingen.
+        Videoen over er det meste av det som er igjen.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

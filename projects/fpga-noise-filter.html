@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fra støy til tone · Andreas Lindeman</title>
+  <meta name="description" content="FPGA-generert pseudotilfeldig støy båndbegrenset av et Delyiannis-Friend aktivt filter, gjør hvit støy om til en hørbar tone rundt 920 Hz." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Des 2025</span>
+    </div>
+
+    <h1 class="project-title">Fra støy <em>til tone</em></h1>
+
+    <p class="project-lede">
+      Generer hvit støy digitalt på en FPGA, så båndpassér den så skarpt i
+      det analoge domenet at utgangen høres ut som en tone i stedet for hvesing. Digital
+      side: et Linear Feedback Shift Register på en Lattice ICE40HX1K. Analog side: et
+      Delyiannis-Friend aktivt båndpassfilter på et loddet veroboard.
+    </p>
+
+    <section class="project-section">
+      <h2>Støygeneratoren</h2>
+      <p>
+        Et Linear Feedback Shift Register (LFSR) er et skiftregister hvis inngang er en
+        XOR av noen utvalgte avgreninger. Hvis avgreningene velges av et primitivt polynom,
+        gir registeret en pseudotilfeldig sekvens med maksimal lengde
+        <code>2<sup>L</sup> − 1</code> før den repeterer. Dette er en såkalt m-sekvens,
+        hvis autokorrelasjonsegenskaper gjør at den ser ut som hvit støy på relevant
+        tidsskala.
+      </p>
+      <p>
+        Bygd i IceStudio med en knapp på utviklingskortet som mater reset-linjen, så et
+        knappetrykk sparker registeret ut av enhver alt-null-låst tilstand. FPGA-utgangen
+        er en 3,3 V pulsstrøm, i praksis en 1-bits DAC, ført gjennom et
+        passivt RC-lavpass for å ta toppen av de verste svitsjekantene.
+      </p>
+
+      <figure class="project-figure">
+        <img src="../projects_data/2025-noice-fpga-and-analog-filter/designnotat_8_figures/figure3.png" alt="IceStudio blokkdiagram av LFSR-en: klokke og forskaler til venstre, fire parallelle rader med skiftregistertrinn som utgjør et 31-bits register, der avgreningssignalene XOR-es sammen og mates tilbake til inngangen. Reset-signalet 'stoy' kommer fra en knapp og en LED.">
+        <figcaption>LFSR-en i IceStudio. 31 bit, XOR-matet, med knapp-styrt reset.</figcaption>
+      </figure>
+
+      <figure class="project-figure narrow">
+        <img src="../projects_data/2025-noice-fpga-and-analog-filter/designnotat_8_figures/figure6.png" alt="Spektrumanalyse fra 0 til 2000 Hz. En bred spredning av punkter ligger omtrent flatt rundt −20 dB over hele området. Visuelt 'hvit' støy.">
+        <figcaption>FFT av rå FPGA-utgang. Flat-ish over hele lydbåndet. Ser ut som hvit støy, høres ut som hvesing.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Delyiannis-Friend-filteret</h2>
+      <p>
+        En aktiv båndpasstopologi med én op-amp som gir høy Q med få
+        komponenter. Designsenter <code>f₀ = 920 Hz</code>, <code>Q = 12</code>.
+        Formler for komponentverdier:
+      </p>
+      <pre><code>R₃ = 1 / (πBC)
+R₁ = R₃ / (2H₀)
+R₂ = R₃ / (4Q² − 2H₀)</code></pre>
+      <p>
+        Med C = 22 nF kom de ideelle verdiene ut til R₃ ≈ 189 kΩ, R₁ ≈ 18,9 kΩ,
+        R₂ ≈ 333 Ω. Realisert som seriekoblinger av standardmotstander (120 k + 68 k,
+        12 k + 6,8 k).
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2025-noice-fpga-and-analog-filter/designnotat_8_figures/figure5.png" alt="Nærbilde av et svart Elektra Verksted-veroboard med et par gjennomhullede motstander og en fiolett wire loddet mellom puter.">
+          <figcaption>Veroboard, midt i monteringen.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2025-noice-fpga-and-analog-filter/designnotat_8_figures/figure4.png" alt="Bredere bilde av samme Elektra Verksted-veroboard med hele filteret populert: seriekoblede motstandspar, kondensatorer og op-ampen loddet inn.">
+          <figcaption>Fullt populert, klart for måling.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Målt mot designet</h2>
+      <ul>
+        <li><strong>Sentralfrekvens:</strong> 958 Hz målt (920 Hz designet). Omtrent
+            4 % høyt.</li>
+        <li><strong>Q-faktor:</strong> 6,6 målt (12 designet). Betydelig fall.</li>
+      </ul>
+      <p>
+        Q-fallet er den viktigste feilmoden. Tre plausible skyldige: kondensatortoleranser
+        ved denne frekvensen er 5 % eller mer og dominerer båndformen. Op-ampen
+        har endelig forsterknings-båndbredde ved høyere Q-faktorer og runder i praksis av
+        toppen. Brødbrett-/veroboard-layouten introduserer parasittisk kapasitans og
+        motstand i parallell med designet.
+      </p>
+      <p>
+        Til tross for lavere Q viser utgangs-FFT-en en tydelig spektral topp rundt f₀, og
+        lyttetesten bekreftet en gjenkjennelig tonal karakter. Oppdraget var fullført,
+        selv om båndet ble bredere enn designet.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2025-noice-fpga-and-analog-filter/designnotat_8_figures/figure7.png" alt="Amplitude vs. frekvens-kurve (Hz, log-skala) for filteret, med topp ved 957,99 Hz og −3 dB-punkter merket ved 906,74 Hz og 1051,27 Hz. Designmålet 920 Hz vises som en grønn vertikal linje rett til venstre for målt topp.">
+          <figcaption>Målt filterrespons. Topp 958 Hz, −3 dB-bånd 145 Hz bredt → Q ≈ 6,6.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2025-noice-fpga-and-analog-filter/designnotat_8_figures/figure8.png" alt="FFT av full systemutgang ('System utgang') fra 0 til 2000 Hz. En tydelig amplitudetopp stiger rundt 1 kHz mot et ellers flatt støygulv.">
+          <figcaption>Systemutgang-FFT. Båndpassen har hugget ut en tone fra den flate støyen.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Designnotat</h2>
+      <div class="project-links">
+        <a href="../projects_data/2025-noice-fpga-and-analog-filter/designnotat_8.pdf" target="_blank" rel="noopener" download>Last ned: designnotat_8.pdf (Fra støy til tone)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

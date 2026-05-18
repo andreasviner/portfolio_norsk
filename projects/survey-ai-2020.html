@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fargepreferansemodell · Andreas Lindeman</title>
+  <meta name="description" content="En studie fra 2020 av 20 000 spørreundersøkelsesvar som lærte å forutse alder, kjønn og humør utelukkende fra fargeklikk-mønstre." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2020</span>
+    </div>
+
+    <h1 class="project-title">Fargepreferanse<em>modell</em></h1>
+
+    <p class="project-lede">
+      Et selvinitiert eksperiment fra videregående. Bygde en spørreundersøkelse med
+      20 spørsmål om farger, sendte den ut til rundt 160 000 e-postkasser, trente
+      en modell på de 20 000 fullførte svarene, og endte med et lite nevralnett som
+      kunne gjette deltakerens alder, kjønn og selvrapporterte humør utelukkende fra
+      klikk-mønsteret.
+    </p>
+
+    <section class="project-section">
+      <h2>Spørsmålet</h2>
+      <p>
+        Bærer <em>hvilke farger du foretrekker</em>, og <em>hvordan du klikker på dem</em>,
+        nok signal til å forutsi hvem du er? Jeg hadde en magefølelse om at svaret var ja,
+        og jeg ville at datasettet skulle være stort nok til at svaret ikke var en
+        tilfeldighet.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Undersøkelsen</h2>
+      <p>
+        Deltakerne svarte på tre demografiske spørsmål (alder, kjønn og en humørscore på
+        1–10), og fullførte deretter tjue runder. Hver runde viste fire fargeflater og
+        ba dem velge den de likte best.
+      </p>
+      <p>
+        Ved siden av valgene logget undersøkelsen stille metasignalene: hvor lang tid
+        hvert svar tok, hvor på flaten klikket landet, om markøren vaklet, og rekkefølgen
+        deltakerne pleide å skanne valgene i.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Rekkevidde og respons</h2>
+      <ul>
+        <li>~160 000 e-poster levert via Osloskolens katalog</li>
+        <li>~20 000 fullførte undersøkelser (rundt 12,5 % fullføring)</li>
+        <li>Hvert svar lagret med tidsstempel og en sesjonslokal salt</li>
+      </ul>
+      <blockquote>
+        Som sekstenåring var ikke modellen det mest overraskende. Det var å se et datasett
+        med tjue tusen menneskelige svar lande på to dager.
+      </blockquote>
+    </section>
+
+    <section class="project-section">
+      <h2>Modellen</h2>
+      <h3>Features</h3>
+      <ul>
+        <li>Per runde: valgt farge (one-hot), tre avviste farger, dvelingstid, klikkoordinater relativt til midten av fargeflaten</li>
+        <li>Per sesjon: total tid, tidsvarians, første-klikk-skjevhet</li>
+      </ul>
+      <h3>Arkitektur</h3>
+      <p>
+        Et lite fullt sammenkoblet nettverk. Tre mål, trent samtidig: alder (regresjon),
+        kjønn (binær klassifikasjon), humør (ordinal 1–10). Jeg brukte metafeaturene
+        like mye som selve fargevalgene; de viste seg å bære mye av signalet.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg lærte</h2>
+      <p>
+        To ting. For det første at måten du klikker på er minst like informativ som hva
+        du klikker på. For det andre at det å kjøre en studie i skala handler mindre om
+        modellen og mer om den kjedelige ingeniøringen: undersøkelser, lagring,
+        deduplikering, misbrukshåndtering, en ren eksport-pipeline. Modellen var den
+        minste filen i prosjektet.
+      </p>
+      <p>
+        Jeg ville gjort dette annerledes i dag: tydeligere samtykke, bedre aggregering,
+        en publisert skriveøvelse. Det var et videregåendeprosjekt og det synes, men
+        det lærte meg at data slår smartness, og jeg har aldri helt sluppet det.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

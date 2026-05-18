@@ -1,0 +1,21 @@
+{
+  "id": "visual-transformer-2026",
+  "title": "ViT + LoRA",
+  "category": "school",
+  "isProject": true,
+  "start": "2026-02",
+  "shortDescription": "Tilpasser en forhåndstrent vision transformer til en ny oppgave med LoRA, der low-rank-adaptere settes inn i attention-lagene. Halvparten å få det til å virke, halvparten en unnskyldning for å faktisk forstå hvorfor det virker.",
+  "tags": [
+    "ViT",
+    "LoRA",
+    "PyTorch",
+    "maskinlæring"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 62,
+  "status": "ongoing",
+  "projectPage": "projects/visual-transformer"
+}

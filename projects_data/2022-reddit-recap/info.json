@@ -1,0 +1,31 @@
+{
+  "id": "reddit-recap-2022",
+  "title": "KI-innholdskanaler",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2023-03",
+  "shortDescription": "Automatisert pipeline som skrapte topp-innhold fra Reddit og publiserte til YouTube, Instagram og TikTok.",
+  "tags": [
+    "automatisering",
+    "Python",
+    "video",
+    "sosiale medier"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 75,
+  "projectPage": "projects/reddit-recap",
+  "externalLinks": [
+    {
+      "label": "YouTube-kanal",
+      "url": "https://www.youtube.com/@RedditRecapV2",
+      "type": "youtube"
+    },
+    {
+      "label": "TikTok-konto",
+      "url": "https://www.tiktok.com/@redditrecap2",
+      "type": "tiktok"
+    }
+  ]
+}

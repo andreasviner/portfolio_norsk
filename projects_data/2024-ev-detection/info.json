@@ -1,0 +1,21 @@
+{
+  "id": "ev-detection-2024",
+  "title": "El-bil-detektor",
+  "category": "school",
+  "isProject": true,
+  "start": "2024-03",
+  "shortDescription": "Avgjør om en bil er elektrisk. YOLOv8 detekterer skiltet, en egentrent CNN leser det, og oppslag mot Statens vegvesen gir fasiten.",
+  "tags": [
+    "YOLOv8",
+    "CNN",
+    "datasyn",
+    "PyTorch",
+    "API"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 70,
+  "projectPage": "projects/ev-detection"
+}

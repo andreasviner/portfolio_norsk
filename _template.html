@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+  MAL. Kopier denne fila når du lager en ny dypdykksside for et prosjekt.
+  Steg:
+    1. Kopier denne fila til projects/<slug>.html
+    2. Oppdater <title>, meta-beskrivelsen og det synlige innholdet.
+    3. Oppdater kategoriswatch-klassen (work | school | hobby).
+    4. Legg til eller fjern statustagger ved behov.
+    5. Lenk den fra tilhørende projects_data/*.json ved å sette
+       "projectPage": "projects/<slug>" (uten .html, ren URL).
+-->
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Prosjekttittel] · Andreas Lindeman</title>
+  <meta name="description" content="[Énsetnings beskrivelse]" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>ÅÅÅÅ</span>
+      <!-- valgfri status -->
+      <span class="sep"></span>
+      <span class="status-tag ongoing">Pågående</span>
+    </div>
+
+    <h1 class="project-title">[Prosjekttittel] <em>(valgfri kursiv aksent)</em></h1>
+
+    <p class="project-lede">
+      En ingress på ett avsnitt som oppsummerer hele prosjektet: hva det var,
+      hva som var interessant, hva det førte til.
+    </p>
+
+    <!-- Valgfri NDA-/sensitiv-innhold-merknad -->
+    <!--
+    <div class="project-disclosure">
+      <strong>Merk.</strong> Detaljer om dette prosjektet er begrenset av kundens NDA.
+    </div>
+    -->
+
+    <section class="project-section">
+      <h2>Oversikt</h2>
+      <p>Bakgrunn, kontekst, hvilket problem dette løste.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Tekniske detaljer</h2>
+      <h3>Arkitektur</h3>
+      <p>Hvordan det ble bygget.</p>
+      <ul>
+        <li>Punkt en</li>
+        <li>Punkt to</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Resultat og refleksjon</h2>
+      <p>Hva som fungerte, hva som ikke fungerte, hva jeg ville gjort annerledes i dag.</p>
+    </section>
+
+    <!-- Valgfrie lenker -->
+    <section class="project-section">
+      <h2>Lenker</h2>
+      <div class="project-links">
+        <a href="#" target="_blank" rel="noopener">Beskrivelse av ekstern lenke</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

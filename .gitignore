@@ -1,0 +1,6 @@
+*.data
+*.gdata
+*.txt
+*.preview.png
+
+!robots.txt

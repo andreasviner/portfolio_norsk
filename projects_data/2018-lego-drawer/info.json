@@ -1,0 +1,27 @@
+{
+  "id": "lego-drawer-2018",
+  "title": "LEGO-plotter",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2018-12",
+  "shortDescription": "Python på en LEGO Mindstorms-kloss styrte en to-akset tegnearm med pen-lift. Musestyrt og overraskende nøyaktig.",
+  "tags": [
+    "LEGO Mindstorms",
+    "Python",
+    "maskinvare",
+    "mekanikk"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 42,
+  "externalLinks": [
+    {
+      "label": "Demovideo",
+      "url": "https://www.youtube.com/watch?v=rjY2Qk7qEzs",
+      "type": "youtube"
+    }
+  ],
+  "projectPage": "projects/lego-drawer"
+}

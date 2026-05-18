@@ -1,0 +1,19 @@
+{
+  "id": "analog-buffer-2025",
+  "title": "Analog buffer",
+  "category": "school",
+  "isProject": true,
+  "start": "2025-02",
+  "shortDescription": "BC547-emitterfølger som buffer mellom en 5,6 kΩ kilde og en 680 Ω last. Designet, biaset og justert med potmeter til den traff den beregnede forsterkningen på 90 % ved 1 kHz.",
+  "tags": [
+    "analog elektronikk",
+    "BC547",
+    "buffer",
+    "NTNU"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 20,
+  "projectPage": "projects/analog-buffer"
+}

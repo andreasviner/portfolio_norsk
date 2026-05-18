@@ -1,0 +1,15 @@
+{
+  "id": "solborg",
+  "title": "Solborg",
+  "category": "school",
+  "isProject": false,
+  "hideOnMobile": true,
+  "start": "2022-07",
+  "end": "2023-07",
+  "shortDescription": "Et folkehøyskoleår på Solborg, på linja for friluftsliv og action-sport. Mest ute, men det meste av kodingen ble en flåte av KI-innholdskanaler, mitt første produksjonssystem som gikk over tid.",
+  "tags": [
+    "folkehøyskole"
+  ],
+  "types": [],
+  "importance": 22
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anti-alias-filter · Andreas Lindeman</title>
+  <meta name="description" content="Et 6.-ordens Butterworth anti-alias-filter (tre kaskaderte Sallen-Key-trinn) for en ADC som sampler ved 3 kHz." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Des 2025</span>
+    </div>
+
+    <h1 class="project-title">Et 6.-ordens Butterworth <em>anti-alias-filter</em></h1>
+
+    <p class="project-lede">
+      Anti-aliasing for en ADC samplet ved 3 kHz: signalet må dempes med
+      minst 10 dB ved Nyquist-frekvensen 1,5 kHz, samtidig som knekkfrekvensen
+      holdes over 1,125 kHz så passbåndet er nyttig. En Butterworth-respons gir flatt
+      passbånd. Mattegrunnlaget sier sjette orden. Implementasjonen er tre
+      kaskaderte Sallen-Key-trinn med én op-amp i hvert.
+    </p>
+
+    <section class="project-section">
+      <h2>Mattegrunnlaget, kort</h2>
+      <p>
+        For et Butterworth-filter er orden som trengs for å treffe demping <code>A</code>
+        ved frekvens <code>f<sub>stop</sub></code> samtidig som −3 dB-knekken
+        <code>f<sub>c</sub></code> holdes et annet sted:
+      </p>
+      <pre><code>n = (1/2) · ln(A⁻² − 1) / ln(f_stop / f_c)</code></pre>
+      <p>
+        Med <code>A = 10<sup>−0,5</sup></code>, 5 % margin på begge sider og
+        <code>f<sub>stop</sub>/f<sub>c</sub> ≈ 1,21</code>, gir det
+        <code>n ≈ 5,86</code>, rundet opp til <code>n = 6</code>.
+      </p>
+      <p>
+        Tre Sallen-Key-trinn, hver med samme <code>ω₀ = 2π·1181 Hz</code>,
+        men ulike Q-faktorer satt av Butterworth-polplasseringen:
+        <code>Q₁ ≈ 0,518</code>, <code>Q₂ ≈ 0,707</code>, <code>Q₃ ≈ 1,93</code>.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Bygge rare kondensatorverdier fra standardkomponenter</h2>
+      <p>
+        Med hver R fast på 10 kΩ kom kondensatorverdiene per trinn ut som
+        rare ikke-standardverdier (14, 13, 19, 9,5, 52, 3,5 nF). Alle ble bygd som
+        parallellkoblinger av standardkomponenter:
+      </p>
+      <ul>
+        <li><strong>14 nF</strong> = 10 ∥ 1,5 ∥ 1,5 ∥ 1 nF</li>
+        <li><strong>13 nF</strong> = 10 ∥ 1,5 ∥ 1,5 nF</li>
+        <li><strong>19 nF</strong> = 10 ∥ 6,8 ∥ 2,2 nF</li>
+        <li><strong>9,5 nF</strong> = 4,7 ∥ 3,3 ∥ 1,5 nF</li>
+        <li><strong>52 nF</strong> = 15 ∥ 15 ∥ 22 nF</li>
+        <li><strong>3,5 nF</strong> = 1 ∥ 1 ∥ 1,5 nF</li>
+      </ul>
+      <p>
+        Kun parallell, med vilje: færre ledninger på brettet, og ingen risiko for at
+        serieformelen feller deg klokka to om natten.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2025-anti-alias-filter/designnotat_7_figures/figure6.png" alt="Brødbrett med tre kaskaderte Sallen-Key-trinn: tre op-amper, banker av parallelle kondensatorer som lager de rare verdiene.">
+          <figcaption>Brødbrettbygg. Tre Sallen-Key-trinn, stabler av parallellkondensatorer for de ikke-standard verdiene.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2025-anti-alias-filter/designnotat_7_figures/figure7.png" alt="Samme krets overført til et Elektra-merket stripeprintet kort, loddet.">
+          <figcaption>Andre bygg på stripebrett. Samme topologi, ryddigere oppsett.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Målt mot beregnet</h2>
+      <p>
+        To komplette bygg, begge endte likt: stoppbåndsdempingen traff
+        10 dB-målet med margin (målt 11,67 dB ved 1,5 kHz), men knekkfrekvensen lå
+        på ~1,07 kHz i stedet for designet 1,18 kHz, omtrent 10 % lavt og under spek.
+        Simulering i Falstad med ideelle komponenter legger knekken nøyaktig der
+        beregningen forutsier, som peker på komponenttoleranse, parasittisk
+        kapasitans/induktans og op-ampens endelige forsterknings-båndbreddeprodukt
+        som de skyldige.
+      </p>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2025-anti-alias-filter/designnotat_7_figures/figure4.png" alt="Falstad-simulering: tre kaskaderte Sallen-Key-trinn med designede verdier, pluss frekvensresponssveipet som viser −3 dB-punktet nær 1,18 kHz.">
+        <figcaption>Falstad-simulering med ideelle komponenter. Knekkfrekvensen lander på designet 1,18 kHz, som mattegrunnlaget forutsier.</figcaption>
+      </figure>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2025-anti-alias-filter/designnotat_7_figures/figure2.png" alt="Målt amplituderespons for bygg 1: flatt passbånd, −3 dB ved 1,07 kHz.">
+          <figcaption>Bygg 1. −3 dB ved 1,07 kHz (designet 1,18 kHz).</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2025-anti-alias-filter/designnotat_7_figures/figure3.png" alt="Detaljert måling rundt 1,5 kHz som viser −11,67 dB demping.">
+          <figcaption>Stoppbåndsmåling. −11,67 dB ved 1,5 kHz, komfortabelt forbi 10 dB-kravet.</figcaption>
+        </figure>
+      </div>
+
+      <p>
+        Enkleste fiks er å designe knekkfrekvensen litt høyere for å kompensere for det
+        systematiske skiftet ned. Komponenter med strammere toleranse og bedre kort-layout
+        ville også hjelpe.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Designnotat</h2>
+      <div class="project-links">
+        <a href="../projects_data/2025-anti-alias-filter/designnotat_7.pdf" target="_blank" rel="noopener" download>Last ned: designnotat_7.pdf (Anti-alias-filter)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

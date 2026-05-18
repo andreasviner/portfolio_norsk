@@ -1,0 +1,18 @@
+{
+  "id": "improved-freq-doubler-2025",
+  "title": "Frekvensdobler v2",
+  "category": "school",
+  "isProject": true,
+  "start": "2025-04",
+  "shortDescription": "Andre forsøk på den analoge frekvensdobleren. Samme topologi, mye mer nøye utført. Innmålte spoler, håndsatte kondensatorverdier, og Analog Discovery brukt til SDR-estimatet. SDR cirka 26,7 dB ved 3725 til 7450 Hz.",
+  "tags": [
+    "analog elektronikk",
+    "kretser",
+    "NTNU"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 22,
+  "projectPage": "projects/freq-doubler-v2"
+}

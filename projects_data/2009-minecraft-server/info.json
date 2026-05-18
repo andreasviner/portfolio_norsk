@@ -1,0 +1,18 @@
+{
+  "id": "minecraft-server-2009",
+  "title": "Minecraft-server",
+  "category": "hobby",
+  "isProject": false,
+  "start": "2009",
+  "shortDescription": "Drev en åpen Minecraft-server sammen med faren min, port-forwardet hjemmefra. Første møte med kommandosyntaks, serveroppetid, og mesteparten av engelsken jeg kunne før skolen lærte meg resten.",
+  "tags": [
+    "Minecraft",
+    "tidlige arbeider",
+    "self-hosted"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 22,
+  "projectPage": "projects/minecraft-server"
+}

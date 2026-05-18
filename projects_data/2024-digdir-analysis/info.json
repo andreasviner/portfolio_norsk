@@ -1,0 +1,21 @@
+{
+  "id": "digdir-analysis-2024",
+  "title": "Digdir-analyse",
+  "category": "work",
+  "isProject": true,
+  "start": "2024-10",
+  "shortDescription": "Embeddings-basert klustering kombinert med LLM-oppsummering på tvers av en stor samling offentlige dokumenter.",
+  "tags": [
+    "embeddings",
+    "LLM",
+    "NLP",
+    "offentlig sektor"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 68,
+  "status": "nda",
+  "statusNote": "Detaljer er begrenset av kundens NDA."
+}

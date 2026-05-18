@@ -1,0 +1,18 @@
+{
+  "id": "freq-doubler-2024",
+  "title": "Frekvensdobler",
+  "category": "school",
+  "isProject": true,
+  "start": "2024-10",
+  "shortDescription": "Analog frekvensdobler. Diode som ulineæritet, to kaskadekoblede LC-båndpassfiltre med en op-amp-buffer mellom seg. SDR cirka 21 dB ved 2525 til 5050 Hz.",
+  "tags": [
+    "analog elektronikk",
+    "kretser",
+    "NTNU"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 18,
+  "projectPage": "projects/freq-doubler"
+}

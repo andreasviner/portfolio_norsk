@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trafikklys, modifisert · Andreas Lindeman</title>
+  <meta name="description" content="Et ekte trafikklys ombygget med en Raspberry Pi, tre nettspenningsreléer, et Flask-webgrensesnitt og en Sonos-reaktiv festmodus." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>Des 2023 → 2024</span>
+    </div>
+
+    <h1 class="project-title">Et ekte trafikklys, <em>under vår kontroll</em></h1>
+
+    <p class="project-lede">
+      Et ekte fotgjengertrafikklys dukket opp som julegave sent i 2023, lovlig
+      anskaffet, men uten styreelektronikk. Den originale kontrolleren hadde sittet
+      på en egen stolpe som ikke fulgte med. Prosjektet, da: få greia til å lyse, og
+      deretter fortsette.
+    </p>
+
+    <section class="project-section">
+      <h2>Steg 1: få det opp</h2>
+      <p>
+        Jeg 3D-printet et åpningsverktøy, tok fronten av og fikk oversikt over
+        koblingen. Den originale logikken hadde bodd et annet sted; kablene som kom
+        ut av stolpen var én per lampe, hver styrt av om den fikk 240 V AC eller ikke.
+        Så kontroll betydde å skifte tre uavhengige nettspenningsforbindelser.
+      </p>
+
+      <figure class="project-figure narrow">
+        <img src="../projects_data/2024-traff-light/trafikklys_figures/figure1.png" alt="Fotgjengertrafikklyset står på kjøkkenet, slukket. Tre stablede lampehus på en betongsokkel.">
+        <figcaption>Som mottatt. Tre uavhengige 240 V-lamper, ingen kontroller, klar for ombygging.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Steg 2: Raspberry Pi + reléer</h2>
+      <ul>
+        <li>En Raspberry Pi Zero 2 sitter inne i huset. Originalkapslingen har god
+            plass til overs, så den passer fint utenfor synet.</li>
+        <li>Tre reléer for nettspenning, ett per lampe, styrt fra Pi-ens GPIO.</li>
+        <li>Hver lampe er enten helt på eller helt av. Ingen PWM her, bare ren
+            AC-skifting.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Steg 3: web-UI</h2>
+      <p>
+        En liten webapp kjører på Pi-en, servert på det lokale nettet på
+        <code>trafikklys.local</code> via mDNS. Fra hvilken som helst telefon i huset:
+        velg modus, kjør en sekvens, utløs engangs-effekter.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2024-traff-light/trafikklys_figures/figure2.png" alt="iPhone-skjermbilde av web-UI-et på trafikklys.local: tre rendrede lampesirkler, øverste rød og nederste grønn er aktive.">
+          <figcaption>Web-UI på <code>trafikklys.local</code>. Direkte lampekontroll fra hvilken som helst telefon på LAN-et.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2024-traff-light/trafikklys_figures/figure3.png" alt="Det fysiske trafikklyset med rødt topplys og grønt bunnlys tent samtidig.">
+          <figcaption>Og samme tilstand på den fysiske maskinvaren: rødt og grønt samtidig, noe et ekte fotgjengerkryss aldri ville gjort.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Steg 4: Sonos-reaktiv festmodus</h2>
+      <p>
+        Hektet på rommets Sonos-system. Lyset blinker i takt med det høyttalerne
+        spiller, og en egen «drikkeleker»-modus kjører skriptede tidssekvenser: grønt
+        når det er din tur til å drikke, rødt når det ikke er det. Den klart mest
+        brukte funksjonen, den slår både den opprinnelige lampefunksjonen og den
+        musikkreaktive modusen.
+      </p>
+
+      <figure class="project-figure narrow">
+        <img src="../projects_data/2024-traff-light/trafikklys_figures/figure5.png" alt="Det fysiske trafikklyset med to røde lamper tent og den grønne mørk. En tilstand som bare finnes fordi vi nå kan gjøre hva vi vil med de tre lampene.">
+        <figcaption>To røde samtidig. En tilstand den originale kontrolleren aldri ville produsert.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg lærte</h2>
+      <p>
+        At maskinvareprosjekter trenger en produkthjerne, ikke bare en ingeniørhjerne.
+        Funksjonen jeg så for meg som hovedsaken (musikkreaktiv) ble vist frem én
+        gang og aldri etterspurt igjen. Den skriptede festmodusen er det folk faktisk
+        bruker. Og: når lasten er på nettspenning, bruker du mer tid på å dobbelsjekke
+        relékoblingen enn på å være smart i programvare. Det er et sunt forhold.
+      </p>
+      <p>
+        Ærlig talt var hele prosjektet mye enklere enn jeg forventet.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Rapport</h2>
+      <p>
+        En kort norsk skriveøvelse med bilder av lyset i hver tilstand ligger i repoet:
+      </p>
+      <div class="project-links">
+        <a href="../projects_data/2024-traff-light/trafikklys.pdf" target="_blank" rel="noopener" download>Last ned: trafikklys.pdf (PDF)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

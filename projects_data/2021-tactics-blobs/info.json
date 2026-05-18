@@ -1,0 +1,18 @@
+{
+  "id": "tactics-blobs-2021",
+  "title": "Taktikkblober",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2021-12",
+  "shortDescription": "Mobilspill fra game jam, inspirert av den russiske varianten av tre-på-rad. Seks blober per spiller, der større størrelser slukter de mindre. Brettet ser ut til å være én ting, men er i hemmelighet noe annet.",
+  "tags": [
+    "game jam",
+    "mobil",
+    "spilldesign"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 38,
+  "projectPage": "projects/tactic-blobs"
+}

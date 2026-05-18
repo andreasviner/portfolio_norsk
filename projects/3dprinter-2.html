@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D-printer v2 · Andreas Lindeman</title>
+  <meta name="description" content="Andre byggesett-3D-printer. Større ramme, auto-bednivellering og gleden av en print som bare funker." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2018</span>
+    </div>
+
+    <h1 class="project-title">3D-printer <em>v2</em></h1>
+
+    <p class="project-lede">
+      Den andre byggesett-printeren. Større ramme, bedre ekstruder, auto-bednivellering. Luksus
+      <a href="3dprinter-1">den første printeren</a> bare kunne drømme om. Bygd sammen med en
+      venn over en kveld, så finjustert flere ganger enn jeg vil innrømme.
+    </p>
+
+    <figure class="project-figure">
+      <img src="../projects_data/2018-3dprinter-2/printer2.jpg" alt="En tenåring lent over en aluminiumsprofilramme, strammer en reim på X-aksens vogn. Filamentekstruderen synes ved siden av.">
+      <figcaption>Midt i byggingen, med kompis som hjelper med å stramme reimen.</figcaption>
+    </figure>
+
+    <section class="project-section">
+      <h2>Hva som var nytt</h2>
+      <ul>
+        <li><strong>Auto-bednivellering.</strong> Den ene oppgraderingen som forandret alt
+            sammenlignet med den første printeren. Den største kilden til mislykkede printer, borte.</li>
+        <li><strong>Større byggevolum.</strong> Forskjellen mellom "hva får plass i denne
+            boksen" og "hva slags form vil du ha".</li>
+        <li><strong>Bedre mekaniske toleranser.</strong> Stivere ramme, kraftigere
+            skinner. Mindre mekanisk støy på veien fra gcode til print.</li>
+        <li>Fortsatt ingen innebygget slicer. Fortsatt mye oppsett på PC-en før et
+            gitt filament oppførte seg.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Innjusteringsritualet</h2>
+      <p>
+        Jeg printet samme referansebåt (<em>benchy</em>) titalls ganger, hver
+        gang med én variabel endret. Bildet jeg fortsatt har av rekken med litt-forskjellige
+        benchyer er den ærligste oppsummeringen av hva printeren faktisk var: en treig,
+        vakker, fysisk treningssløyfe. Justér. Print. Inspisér. Justér igjen. Det er den
+        samme sløyfen som maskinlæring, bare med datapunkter som lukter brent PLA.
+      </p>
+
+      <figure class="project-figure">
+        <img src="../projects_data/2018-3dprinter-2/test_prints.jpg" alt="Tre grønne benchy-båter på rekke på et mørkt skrivebord. Hver båt viser samme modell printet med litt forskjellige innstillinger, med ulike mengder strenger og overflateruheter i skroget og taket.">
+        <figcaption>Tre benchyer, tre slicer-profiler. Strengene på mastene avslører hvilken som er hvilken.</figcaption>
+      </figure>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "id": "ntnu-bachelor",
+  "title": "NTNU bachelor",
+  "category": "school",
+  "isProject": false,
+  "start": "2023-07",
+  "end": "2024-07",
+  "shortDescription": "Første år av bachelor i Elektronisk systemingeniør, på det avanserte parallelløpet ved NTNU, som eneste person i kullet som fikk tilbud om plassen. Gikk videre til integrert master etterpå.",
+  "tags": [
+    "NTNU",
+    "elektronikk",
+    "bachelor"
+  ],
+  "types": [],
+  "importance": 32
+}

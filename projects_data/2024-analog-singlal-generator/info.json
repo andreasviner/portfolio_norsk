@@ -1,0 +1,20 @@
+{
+  "id": "analog-signal-gen-2024",
+  "title": "Sinusgenerator",
+  "category": "school",
+  "isProject": true,
+  "start": "2024-09",
+  "shortDescription": "ESP32-styrt signalnivågenerator: analogt forsterkertrinn, DAC styrt fra programvare, og en potmeter-justert ratt. Cirka 26 dB forsterkning, cirka 21 dB demping, hot loop på én linje.",
+  "tags": [
+    "analog elektronikk",
+    "ESP32",
+    "kretser",
+    "NTNU"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 22,
+  "projectPage": "projects/sine-generator"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "sound-flappy-2021",
+  "title": "Lyd-Flappy",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2021-11",
+  "shortDescription": "Flappy Bird styrt av stemmen. Lydnivået fra mikrofonen ble omsatt til vertikal hastighet. Et kort game-jam-prosjekt fra Torshus, ubrukelig på bussen.",
+  "tags": [
+    "game jam",
+    "mobil",
+    "lyd"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 35,
+  "projectPage": "projects/sound-flappy"
+}

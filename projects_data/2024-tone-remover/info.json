@@ -1,0 +1,18 @@
+{
+  "id": "tone-remover-2024",
+  "title": "Tonefjerner",
+  "category": "school",
+  "isProject": true,
+  "start": "2024-11",
+  "shortDescription": "En oppgave i analog elektronikk ba om en båndsperrekrets som skulle fjerne én enkelt tone fra et opptak. Jeg løste det i programvare med spektrogrammer i stedet. Riktig type juks, avhengig av hvem du spør.",
+  "tags": [
+    "DSP",
+    "Python",
+    "spektrogram"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 20,
+  "projectPage": "projects/tone-remover"
+}

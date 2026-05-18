@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pipetone-fjerner · Andreas Lindeman</title>
+  <meta name="description" content="En analog båndstoppoppgave, løst i programvare med spektrogrammer og fasekansellering. Kursrapport inkludert." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Mar 2024</span>
+    </div>
+
+    <h1 class="project-title">En tone, fjernet <em>i programvare</em></h1>
+
+    <p class="project-lede">
+      En oppgave i analog elektronikk ba oss bygge en båndstoppkrets for å fjerne en
+      konstant tone fra et musikkopptak. Jeg løste det i programvare, først med en
+      spektrogrambasert båndstopp, og deretter med fasekansellering, og sammenlignet
+      de to side om side. Fasekansellering vant; rapporten er på norsk og ligger i
+      repoet som PDF.
+    </p>
+
+    <section class="project-section">
+      <h2>Problemet</h2>
+      <p>
+        En musikkfil var blitt ødelagt av en enkelt tone med konstant frekvens, den
+        typen ting som dukker opp som en lys horisontal linje nederst i et spektrogram.
+        Oppgaven: fjern den tonen med minimal skade på musikken under.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Metode 1: spektrogram-båndstopp</h2>
+      <ul>
+        <li>Ta spektrogrammet av inngangen.</li>
+        <li>Finn frekvensbinet med mest energi i det aktuelle båndet, som er senteret av tonen.</li>
+        <li>Nullstill (eller demp) midtbinet og en liten ring rundt det for å absorbere
+            kvantiseringsslakk i spektrogrammet.</li>
+        <li>Invers-transformer tilbake til tidsdomenet.</li>
+      </ul>
+      <p>
+        Det fungerer, og lyden er ren, men spektrogrammet viser en tydelig tom plass
+        der tonen pleide å være: en tynn svart stripe midt i musikken. Noe av
+        originalsignalet ble kastet sammen med støyen.
+      </p>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2024-tone-remover/Fjerning_av_pipetone_figures/figure2.png" alt="Tre stablede spektrogrammer: originalen med en lys horisontal linje, og to bearbeidede versjoner der linja er kuttet ut.">
+        <figcaption>Øverst: originalen med tonen som en lys horisontal stripe. Midten/nederst: båndstopputgangen. Tonen er borte, men et tynt tomt bånd er nå synlig over hele klippet.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Metode 2: fasekansellering</h2>
+      <p>
+        Siden tonen som skal fjernes bare er en addert sinus, kan du kansellere den
+        ved å legge til en ny sinus med samme frekvens og amplitude, faseskjøvet 180°.
+        Estimer amplitude, frekvens og fase fra opptaket; generer inversen; summer.
+        I teorien forsvinner tonen og originalmusikken etterlates helt intakt.
+      </p>
+
+      <figure class="project-figure narrow">
+        <img src="../projects_data/2024-tone-remover/Fjerning_av_pipetone_figures/figure3.png" alt="To sinusbølger med samme frekvens, forskjøvet 180°. De summerer til null i hvert punkt.">
+        <figcaption>Ideen: to sinuser med lik amplitude og 180° forskjøvet summerer til null. Estimer tonen, generer inversen, legg til.</figcaption>
+      </figure>
+
+      <p>
+        I praksis var det omtrent det som skjedde. Utgangsspektrogrammet ser identisk
+        ut med originalen overalt unntatt der tonen pleide å være, og selv der er
+        musikkspekteret rundt bevart. Lyden høres naturlig ut, ingen spor av
+        bearbeidingen slipper gjennom.
+      </p>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2024-tone-remover/Fjerning_av_pipetone_figures/figure6.png" alt="To spektrogrammer sammenlignet: originalen og den fasekansellerte utgangen. Den lyse horisontale tonelinja er borte i utgangen, og resten av spekteret er uendret.">
+        <figcaption>Endelig resultat. Original (øverst) mot fasekansellert utgang (nederst). Tone fjernet, omkringliggende spektrum intakt.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg lærte</h2>
+      <p>
+        At et båndstoppfilter er det riktige svaret på spørsmålet «fjern et smalt
+        frekvensbånd», og det gale svaret på spørsmålet «fjern en konstant sinus».
+        Sistnevnte har mer struktur enn førstnevnte, og en kanselleringstilnærming
+        utnytter alt av den. Når problemet gir deg så mye struktur, bruk et øyeblikk
+        på å se etter før du griper etter det generiske filteret.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Rapport</h2>
+      <p>
+        Hele den norske kursrapporten (figurer, utledninger, før/etter-spektrogrammer)
+        ligger i repoet:
+      </p>
+      <div class="project-links">
+        <a href="../projects_data/2024-tone-remover/Fjerning%20av%20pipetone.pdf" target="_blank" rel="noopener" download>Last ned: Fjerning av pipetone.pdf (PDF)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

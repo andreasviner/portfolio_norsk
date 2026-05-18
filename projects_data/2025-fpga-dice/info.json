@@ -1,0 +1,19 @@
+{
+  "id": "fpga-dice-2025",
+  "title": "FPGA-terning",
+  "category": "school",
+  "isProject": true,
+  "start": "2025-09",
+  "shortDescription": "Sjuledet terning på en Lattice ICE40 FPGA. Klokken styres av en knapp, 3-bits teller som ruller fra 1 til 6, og LED-logikk utledet fra en sannhetstabell. Første hands-on FPGA-prosjekt, bygget i IceStudio.",
+  "tags": [
+    "FPGA",
+    "digital design",
+    "IceStudio",
+    "NTNU"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 26,
+  "projectPage": "projects/fpga-dice"
+}

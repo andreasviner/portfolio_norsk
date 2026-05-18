@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>elektra.io · Andreas Lindeman</title>
+  <meta name="description" content="Linjeforeningsnettsiden jeg bygde fra bunnen: kontoer, arrangementer, fakturering, plakater, dark mode, animerte sesongbakgrunner." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>Sep 2024 → pågående</span>
+    </div>
+
+    <h1 class="project-title">elektra.io, en nettside som gjør <em>alt</em></h1>
+
+    <p class="project-lede">
+      Nettsiden til Elektra, linjeforeningen for elektronikkstudenter ved NTNU.
+      Bygd fra bunnen: frontend, backend, database, autentisering, fakturering, arrangementsstyring,
+      hele pakken. Det startet som en redesign og ble til operativsystemet til en
+      linjeforening.
+    </p>
+
+    <div class="video-embed aspect-16-9">
+      <iframe src="https://elektra.io" title="elektra.io linjeforeningsnettside" loading="lazy"></iframe>
+    </div>
+    <p class="video-caption">Live forhåndsvisning på elektra.io.</p>
+
+    <section class="project-section">
+      <h2>Hva den gjør</h2>
+      <ul>
+        <li><strong>Kontoer og roller:</strong> Fullt brukerhierarki. Grupper, roller, admin-nivåer, offentlige vs. private profilfelt.</li>
+        <li><strong>Arrangementer:</strong> Lag, rediger, prissett, plasser (på et tilpasset campuskart eller via Google Maps utenfor campus), begrens til grupper, maks antall, billetter via QR-koder merket med Elektra-logo.</li>
+        <li><strong>Fakturering:</strong> Kvitteringer går rett inn i regnskapsprogrammet til økonomiansvarlig.</li>
+        <li><strong>Jobbutlysninger:</strong> stillingsannonser, oppslag, klassifiserte, med moderering.</li>
+        <li><strong>Kalender:</strong> Alle arrangementer i én visning, filtrert etter gruppe.</li>
+        <li><strong>POV:</strong> En arrangementsfotograferingsmodus der deltakere kan ta bilder, men ikke se dem før arrangementet er ferdig.</li>
+        <li><strong>Hjelp og tilgang:</strong> Brukermanualer. Forespørsler om romtilgang som rutes til riktige godkjennere.</li>
+        <li><strong>Tema:</strong> Full dark mode. Animerte sesongbakgrunner: snø om vinteren, hjerter på valentinsdagen, spøkelser i halloween.</li>
+        <li><strong>Profil:</strong> Egne profilbilder, beskrivelser, offentlig og privat kontaktinformasjon, allergier til arrangementsverter.</li>
+        <li><strong>Autentisering:</strong> Google-innlogging pluss en intern flyt.</li>
+        <li><strong>Sikkerhet:</strong> Sensitive felt krypteres i ro. Least-privilege-sjekker ved hvert endepunkt.</li>
+        <li><strong>Drift:</strong> Eget dev-miljø på <a href="https://dev.elektra.io" target="_blank" rel="noopener">dev.elektra.io</a>. Deploys via CI.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva det lærte meg</h2>
+      <p>
+        Å bygge programvare for et ekte fellesskap er et helt annet spill enn å bygge for
+        seg selv. Hver funksjon påvirker en ekte persons kveld eller lommebok. Den største
+        endringen i hvordan jeg skriver kode kom fra dette prosjektet: mindre lurt, mer klart,
+        langt flere tester rundt der pengene og tilgangene bor.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

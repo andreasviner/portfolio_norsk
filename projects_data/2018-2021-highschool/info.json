@@ -1,0 +1,16 @@
+{
+  "id": "highschool",
+  "title": "Videregående",
+  "category": "school",
+  "isProject": false,
+  "hideOnMobile": true,
+  "start": "2018-07",
+  "end": "2021-07",
+  "shortDescription": "Studiespesialiserende med teknologi. De tre årene da koding sluttet å være en hobby og begynte å ligne på en fremtid.",
+  "tags": [
+    "videregående",
+    "Norge"
+  ],
+  "types": [],
+  "importance": 25
+}

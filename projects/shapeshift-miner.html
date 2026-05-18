@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shape-shift miner · Andreas Lindeman</title>
+  <meta name="description" content="Et Python-gruvespill der selve OS-vinduet utvider seg etter hvert som du oppgraderer, og gir deg et ikke-rektangulært spillebrett." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>Våren 2022</span>
+    </div>
+
+    <h1 class="project-title">Shape-shift miner. Vinduet <em>er spillet</em></h1>
+
+    <p class="project-lede">
+      Et Python-spill rasket sammen på Torshus folkehøyskole. Du gruvet, bygde tårn og
+      gruver, oppgraderte deg selv (vanlig småspillgreier), men trikset var vinduet.
+      Noen oppgraderinger buffet ikke bare karakteren din; de utvidet selve OS-vinduet,
+      og fikk det til å gro uregelmessige lemmer ut av rektangelet, slik at spillebrettet
+      ble en figur ingen spillvinduer har noe med å være.
+    </p>
+
+    <div class="video-embed aspect-16-9">
+      <iframe src="https://www.youtube.com/embed/Owjntg7CXBw" title="Gameplay fra Shape-shift miner" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <p class="video-caption">Et minutt med testing.</p>
+
+    <section class="project-section">
+      <h2>Mekanikken</h2>
+      <ul>
+        <li><strong>Gruve.</strong> Sving en hakke på prosedyregenerert stein, hent
+            ressurser, bygg tårn og gruver.</li>
+        <li><strong>Oppgrader.</strong> Vanlig oppgraderingstre, pluss én rar
+            oppgraderingstype: utvid vinduet. Hver utvidelse klistret et nytt
+            rektangel på det eksisterende vinduet i en eller annen vinkel.</li>
+        <li><strong>Resultat.</strong> Et spillebrett som ikke lenger var et rektangel.
+            Annerledes spillfølelse, rare okklusjonsproblemer, mange morsomme grensetilfeller.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Tilstanden til byggingen</h2>
+      <p>
+        Den nyeste kopien jeg har fått hentet frem, er en halvferdig testversjon: fortsatt
+        på Python 3.8, butikken er mest tom, kun én steintype genereres, og en gruverobot
+        står bare i ro som en plassholder. Videoen over viser meg som pirker borti det
+        alene, men kjernemekanikken er synlig: vinduet endrer form mens spillet skrider frem.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg tok med meg</h2>
+      <p>
+        At OS-vinduet er en del av spillet, selv når ingen ser etter. De fleste spill
+        behandler vinduet som en passiv ramme. Å behandle det som en del av spillets
+        tilstand som spilleren kan deformere, er et helt designrom jeg gjerne kommer
+        tilbake til.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

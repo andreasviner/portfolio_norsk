@@ -1,0 +1,22 @@
+{
+  "id": "raspberry-assistant-2023",
+  "title": "Oda, norsk taleassistent",
+  "category": "school",
+  "isProject": true,
+  "start": "2023-11",
+  "shortDescription": "Norsk taleassistent bygget fra bunnen av på en Pi Zero W. Egen RNN-basert wake-word trent på 30 000 klipp, Whisper STT, offline LLM, og et sensornett av ESP32-er.",
+  "tags": [
+    "Raspberry Pi",
+    "wake-word",
+    "LLM",
+    "Whisper",
+    "ESP32"
+  ],
+  "types": [
+    "hardware",
+    "software",
+    "ml"
+  ],
+  "importance": 85,
+  "projectPage": "projects/raspberry-assistant"
+}

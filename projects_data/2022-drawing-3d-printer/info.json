@@ -1,0 +1,27 @@
+{
+  "id": "drawing-3d-printer-2022",
+  "title": "Tegneplotter",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2022-05",
+  "shortDescription": "En ødelagt 3D-printer ble til en penn-plotter for tegninger laget i én sammenhengende linje. PC-styrt, langsom, hypnotisk.",
+  "tags": [
+    "3D-printer",
+    "kunst",
+    "Python",
+    "plotter"
+  ],
+  "types": [
+    "hardware",
+    "software"
+  ],
+  "importance": 45,
+  "externalLinks": [
+    {
+      "label": "Demo: plotter i bevegelse",
+      "url": "https://youtube.com/shorts/aqdEn8t7d0w",
+      "type": "youtube"
+    }
+  ],
+  "projectPage": "projects/drawing-3d-printer"
+}

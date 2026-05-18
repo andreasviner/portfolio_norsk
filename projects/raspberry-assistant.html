@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oda · norsk stemmeassistent · Andreas Lindeman</title>
+  <meta name="description" content="Oda, en norsk stemmeassistent på en Raspberry Pi Zero W, med egen wake-word-modell, Whisper for tale-til-tekst, en offline LLM og et nett av ESP32-sensormoduler." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>Nov 2023</span>
+    </div>
+
+    <h1 class="project-title">Oda, en norsk stemme<em>assistent</em></h1>
+
+    <p class="project-lede">
+      Et to måneder langt prosjekt på NTNUs <em>avansert parallell</em>-løp: en
+      norsktalende stemmeassistent ved navn Oda, som kjører på en Raspberry Pi Zero W.
+      Egen RNN-basert wake-word-modell trent på 30 000 norske lydklipp jeg filtrerte
+      selv, Whisper for tale-til-tekst, en offline GPT for åpne spørsmål, og et nett
+      av ESP32-sensormoduler for det en chatbot ikke kan vite.
+    </p>
+
+    <section class="project-section">
+      <h2>Hva den gjør</h2>
+      <p>
+        Du sier «Oda» og spør om noe. Hvis det er en kommando systemet kjenner igjen
+        («hva er klokka», «hva er temperaturen i rommet»), svarer den fra cache eller
+        sensordata. Hvis det er et åpent spørsmål («hva er meningen med livet»), ruter
+        den til en lokal LLM. Alt kjører offline som standard, ingen sky-API-er i
+        svarstien.
+      </p>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2023-raspberry-assistant/Rapport2_figures/figure1.png" alt="Assistenten på arbeidsbenken midt i monteringen: en Bumblebee-hjelm som kapsling med kabling som velter ut bak, koblingsbrett og moduler bak.">
+        <figcaption>Midt i byggingen. Bumblebee-kapsling, Pi Zero inni, ESP32-sensormoduler bak.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>Wake-word fra bunnen av</h2>
+      <p>
+        Den vanskeligste delen av prosjektet var data, ikke modellering. Det finnes
+        veldig lite offentlig norsk taledata med pålitelige undertekster, så jeg
+        bygget min egen pipeline: 27 000 klipp fra Språkbanken, pluss rundt 750 000
+        klipp skrapet fra 251 norske YouTube-kanaler med teksting. Tekstkvaliteten
+        varierte vilt. TV-kanaler som NRK og TV2 hadde av og til norsk tekst over
+        engelsk lyd, så jeg kjørte alle klipp gjennom Whisper-large og beholdt bare
+        de der Whisper var enig med originalteksten. Omtrent 30 % overlevde. Det
+        etterlot meg med rundt 30 000 høykvalitetsklipp å trene på.
+      </p>
+      <p>
+        For å gjøre modellen mindre byttet jeg det vanlige norske alfabetet med et
+        fonetisk alfabet med to ekstra bokstaver: <code>ɵ</code> for «ng»-lyden og
+        <code>ʂ</code> for «sj/kj/sjk/tj»-klyngen. Færre, jevnere fordelte etiketter,
+        lettere å lære. Selve wake-word-modellen er en liten GRU med CTC-loss, valgt
+        for effektivitet på Zero W.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Pipelinen</h2>
+      <ul>
+        <li><strong>Alltid-på-RNN</strong> overvåker en strøm med mel-spektrogrammer etter ordet «Oda».</li>
+        <li><strong>Når den fyrer av</strong>, tar serveren opp lyd til rundt 0,36 s med stillhet, og sender deretter lyden til <strong>Whisper-medium</strong> for transkripsjon.</li>
+        <li><strong>Kommandoruter</strong> sjekker om transkripsjonen matcher en kjent intensjon. Hvis ja, utfør den. Hvis ikke, rut til LLM-en.</li>
+        <li><strong>Offline LLM</strong>: <code>orca-mini-3b-gguf2-q4_0</code> via gpt4all. Snakker ikke norsk særlig godt, så systemet oversetter NO→EN→prompt→EN→NO via deep_translator.</li>
+        <li><strong>TTS-cache</strong> for repetitive svar («klokka er…», alle tall under 10¹¹). 419 KB på disk, holder svarstien offline for enkle spørsmål.</li>
+      </ul>
+
+      <figure class="project-figure wide">
+        <img src="../projects_data/2023-raspberry-assistant/Rapport2_figures/figure10.png" alt="Side-ved-side-diagram: en RNN-encoder som prosesserer tokens ett om gangen, mot en transformer-encoder som ser alle tokens samtidig.">
+        <figcaption>RNN for wake-word (billig, alltid på), transformer for transkripsjon (tung, fyrer av én gang per kommando).</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section">
+      <h2>ESP32-sensornett</h2>
+      <p>
+        Assistenten kan svare på spørsmål om den fysiske verdenen fordi billige
+        ESP32-moduler med sensorer er spredt rundt: et termometer, en PIR-bevegelsessensor,
+        en støvsensor. Hver ESP32 booter i Bluetooth-server-modus hvis den ikke har
+        sett Wi-Fi-et før; ved å si «oppstart» får man Pi-en til å skanne etter dem
+        og overlevere innlogging via Bluetooth (svakt kryptert, slik at SSID/passord
+        ikke kringkastes i klartekst). Når de er på nettverket, kan de adresseres
+        over lokale sockets. En enkelt byte over socket-en betyr «ping», «name» eller «value».
+      </p>
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2023-raspberry-assistant/Rapport2_figures/figure5.png" alt="En Raspberry Pi Zero W enkortsdatamaskin.">
+          <figcaption>Pi Zero W. Hjernen.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2023-raspberry-assistant/Rapport2_figures/figure4.png" alt="INMP441 I²S MEMS-mikrofonmoduler med headerpinner.">
+          <figcaption>To INMP441-mikrofoner, lett vinklet, for å fange opp rommet.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2023-raspberry-assistant/Rapport2_figures/figure3.png" alt="Et HW-104 PAM8403 klasse-D-forsterkerkort.">
+          <figcaption>PAM8403 klasse-D-forsterker inn i en 3 Ω-høyttaler.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <h2>Demo</h2>
+      <div class="video-embed aspect-9-16">
+        <iframe src="https://www.youtube.com/embed/IZjGK_iDyQI" title="Demo av Oda-assistenten" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">Spør om klokka, romtemperaturen og meningen med livet, på norsk.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva det lærte meg</h2>
+      <p>
+        Modellen var aldri flaskehalsen. Norske taledata var det, og å finne ut
+        hvordan jeg skulle hente og filtrere dem fra YouTube (ved å bruke en større
+        modell til å bedømme en mindre), var den mest brukbare ferdigheten jeg
+        plukket opp. Den nest mest brukbare var å lære hvor PyTorch og TensorFlow
+        hver gjør seg fortjent til plassen sin: PyTorch føltes bedre for trening
+        og iterasjon, TF føltes raskere når modellen var fryst.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Kursrapport</h2>
+      <p>
+        Full norsk IELS1001-rapport, «Talestyrt smart assistent med ESP moduler»,
+        dekker hele arkitekturen, treningspipelinen, sensorprotokollen og budsjettet:
+      </p>
+      <div class="project-links">
+        <a href="../projects_data/2023-raspberry-assistant/Rapport2.pdf" target="_blank" rel="noopener" download>Last ned: Rapport2.pdf (stemmeassistent-rapport)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

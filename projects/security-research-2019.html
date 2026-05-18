@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selvstudium i cybersikkerhet · Andreas Lindeman</title>
+  <meta name="description" content="Et år hvor jeg lærte meg selv hvordan Windows, fjernskrivebord og autentiseringssystemer faktisk fungerer, og hva den erfaringen ga meg." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>2019</span>
+    </div>
+
+    <h1 class="project-title">Et år inne i <em>operativsystemet</em></h1>
+
+    <p class="project-lede">
+      Første år på videregående brukte jeg en betydelig del av fritiden på å forstå,
+      fra første prinsipp, hvordan Windows faktisk fungerer under panseret: prosesser,
+      fjernskrivebord, input-håndtering, autentisering. Noe av det jeg bygde, var en
+      klassisk tenåring-med-for-mye-kunnskap-tabbe. Det tekniske fundamentet det ga
+      meg er noe jeg fortsatt henter frem hver uke.
+    </p>
+
+    <section class="project-section">
+      <h2>Det jeg lærte</h2>
+      <ul>
+        <li>Hvordan Windows organiserer prosesser, sesjoner og desktops, og hvorfor disse skillene betyr noe.</li>
+        <li>Hvordan fjernskrivebordsprotokoller forhandler, rammer og strømmer input.</li>
+        <li>Hvordan en prosess kan lese eller begrense en annen prosess sin input, og hva OS-et gjør under panseret når det tillater eller nekter det.</li>
+        <li>Hvordan autentiseringsflyter faktisk fungerer. Tokens, sesjoner, den kjedelige midten alle glemmer at er der sikkerheten bor.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg skulle ønske jeg ikke gjorde</h2>
+      <p>
+        Jeg bygde et fjerntilgangsverktøy og brukte det på en klassekamerats maskin.
+        Jeg ble tatt. Jeg fortjente å bli tatt. Det er lang vei mellom <em>«jeg vil
+        forstå hvordan dette virker»</em> og <em>«jeg har rett til å kjøre dette på
+        andres datamaskin»</em>, og som femtenåring hadde jeg ikke tatt det innover
+        meg. Det har jeg nå. Jeg har med denne siden slik at den avstanden står på
+        rullebladet, fordi <em>«jeg var ung og nysgjerrig»</em> ikke unnskylder det,
+        og det å late som om det ikke skjedde, ville vært verre.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Det som ble sittende</h2>
+      <p>
+        En ekte arbeidsforståelse av hvordan systemer er satt sammen, den typen du
+        bare får når du bruker et år på å lese dokumentasjon skrevet for noen fem år
+        mer erfarne enn deg selv. Det lønner seg konstant. Når jeg skriver produksjons-ML
+        eller backendtjenester i dag, tenker jeg på autentiseringsflater, prosessgrenser
+        og den ulykkelige stien, fordi det året tvang meg til det.
+      </p>
+      <p>
+        Det lærte meg også, på den harde måten, at <em>enhver</em> kapabilitet trenger
+        et klart svar på «hvems system, hvems data, hvem har samtykket?». Det svaret
+        kommer først nå.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

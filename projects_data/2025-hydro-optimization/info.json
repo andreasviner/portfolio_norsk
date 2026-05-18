@@ -1,0 +1,22 @@
+{
+  "id": "hydro-2025",
+  "title": "Hydro Aluminium",
+  "category": "work",
+  "isProject": true,
+  "start": "2025-01",
+  "end": "2025-08",
+  "shortDescription": "Industriell optimering hos Hydro Aluminium. En blanding av ML, klassisk optimering og anvendt matematikk.",
+  "tags": [
+    "optimering",
+    "maskinlæring",
+    "industri",
+    "Hydro"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 78,
+  "status": "nda",
+  "statusNote": "Detaljer er begrenset av kundens NDA."
+}

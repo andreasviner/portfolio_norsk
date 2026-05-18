@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omega · modifisert klokke · Andreas Lindeman</title>
+  <meta name="description" content="En klokke ombygget med adresserbare LED-er og en ESP32, laget som vertsgave til en linjeforeningsfest." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>Sep 2025</span>
+    </div>
+
+    <h1 class="project-title">Omega: en klokke, med <em>flere lys</em></h1>
+
+    <p class="project-lede">
+      I Norge har en linjeforeningsleder som besøker en annen linjeforenings fest med seg
+      en gave til vertene. Dette var vår: en hyllevareklokke ombygget med adresserbare
+      LED-er og en ESP32, i stand til å gjøre ting en klokke trolig ikke burde kunne.
+      Bygget på en dag.
+    </p>
+
+    <div class="video-stack">
+      <div>
+        <div class="video-embed aspect-9-16">
+          <iframe src="https://www.youtube.com/embed/NC8yHYJLOcE" title="Omega-klokke, forfra" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">Forfra.</p>
+      </div>
+      <div>
+        <div class="video-embed aspect-9-16">
+          <iframe src="https://www.youtube.com/embed/IJQK4zllCUA" title="Omega-klokke, bakfra" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">Bakfra.</p>
+      </div>
+    </div>
+
+    <section class="project-section">
+      <h2>Modifikasjonen</h2>
+      <ul>
+        <li>Tok klokka fra hverandre, beholdt mekanismen, la til en adresserbar LED-stripe rundt urskiven.</li>
+        <li>En ESP32 driver LED-ene, snakker Wi-Fi og tilbyr et lite sett med effekter.</li>
+        <li>Monterte alt inne i originalkapslingen, så den fortsatt ser ut som en klokke helt til den plutselig ikke gjør det.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva det egentlig var</h2>
+      <p>
+        En påminnelse om at et «lite prosjekt» ofte er den mest tilfredsstillende typen.
+        En dag fra koblingsbrett til gaveinnpakning, ingen overengineering, ingen
+        scope creep, ingen produksjonsdeploy. Jeg vil gjerne ha flere slike dager.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

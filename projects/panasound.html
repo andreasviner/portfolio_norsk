@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panasound-internship · Andreas Lindeman</title>
+  <meta name="description" content="Sommerinternship hos Panasound, en norsk audio-oppstart. Første møte med Go, Nuxt og Git på et ekte team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch work"></span> arbeid</span>
+      <span class="sep"></span>
+      <span>Sommer 2021</span>
+    </div>
+
+    <h1 class="project-title">Panasound, første <em>ordentlige jobb</em></h1>
+
+    <p class="project-lede">
+      Min første industrijobb, mellom to år på videregående, hos Panasound, en norsk
+      audio-oppstart. Backend i Go, frontend i Nuxt, og arbeidsflyten var første
+      gangen jeg måtte dele en kodebase med folk hvis feil også ville bli mine. Det
+      la om hvordan jeg skriver kode.
+    </p>
+
+    <section class="project-section">
+      <h2>Verktøyene</h2>
+      <ul>
+        <li><strong>Go.</strong> Språket jeg ble forelsket i den sommeren. Kjedelig
+            med vilje, raskt, og veldig vanskelig å skrive dårlig.</li>
+        <li><strong>Nuxt / Vue.</strong> Første frontend-rammeverk jeg brukte for alvor.</li>
+        <li><strong>Git på et team.</strong> Brancher, PR-review, mergekonflikter, og
+            etiketten rundt det å ikke ødelegge <code>main</code>.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg faktisk lærte</h2>
+      <p>
+        At den delen av programvare som leveres, er den andre kan lese. Frem til
+        det punktet hadde jeg vært en solo-programmerer; koden min var smart, dårlig
+        navngitt, udokumentert og virket. Ingenting av det overlevde første kodegjennomgang.
+        Tre måneder med å bli vennlig fortalt at koden min var vanskeligere å lese
+        enn nødvendig, gjorde mer for ingeniørarbeidet mitt enn de tre foregående
+        årene til sammen.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "id": "fpga-analog-noise-2025",
+  "title": "FPGA-støyfilter",
+  "category": "school",
+  "isProject": true,
+  "start": "2025-11",
+  "shortDescription": "Hvit støy generert i FPGA (LFSR), formet av et aktivt Delyiannis-Friend-båndpassfilter til en tonal lyd rundt 920 Hz. Digital pseudo-tilfeldig kilde, analog båndbegrenser, hørbart resultat.",
+  "tags": [
+    "FPGA",
+    "LFSR",
+    "analog elektronikk",
+    "aktivt filter",
+    "NTNU"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 26,
+  "projectPage": "projects/fpga-noise-filter"
+}

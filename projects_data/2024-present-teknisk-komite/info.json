@@ -1,0 +1,18 @@
+{
+  "id": "teknisk-komite",
+  "title": "Teknisk Komité",
+  "category": "hobby",
+  "isProject": false,
+  "start": "2024-09",
+  "end": "present",
+  "shortDescription": "Grunnla og leder fortsatt teknisk komité i Elektra, studentforeningen for elektronikkstudenter ved NTNU. Vi drifter elektra.io og leverer de interne verktøyene resten av foreningen bruker.",
+  "tags": [
+    "ledelse",
+    "studentforening",
+    "Elektra"
+  ],
+  "types": [],
+  "importance": 50,
+  "status": "ongoing",
+  "projectPage": "projects/teknisk-komite"
+}

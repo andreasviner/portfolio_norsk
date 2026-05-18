@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tactic blobs · Andreas Lindeman</title>
+  <meta name="description" content="Et mobil-game-jam-spill inspirert av den russiske varianten av bondesjakk. Seks blobs per spiller, større spiser mindre." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>Des 2021</span>
+    </div>
+
+    <h1 class="project-title">Tactic <em>blobs</em></h1>
+
+    <p class="project-lede">
+      Et mobil-game-jam-spill inspirert av den russiske varianten av bondesjakk, der
+      større brikker spiser mindre. Hver spiller får seks blobs i forskjellige
+      størrelser; plasser dem på et brett, og en større blob kan overta en mindre
+      under seg. Korte runder, enkel regel, overraskende dypt spill.
+    </p>
+
+    <section class="project-section">
+      <h2>Regelsettet</h2>
+      <ul>
+        <li>Seks blobs per spiller, i tre eller fire størrelser.</li>
+        <li>Du kan plassere på en tom rute, eller oppå motstanderens blob hvis din er
+            større.</li>
+        <li>Standard seiersbetingelse: tre på rad i din farge, der bare den øverste
+            blob-en i hver stabel teller.</li>
+        <li>Det som gjør det interessant: «hukommelsen» om hva som ligger under. Brettet
+            ser ut på én måte, men er i hemmelighet en annen, og spilleren må holde
+            styr på begge.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Det jeg fikk ut av det</h2>
+      <p>
+        En påminnelse om at de beste game-jam-ideene er de en ikke-programmerer kan
+        beskrive høyt på én setning. Tilstandsmodellen bak dette spillet er bittesmå
+        (et halvt skjermbilde med kode), men valgrommet er rikt nok til at vi stadig
+        fant nye åpninger i spilltesting.
+      </p>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
