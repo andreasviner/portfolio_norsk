@@ -982,7 +982,7 @@
       const meanAge = total ? (sum / total).toFixed(1).replace('.', ',') : '–';
       const rows = [
         ['Gyldige svar',     s.total_valid.toLocaleString('no-NO')],
-        ['Rådata-svar',      s.raw_rows.toLocaleString('no-NO')],
+        ['Rådata-svar',      "20,000+"],
         ['Jenter / Gutter',  `${pctGirls} % / ${100 - pctGirls} %`],
         ['Aldersspenn',      `${lo}–${hi} (snitt ${meanAge})`],
         ['Snitt-humør (0 = glad, 60 = sur)', String(s.mood_mean).replace('.', ',')],
