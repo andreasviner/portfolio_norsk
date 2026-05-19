@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fargepreferansemodell · Andreas Lindeman</title>
-  <meta name="description" content="En studie fra 2020 av 6 731 rensede svar som lærte å forutse alder, kjønn og humør utelukkende fra fargeklikk-mønstre." />
+  <title>Fargepolygraf · Andreas Lindeman</title>
+  <meta name="description" content="En fargepolygraf fra 2020, trent på 20 000 spørreundersøkelsesvar. Gjettet alder, kjønn og humør basert kun på hvilke fargeflater folk trykket på." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
@@ -331,13 +331,13 @@
       <span>2020</span>
     </div>
 
-    <h1 class="project-title">Fargepreferanse<em>modell</em></h1>
+    <h1 class="project-title">Farge<em>polygraf</em></h1>
 
     <p class="project-lede">
       Et selvinitiert prosjekt fra andre året på videregående. Jeg laget en spørreundersøkelse
       med tjue fargespørsmål, sendte den ut til rundt 160 000 elever via Osloskolens katalog,
       og endte opp med 6 731 rensede svar og et lite nevralnett som kunne gjette deltakerens
-      alder, kjønn og selvrapporterte humør basert på fargevalgene alene.
+      alder, kjønn og selvrapporterte humør basert kun på hvilke fargeflater de trykket på.
     </p>
 
     <section class="project-section">
@@ -531,10 +531,10 @@
         eller trene ditt eget lille nett på det, er det her du starter.
       </p>
       <div class="project-links">
-        <a href="https://github.com/andreasviner/portfolio/tree/main/main/projects_data/2020-survey-ai" target="_blank" rel="noopener">Prosjektmappen på GitHub</a>
-        <a href="https://github.com/andreasviner/portfolio/blob/main/main/projects_data/2020-survey-ai/code/save.ligma" target="_blank" rel="noopener">Råeksport (save.ligma, JSON, ca. 10 MB)</a>
-        <a href="https://github.com/andreasviner/portfolio/blob/main/main/projects_data/2020-survey-ai/new_code/treat_data.py" target="_blank" rel="noopener">Aggregator-skript (treat_data.py)</a>
-        <a href="https://github.com/andreasviner/portfolio/blob/main/main/projects_data/2020-survey-ai/preferences.json" target="_blank" rel="noopener">Aggregerte voxel-data (preferences.json)</a>
+        <a href="https://github.com/andreasviner/portfolio/tree/main/main/projects_data/2020-colour-polygraph" target="_blank" rel="noopener">Prosjektmappen på GitHub</a>
+        <a href="https://github.com/andreasviner/portfolio/blob/main/main/projects_data/2020-colour-polygraph/code/save.ligma" target="_blank" rel="noopener">Råeksport (save.ligma, JSON, ca. 10 MB)</a>
+        <a href="https://github.com/andreasviner/portfolio/blob/main/main/projects_data/2020-colour-polygraph/new_code/treat_data.py" target="_blank" rel="noopener">Aggregator-skript (treat_data.py)</a>
+        <a href="https://github.com/andreasviner/portfolio/blob/main/main/projects_data/2020-colour-polygraph/preferences.json" target="_blank" rel="noopener">Aggregerte voxel-data (preferences.json)</a>
       </div>
     </section>
 
@@ -550,7 +550,7 @@
 
   <script>
   (function () {
-    const DATA_URL = '../projects_data/2020-survey-ai/preferences.json';
+    const DATA_URL = '../projects_data/2020-colour-polygraph/preferences.json';
 
     const canvas   = document.getElementById('surveyCanvas');
     const ctx      = canvas.getContext('2d');

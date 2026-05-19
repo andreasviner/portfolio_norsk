@@ -1,0 +1,19 @@
+{
+  "id": "colour-polygraph",
+  "title": "Fargepolygraf",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2020-09",
+  "shortDescription": "En fargepolygraf trent på 20 000 spørreundersøkelsesvar. Gjettet alder, kjønn og humør basert kun på hvilke fargeflater folk trykket på.",
+  "tags": [
+    "maskinlæring",
+    "datainnsamling",
+    "atferdsdata"
+  ],
+  "types": [
+    "software",
+    "ml"
+  ],
+  "importance": 100,
+  "projectPage": "projects/colour-polygraph"
+}
