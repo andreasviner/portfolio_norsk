@@ -52,10 +52,10 @@
     <section class="project-section">
       <h2>Hvorfor dette ble vanskelig</h2>
       <p>
-        Hjemme-5G var det som trigget. De fleste mobile abonnementer sitter bak
-        carrier-grade NAT, som betyr: ingen innkommende tilkoblinger, ingen statisk IP, ingen
-        portforwarding. Den vanlige løsningen er en relé-server i midten, men en relé legger på
-        forsinkelse, og forsinkelse dreper RC-kjøring.
+        Hjemme-5G var utløseren. De fleste mobilabonnementer sitter bak
+        carrier-grade NAT, som betyr: ingen innkommende tilkoblinger, ingen statisk
+        IP, ingen portforwarding. Den vanlige løsningen er en relé-server i midten,
+        men en relé legger på forsinkelse, og forsinkelse er døden for RC-kjøring.
       </p>
     </section>
 
@@ -63,8 +63,8 @@
       <h2>Protokollen</h2>
       <h3>UDP-hole-punching</h3>
       <ul>
-        <li>Begge endepunkter registrerer seg hos en lett rendezvous-tjeneste som bare bytter offentlige IP- og port-par.</li>
-        <li>Hvert endepunkt sender så UDP-pakker mot den andres par. NAT-mappinger faller på plass på begge sider og trafikken går P2P fra det øyeblikket.</li>
+        <li>Begge endepunkter registrerer seg hos en lett rendezvous-tjeneste som kun utveksler offentlige IP- og portpar.</li>
+        <li>Hvert endepunkt sender så UDP-pakker mot den andres par. NAT-mappinger faller på plass på begge sider, og trafikken går P2P fra det øyeblikket.</li>
         <li>Rendezvous-tjenesten er ute av bildet så snart håndtrykket er ferdig.</li>
       </ul>
       <h3>Reconnect og dårlige forbindelser</h3>
@@ -91,7 +91,7 @@
 
       <figure class="project-figure">
         <img src="../projects_data/2025-4g-car/GUIserver.png" alt="POV-bilde av to hender som holder en Nintendo Switch Pro-kontroller foran en krummet skjerm med live navigasjonskart.">
-        <figcaption>Styreinput kan være hva sjåføren vil: kontroller, ratt, tastatur.</figcaption>
+        <figcaption>Styreinput kan være hva sjåføren foretrekker: kontroller, ratt, tastatur.</figcaption>
       </figure>
     </section>
 
@@ -122,10 +122,10 @@
     <section class="project-section">
       <h2>Hva jeg ville endret</h2>
       <p>
-        Bytte til QUIC for videopathen så jeg får køhåndtering og connection migration
-        gratis. Legge på et forward-error-correction-lag for keyframes, å miste en keyframe
-        på dårlig link er fortsatt verste-tilfelle-feilen. Og, helt forutsigbart, gi bilen en
-        bedre antenne.
+        Bytte til QUIC for videopathen, slik at jeg får køhåndtering og connection
+        migration gratis. Legge på et forward-error-correction-lag for keyframes; å
+        miste en keyframe på en dårlig link er fortsatt den verste feilmoden. Og,
+        helt forutsigbart, gi bilen en bedre antenne.
       </p>
     </section>
 

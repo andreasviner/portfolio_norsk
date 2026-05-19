@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hexaglow UB · Andreas Lindeman</title>
-  <meta name="description" content="A youth enterprise selling configurable glowing wall panels. I wrote the Unity/C# companion app." />
+  <meta name="description" content="En ungdomsbedrift som solgte konfigurerbare lysende veggpaneler. Jeg skrev følgeappen i Unity/C#." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
@@ -13,21 +13,21 @@
 </head>
 <body>
 
-  <nav class="site-nav" aria-label="Primary">
+  <nav class="site-nav" aria-label="Hoved">
     <a href="../" class="brand">
       <span class="brand-mark">AL</span>
       <span class="brand-name">Andreas Lindeman</span>
     </a>
     <ul class="nav-links">
-      <li><a href="../#about">About</a></li>
-      <li><a href="../#timeline">Timeline</a></li>
-      <li><a href="../#stack">Stack</a></li>
-      <li><a href="../#contact">Contact</a></li>
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
     </ul>
   </nav>
 
   <main class="project-page">
-    <a href="../#timeline" class="project-back">Back to timeline</a>
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
 
     <div class="project-meta-row">
       <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
@@ -38,47 +38,46 @@
     <h1 class="project-title">Hexaglow <em>UB</em></h1>
 
     <p class="project-lede">
-      A youth enterprise founded in first year of high school. We sold configurable glowing
-      wall panels you could rearrange at will. I wrote the Unity/C# companion app that drove
-      the panels' colour, animation, and grouping.
+      Ungdomsbedrift startet i første klasse på videregående. Vi solgte konfigurerbare
+      lysende veggpaneler du kunne sette sammen som du ville. Jeg skrev følgeappen i
+      Unity/C# som styrte farge, animasjon og gruppering på panelene.
     </p>
 
     <section class="project-section">
-      <h2>The product</h2>
+      <h2>Produktet</h2>
       <p>
-        Hexagonal panels that snap together into arbitrary wall arrangements. Each panel
-        carried its own controller and addressable LEDs, and the whole array was visible to
-        a phone app as one device: set a colour, set an animation, group panels into
-        zones.
+        Sekskantede paneler som klikket sammen i hvilke som helst veggoppsett. Hvert panel
+        hadde sin egen kontroller og adresserbare LED-er, og hele oppsettet meldte seg som
+        én enhet til en mobilapp: sett en farge, sett en animasjon, grupper paneler i soner.
       </p>
     </section>
 
     <section class="project-section">
-      <h2>What I built</h2>
+      <h2>Hva jeg bygde</h2>
       <ul>
-        <li><strong>App:</strong> Unity / C#, cross-platform, talked to the panels over BLE.</li>
-        <li><strong>UI:</strong> Drag-to-arrange a virtual mirror of the user's wall.</li>
-        <li><strong>Effects:</strong> A small effect engine, with solid, gradient, breathing, chase, and audio-reactive modes.</li>
-        <li><strong>Pairing:</strong> A first-time setup flow that scanned, named, and ordered the panels with minimal user input.</li>
+        <li><strong>App:</strong> Unity / C#, plattformuavhengig, snakket med panelene over BLE.</li>
+        <li><strong>UI:</strong> Dra-og-slipp som speilet brukerens egen vegg.</li>
+        <li><strong>Effekter:</strong> En liten effektmotor, med solid farge, gradient, pust, chase og lydreaktiv modus.</li>
+        <li><strong>Paring:</strong> En førstegangsoppsett-flyt som skannet, navnga og sorterte panelene med minst mulig brukerinput.</li>
       </ul>
     </section>
 
     <section class="project-section">
-      <h2>What it was, really</h2>
+      <h2>Hva det egentlig var</h2>
       <p>
-        My first time shipping software to people who weren't me. Onboarding, error states,
-        the moment when a panel doesn't pair and the user has no idea why. All the
-        un-fun-but-essential parts of consumer software. I learned more from one
-        unimpressed customer than from any tutorial I'd ever followed.
+        Første gang jeg sendte programvare til folk som ikke var meg selv. Onboarding,
+        feiltilstander, øyeblikket der et panel ikke parer seg og brukeren ikke aner hvorfor.
+        Alle de ikke-morsomme-men-helt-nødvendige delene av forbrukerprogramvare. Jeg lærte
+        mer av én uimponert kunde enn av alle tutorials jeg noensinne hadde fulgt.
       </p>
     </section>
 
-    <a href="../#timeline" class="project-back">Back to timeline</a>
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
   </main>
 
   <footer class="site-footer">
     <span>© <span id="year"></span> Andreas Lindeman</span>
-    <span class="footer-meta">Built by hand · No frameworks · Hosted on GitHub Pages</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

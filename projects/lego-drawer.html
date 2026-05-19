@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LEGO drawing machine · Andreas Lindeman</title>
-  <meta name="description" content="A two-axis LEGO Mindstorms drawing arm driven by Python, with a pen-lift, controlled from a PC mouse." />
+  <title>LEGO-tegnemaskin · Andreas Lindeman</title>
+  <meta name="description" content="En to-akset tegnearm av LEGO Mindstorms drevet av Python, med pennløft, styrt fra musa på en PC." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
@@ -13,21 +13,21 @@
 </head>
 <body>
 
-  <nav class="site-nav" aria-label="Primary">
+  <nav class="site-nav" aria-label="Hoved">
     <a href="../" class="brand">
       <span class="brand-mark">AL</span>
       <span class="brand-name">Andreas Lindeman</span>
     </a>
     <ul class="nav-links">
-      <li><a href="../#about">About</a></li>
-      <li><a href="../#timeline">Timeline</a></li>
-      <li><a href="../#stack">Stack</a></li>
-      <li><a href="../#contact">Contact</a></li>
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
     </ul>
   </nav>
 
   <main class="project-page">
-    <a href="../#timeline" class="project-back">Back to timeline</a>
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
 
     <div class="project-meta-row">
       <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
@@ -35,45 +35,45 @@
       <span>2018</span>
     </div>
 
-    <h1 class="project-title">A drawing arm out of <em>LEGO</em></h1>
+    <h1 class="project-title">En tegnearm av <em>LEGO</em></h1>
 
     <p class="project-lede">
-      Python running on a LEGO Mindstorms EV3 brick, driving a two-axis drawing arm with a
-      mouse-controlled cursor and a pen-lift servo. Coarse hardware, surprisingly precise
-      output.
+      Python kjørende på en LEGO Mindstorms EV3-kloss, som driver en to-akset tegnearm
+      styrt av musa, med en servo for å løfte og senke pennen. Grov maskinvare,
+      overraskende presist resultat.
     </p>
 
     <div class="video-embed aspect-16-9">
-      <iframe src="https://www.youtube.com/embed/rjY2Qk7qEzs" title="LEGO drawing machine demo" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/rjY2Qk7qEzs" title="LEGO-tegnemaskin demo" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <p class="video-caption">Demo. Drawing in Norwegian.</p>
+    <p class="video-caption">Demo. Tegner på norsk.</p>
 
     <section class="project-section">
-      <h2>How it worked</h2>
+      <h2>Hvordan det funket</h2>
       <ul>
-        <li>Two motors drove an X/Y carriage over a paper bed.</li>
-        <li>A third small motor lifted and dropped the pen, isolating start/stop strokes.</li>
-        <li>Python on the EV3 read a stream of (x, y, pen-down?) tuples from a host PC over Bluetooth.</li>
-        <li>The host could either play back a saved stroke list or feed it live from the mouse, so drawing on the screen mirrored to ink on paper.</li>
+        <li>To motorer drev en X/Y-vogn over et papirunderlag.</li>
+        <li>En tredje liten motor løftet og senket pennen, slik at start- og stoppstrøk ble adskilt.</li>
+        <li>Python på EV3-en leste en strøm av (x, y, penn-ned?)-tupler fra en vert-PC over Bluetooth.</li>
+        <li>Verten kunne enten spille av en lagret strøkliste eller mate inn live fra musa, slik at det jeg tegnet på skjermen ble speilet i blekk på papir.</li>
       </ul>
     </section>
 
     <section class="project-section">
-      <h2>What I learned</h2>
+      <h2>Hva jeg lærte</h2>
       <p>
-        That mechanical play is a force you cannot ignore. Backlash, flex, and an uneven
-        paper surface ate more accuracy than my code ever did. A surprising chunk of the
-        project was characterising those errors and compensating for them. My first taste
-        of "real" robotics, where the math meets the physics.
+        At mekanisk slark er en kraft man ikke kan ignorere. Backlash, fleks og et ujevnt
+        papirunderlag spiste mer nøyaktighet enn koden min noensinne gjorde. En overraskende
+        del av prosjektet gikk med til å kartlegge de feilene og kompensere for dem. Min
+        første smak av «ekte» robotikk, der matematikken møter fysikken.
       </p>
     </section>
 
-    <a href="../#timeline" class="project-back">Back to timeline</a>
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
   </main>
 
   <footer class="site-footer">
     <span>© <span id="year"></span> Andreas Lindeman</span>
-    <span class="footer-meta">Built by hand · No frameworks · Hosted on GitHub Pages</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

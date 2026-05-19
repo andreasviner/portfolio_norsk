@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ViT + LoRA fiskeklassifikator · Andreas Lindeman</title>
-  <meta name="description" content="LoRA-finjustering av en DINOv2 vision transformer for klassifisering av lakseartene under vann, en del av et fempersoners NTNU-prosjekt om fjordfiskovervåkning." />
+  <meta name="description" content="LoRA-finjustering av en DINOv2 vision transformer for å klassifisere laksearter under vann, som del av et fempersoners NTNU-prosjekt om fjordfiskovervåkning." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
@@ -38,10 +38,10 @@
     <h1 class="project-title">En vision transformer som <em>kjenner laksen sin</em></h1>
 
     <p class="project-lede">
-      ML-halvdelen av et fempersoners NTNU-prosjekt om overvåkning av invaderende
+      ML-delen av et fempersoners NTNU-prosjekt om overvåkning av invaderende
       pukkellaks i norske fjordsund. Undervannskameraer ser fisk passere gjennom et
-      1×2 meter stort observasjonskammer; et lite CNN oppdager dem lokalt på en
-      Raspberry Pi; en DINOv2 vision transformer, finjustert med LoRA, klassifiserer
+      observasjonskammer på 1×2 meter, et lite CNN oppdager dem lokalt på en
+      Raspberry Pi, og en DINOv2 vision transformer finjustert med LoRA klassifiserer
       art og estimerer lengde på serveren. Jeg delte maskinvareansvaret for
       kameraoppsettet og bygde klassifikatoren på serversiden.
     </p>
@@ -52,15 +52,15 @@
         Norsk villaks er klassifisert som <em>nær truet</em> på den nasjonale rødlista.
         Den raskest voksende trusselen er pukkellaks, en invaderende stillehavsart
         som gyter tidligere og mer aggressivt, fortrenger villaks og sjøørret fra
-        de beste gyteplassene, og deretter dør massevis (arten har en fast toårig
-        livssyklus) og forurenser vassdraget med råtnende fisk. I 2025 pågikk
+        de beste gyteplassene, og deretter dør i store mengder (arten har en fast
+        toårig livssyklus) og forurenser vassdraget med råtnende fisk. I 2025 pågikk
         bekjempelsestiltak i 63 norske elver.
       </p>
       <p>
-        Eksisterende fiskeovervåkningsteknologi er hovedsakelig designet for innsiden
-        av oppdrettsanlegg eller for elveutløpsfeller. Ingen følger med på det som
+        Eksisterende fiskeovervåkningsteknologi er for det meste laget for bruk inni
+        oppdrettsanlegg eller i feller ved elveutløp. Ingen følger med på det som
         kommer <em>inn</em> i fjordene før fisken beveger seg oppover. Det er det
-        gapet prosjektet vårt prøver å treffe.
+        hullet prosjektet vårt prøver å fylle.
       </p>
 
       <figure class="project-figure narrow">
@@ -108,17 +108,18 @@
             videostrømmen i sanntid og produserer bounding boxes og en tracking-ID per
             fisk. Mesteparten av tiden ser den bare vann. Når den utløses, sendes bare
             de relevante framene over 4G, noe som sparer båndbredde og lagring, og
-            holder pipelinen i live når mobillinken faller.</li>
+            holder pipelinen gående når mobilforbindelsen ryker.</li>
         <li><strong>ViT (DINOv2) på serveren.</strong> En mye tyngre transformer kjører
             på serveren, der datakraft er billig og modellen har råd til å være nøye.
             Den klassifiserer art (laks / pukkellaks / sjøørret / sjørøye / «ingen
-            fisk») og estimerer lengde, samtidig, i et multi-task-hode.</li>
+            fisk») og estimerer lengde samtidig, i et multi-task-hode.</li>
       </ul>
       <p>
-        «Ingen fisk»-klassen er det som filtrerer ut falske positive (greiner, bølger,
+        «Ingen fisk»-klassen filtrerer ut falske positive (greiner, bølger,
         skygger) som den lille lokale modellen slipper gjennom. Tracking-ID-er lar
-        serveren samle flere framer av <em>samme</em> fisk gjennom passasjen og stemme,
-        noe som gjør den endelige klassifiseringen langt mer robust enn en enkelt frame.
+        serveren samle flere framer av <em>samme</em> fisk gjennom passasjen og
+        avgjøre i fellesskap, slik at den endelige klassifiseringen blir langt
+        mer robust enn et enkelt frame.
       </p>
 
       <figure class="project-figure">
@@ -135,22 +136,23 @@
     <section class="project-section">
       <h2>LoRA-delen</h2>
       <p>
-        DINOv2 er en sterk allmenn ViT, men den har ikke sett pukkellaks i lavt lys
+        DINOv2 er en sterk og generell ViT, men den har ikke sett pukkellaks i lavt lys
         gjennom en akryldome. Full finjustering ville oppdatert hundrevis av millioner
-        parametere; det er dyrt og overkill for datasettstørrelsen vår.
+        parametere, og det er både dyrt og overkill med tanke på datasettstørrelsen
+        vår.
       </p>
       <p>
-        LoRA (Low-Rank Adaptation) antar at endringene du faktisk trenger å gjøre
-        under tilpasning, har lav indre rang. For hver fryste vektmatrise
-        <code>W ∈ ℝ<sup>d×k</sup></code> injiserer du en trenbar lavrangs-oppdatering
+        LoRA (Low-Rank Adaptation) bygger på antagelsen om at endringene du faktisk
+        trenger å gjøre under tilpasning, har lav rang. For hver fryste vektmatrise
+        <code>W ∈ ℝ<sup>d×k</sup></code> setter du inn en trenbar lavrangs-oppdatering
         <code>ΔW = B·A</code> der <code>A ∈ ℝ<sup>r×k</sup></code> og
         <code>B ∈ ℝ<sup>d×r</sup></code> med <code>r ≪ min(d, k)</code>. De originale
-        vektene står i ro; bare adapterne trenes.
+        vektene blir stående, det er bare adapterne som trenes.
       </p>
       <p>
         I praksis ga dette oss en modell som håndterte domenet vårt godt, trent på
         timer i stedet for dager, og som ikke trengte enorme mengder annoterte data
-        for å lande et brukbart sted.
+        for å havne et brukbart sted.
       </p>
     </section>
 
@@ -166,8 +168,8 @@
             for artsoppgaven, og integrere klassifikatoren med videopipelinen.</li>
       </ul>
       <p>
-        Lagkameratene eide sensorer, deteksjon og lengdeestimering, frontend og
-        backend, respektivt. Alle skrev.
+        Lagkameratene hadde ansvar for henholdsvis sensorer, deteksjon og
+        lengdeestimering, frontend og backend. Alle skrev rapport.
       </p>
     </section>
 

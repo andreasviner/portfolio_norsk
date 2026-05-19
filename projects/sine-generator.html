@@ -32,7 +32,7 @@
     <div class="project-meta-row">
       <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
       <span class="sep"></span>
-      <span>Apr 2024</span>
+      <span>apr 2024</span>
     </div>
 
     <h1 class="project-title">En signalnivågenerator <em>med en ESP32</em></h1>
@@ -52,7 +52,7 @@
         <li>Et analogt forsterker- og nivåskifttrinn mapper det bipolare signalet inn i
             ESP32-ens ADC-vindu på 0–3,3 V.</li>
         <li>Inne i ESP32-en: les sampelet <em>og</em> potensiometerposisjonen; multipliser; skriv til den 8-bits DAC-en.</li>
-        <li>Ut: samme sinus, dempet eller forsterket etter hva hjulet til enhver tid forlanger.</li>
+        <li>Ut: samme sinus, dempet eller forsterket etter posisjonen på hjulet til enhver tid.</li>
       </ul>
 
       <figure class="project-figure wide">
@@ -79,8 +79,8 @@
   dacWrite(25, ((int)analogRead(35) * (int)analogRead(potPin)) &gt;&gt; 16);
 }</code></pre>
       <p>
-        Cast til <code>int32</code> før multiplikasjonen og deretter bit-shift 16 plasser
-        holder resultatet innenfor DAC-ens 0–255-område uten å betale for en divisjon.
+        Cast til <code>int32</code> før multiplikasjonen og deretter bitshift 16 plasser
+        holder resultatet innenfor DAC-ens 0–255-område uten å bruke en divisjon.
         Hele greia kjører så fort ADC-en tillater.
       </p>
 
@@ -101,7 +101,7 @@
       <p>
         Ved veldig lav forsterkning dominerer kvantiseringen i DAC-en, og utgangen ser
         ut som en trapp mellom 0 og 6,47 mV. Et passivt utjevningstrinn på utgangen
-        ville ryddet betydelig opp i det; det er den åpenbare neste iterasjonen.
+        ville ryddet betydelig opp i det, og er det åpenbare neste steget.
       </p>
 
       <div class="figure-row">

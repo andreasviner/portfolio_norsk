@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analog frequency doubler · Andreas Lindeman</title>
-  <meta name="description" content="A diode-and-band-pass analog frequency doubler from discrete components. First attempt, SDR around 21 dB." />
+  <title>Analog frekvensdobler · Andreas Lindeman</title>
+  <meta name="description" content="En analog frekvensdobler bygget av diode og båndpass, satt sammen av diskrete komponenter. Første forsøk, SDR rundt 21 dB." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
@@ -13,121 +13,121 @@
 </head>
 <body>
 
-  <nav class="site-nav" aria-label="Primary">
+  <nav class="site-nav" aria-label="Hoved">
     <a href="../" class="brand">
       <span class="brand-mark">AL</span>
       <span class="brand-name">Andreas Lindeman</span>
     </a>
     <ul class="nav-links">
-      <li><a href="../#about">About</a></li>
-      <li><a href="../#timeline">Timeline</a></li>
-      <li><a href="../#stack">Stack</a></li>
-      <li><a href="../#contact">Contact</a></li>
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
     </ul>
   </nav>
 
   <main class="project-page">
-    <a href="../#timeline" class="project-back">Back to timeline</a>
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
 
     <div class="project-meta-row">
-      <span class="cat-tag"><span class="cat-swatch school"></span> school</span>
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
       <span class="sep"></span>
-      <span>Oct 2024</span>
+      <span>okt 2024</span>
     </div>
 
-    <h1 class="project-title">Doubling a frequency, <em>analog</em></h1>
+    <h1 class="project-title">Doble en frekvens, <em>analogt</em></h1>
 
     <p class="project-lede">
-      First attempt at an analog frequency doubler. Take <code>x₁(t) = cos(2πft)</code>
-      in, get a clean <code>x₂(t) = k·cos(2π·2f·t + φ)</code> out, using only the kind
-      of passives a student has lying around. Built around a diode for the non-linearity
-      plus two cascaded band-pass filters with an op-amp buffer in between.
+      Første forsøk på en analog frekvensdobler. Inn med <code>x₁(t) = cos(2πft)</code>,
+      og ut med en ren <code>x₂(t) = k·cos(2π·2f·t + φ)</code>, bygget kun av den
+      typen passive komponenter en student har liggende. Topologien er en diode for
+      ulineariteten, pluss to kaskadekoblede båndpassfiltre med en op-amp-buffer mellom.
     </p>
 
     <section class="project-section">
-      <h2>The idea</h2>
+      <h2>Ideen</h2>
       <ul>
-        <li><strong>Non-linearity.</strong> Push the input through a diode. The diode's
-            non-linear V-I curve generates harmonics, including the one we want at
+        <li><strong>Ulinearitet.</strong> Send signalet gjennom en diode. Diodens
+            ulineære V-I-kurve produserer harmoniske, blant annet den vi vil ha på
             <code>2f</code>.</li>
-        <li><strong>Band-pass 1.</strong> Isolate the <code>2f</code> component out of
-            the harmonic soup.</li>
-        <li><strong>Buffer.</strong> An op-amp follower so the two filters do not
-            load each other.</li>
-        <li><strong>Band-pass 2.</strong> A second pass tightens the spectrum further.</li>
+        <li><strong>Båndpass 1.</strong> Plukk ut <code>2f</code>-komponenten fra
+            den harmoniske suppa.</li>
+        <li><strong>Buffer.</strong> En op-amp-følger så de to filtrene ikke laster
+            hverandre.</li>
+        <li><strong>Båndpass 2.</strong> En ny runde strammer spekteret enda mer.</li>
       </ul>
 
       <figure class="project-figure wide">
-        <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure3.png" alt="Block-level schematic: diode, band-pass filter, op-amp buffer, band-pass filter.">
-        <figcaption>Topology. Diode for the non-linearity, two cascaded LC band-pass stages, op-amp follower between them.</figcaption>
+        <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure3.png" alt="Blokkskjema: diode, båndpassfilter, op-amp-buffer, båndpassfilter.">
+        <figcaption>Topologi. Diode for ulineariteten, to kaskadekoblede LC-båndpasstrinn, op-amp-følger mellom dem.</figcaption>
       </figure>
     </section>
 
     <section class="project-section">
-      <h2>The numbers</h2>
+      <h2>Tallene</h2>
       <ul>
-        <li>Input: 2525 Hz, target output: 5050 Hz.</li>
-        <li>Available inductors measured at ~70 mH, which fixed the capacitor target.
-            For <code>2π·5050·√(LC) = 1</code> with <code>L = 70 mH</code>:
-            <code>C ≈ 14 nF</code>. I used pairs of 10 nF.</li>
-        <li>Resistors were tuned in with a potentiometer, then frozen.</li>
-        <li>Measured SDR after tuning: ~21.4 dB. Every other half-cycle came out 12–13%
-            short of the others, visible in the scope trace and audible in the spectrum.</li>
+        <li>Inngang: 2525 Hz, ønsket utgang: 5050 Hz.</li>
+        <li>Tilgjengelige spoler ble innmålt til omtrent 70 mH, som låste kondensatormålet.
+            For <code>2π·5050·√(LC) = 1</code> med <code>L = 70 mH</code>:
+            <code>C ≈ 14 nF</code>. Jeg brukte par av 10 nF.</li>
+        <li>Motstandene ble innstilt med potmeter, og deretter låst.</li>
+        <li>Målt SDR etter innstilling: omtrent 21,4 dB. Annenhver halvperiode kom ut
+            12–13 % kortere enn de andre, synlig på oscilloskopet og hørbart i spekteret.</li>
       </ul>
 
       <div class="figure-row">
         <figure class="project-figure">
-          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure4.png" alt="Full circuit schematic with component values: 70 mH inductors, 10 nF capacitors, 1 kΩ / 0.7 kΩ / 1.5 kΩ resistors.">
-          <figcaption>Final values. 70 mH inductors paired with 10 nF caps; resistors tuned, then frozen.</figcaption>
+          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure4.png" alt="Fullt kretsskjema med komponentverdier: 70 mH spoler, 10 nF kondensatorer, 1 kΩ / 0,7 kΩ / 1,5 kΩ motstander.">
+          <figcaption>Endelige verdier. 70 mH spoler parret med 10 nF, motstander stilt inn og deretter låst.</figcaption>
         </figure>
         <figure class="project-figure">
-          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure7.png" alt="Breadboard with the analog frequency doubler wired up. Two hand-wound inductors on a custom 3D-printed mount; potentiometers for resistor tuning.">
-          <figcaption>Build photo. Hand-wound 70 mH inductors mounted on a 3D-printed jig, potentiometers for tuning.</figcaption>
+          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure7.png" alt="Bredderbrett med den analoge frekvensdobleren koblet opp. To håndviklede spoler på et 3D-printet feste, potmeter for å justere motstandene.">
+          <figcaption>Byggebilde. Håndviklede 70 mH-spoler montert på 3D-printet jigg, potmeter til finjustering.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="project-section">
-      <h2>Outcome</h2>
+      <h2>Resultat</h2>
       <p>
-        A clear, identifiable 2f sinusoid. Visibly imperfect at the half-cycle level,
-        but unmistakably doubled. Closing the gap to 25 dB SDR would require trimming
-        the per-half-cycle amplitude error below ~7%, which probably needs better
-        matched components and a more symmetric non-linearity than a single diode.
-        Improving on that is what
-        <a href="freq-doubler-v2">Freq doubler v2</a> was about.
+        En tydelig, gjenkjennelig 2f-sinusoide. Synlig ujevn på halvperiode-nivå,
+        men umiskjennelig doblet. Å snevre inn gapet opp til 25 dB SDR ville
+        kreve å få halvperiode-amplitudefeilen ned under omtrent 7 %, som
+        sannsynligvis trenger bedre matchede komponenter og en mer symmetrisk
+        ulinearitet enn én enkelt diode. Det er det
+        <a href="freq-doubler-v2">Frekvensdobler v2</a> tok tak i.
       </p>
 
       <figure class="project-figure wide">
-        <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure6.png" alt="Oscilloscope trace: orange input sinusoid at 2.5 kHz, blue output sinusoid at twice the frequency.">
-        <figcaption>Scope trace. Orange: 2.5 kHz input. Blue: doubled output at 5 kHz, smaller in amplitude as expected.</figcaption>
+        <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure6.png" alt="Oscilloskop-spor: oransje inngang-sinusoide ved 2,5 kHz, blå utgang-sinusoide ved dobbel frekvens.">
+        <figcaption>Oscilloskop-spor. Oransje: 2,5 kHz inngang. Blå: doblet utgang på 5 kHz, mindre i amplitude som forventet.</figcaption>
       </figure>
 
       <div class="figure-row">
         <figure class="project-figure">
-          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure8.png" alt="Zoomed-in scope view: every second half-cycle is visibly shorter, the asymmetry that limits SDR.">
-          <figcaption>The flaw. Every second half-cycle comes out 12–13% short. Single-diode rectification is the culprit.</figcaption>
+          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure8.png" alt="Innzoomet oscilloskop-bilde: annenhver halvperiode er synlig kortere, asymmetrien som begrenser SDR.">
+          <figcaption>Feilen. Annenhver halvperiode kommer ut 12–13 % for kort. Enkeltdiode-likeretting er årsaken.</figcaption>
         </figure>
         <figure class="project-figure">
-          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure5.png" alt="Spectrum analyser: dominant peak at 5 kHz, residual peak at the input fundamental, smaller harmonics.">
-          <figcaption>Output spectrum. Clean 2f peak with a residual fundamental and odd harmonics. SDR ≈ 21.4 dB.</figcaption>
+          <img src="../projects_data/2024-frequency-dobbler/Fordobling_av_frekvens_figures/figure5.png" alt="Spektrumanalysator: dominant topp ved 5 kHz, rest-topp på grunntonen, mindre harmoniske.">
+          <figcaption>Utgangsspekter. Ren 2f-topp med en rest av grunntonen og oddetallsharmoniske. SDR ≈ 21,4 dB.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="project-section">
-      <h2>Writeup</h2>
+      <h2>Rapport</h2>
       <div class="project-links">
-        <a href="../projects_data/2024-frequency-dobbler/Fordobling%20av%20frekvens.pdf" target="_blank" rel="noopener" download>Download: Fordobling av frekvens.pdf</a>
+        <a href="../projects_data/2024-frequency-dobbler/Fordobling%20av%20frekvens.pdf" target="_blank" rel="noopener" download>Last ned: Fordobling av frekvens.pdf</a>
       </div>
     </section>
 
-    <a href="../#timeline" class="project-back">Back to timeline</a>
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
   </main>
 
   <footer class="site-footer">
     <span>© <span id="year"></span> Andreas Lindeman</span>
-    <span class="footer-meta">Built by hand · No frameworks · Hosted on GitHub Pages</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

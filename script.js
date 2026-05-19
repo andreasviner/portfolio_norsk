@@ -61,19 +61,17 @@
     'RC-biler med uendelig rekkevidde.',
     'algoritmer som forbedrer seg selv.',
     'nøyaktige og robuste nevralnett.',
-    'FPGA-filtre fra bunnen av.',
+    'egne FPGA-filtre.',
     'egne analoge ADC-kretser.',
-    '3D-printere fra ramma og opp.',
-    'datasynssystemer på små brikker.',
-    'taleassistenter fra bunnen av.',
+    '3D-printere skrudd sammen selv.',
+    'datasyn lett nok til å kjøre på en Pi.',
+    'norske taleassistenter.',
     'roboter som tegner.',
-    'innebygde systemer som lærer.',
-    'verktøy ingen andre har laget ennå.',
-    'modeller som kjører på ett kretskort.',
-    'lydutstyr fra diskrete komponenter.',
-    'datapipelines i nettskala.',
-    'reguleringssløyfer som stiller seg selv.',
-    'PCB-er som ruter rundt reglene.',
+    'embedded-systemer som lærer.',
+    'verktøy ingen andre har skrevet.',
+    'modeller som får plass på ett kretskort.',
+    'datapipelines i stor skala.',
+    'CNN-er som klarer seg på lite data.'
   ];
 
   function startTypewriter() {

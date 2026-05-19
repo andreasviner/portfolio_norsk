@@ -32,32 +32,32 @@
     <div class="project-meta-row">
       <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
       <span class="sep"></span>
-      <span>Sep 2025</span>
+      <span>sep 2025</span>
     </div>
 
     <h1 class="project-title">En diskret <em>emitterfølger-buffer</em></h1>
 
     <p class="project-lede">
-      En NPN emitterfølger bygget rundt en BC547 (den klassiske småsignal-transistoren)
+      En NPN-emitterfølger bygget rundt en BC547 (den klassiske småsignaltransistoren)
       for å buffre en 500 mV / 1 kHz sinus mellom en 5,6 kΩ kilde og en
-      680 Ω last. Halvparten "design bias-punktet", halvparten "mål hvor mye virkeligheten
-      avviker fra læreboken".
+      680 Ω last. Halve poenget var å designe bias-punktet, andre halvparten å
+      måle hvor mye virkeligheten avviker fra læreboka.
     </p>
 
     <section class="project-section">
       <h2>Designvalgene</h2>
       <ul>
         <li><strong>V<sub>CC</sub></strong> = 7 V, med <strong>V<sub>E</sub></strong>
-            satt til 3,5 V, halvveis opp, så signalet får lik svingromrom
+            satt til 3,5 V, halvveis opp, slik at signalet får like stort svingrom
             i begge retninger.</li>
         <li><strong>I<sub>E</sub></strong> = 1 mA → <strong>R<sub>E</sub></strong> =
             3,5 kΩ.</li>
-        <li>Basebias fra en spenningsdeler. "Stivhetsfaktoren" k = 3 er på den
-            myke siden, med vilje. Kildemotstanden er 5,6 kΩ, så
-            deleren må ikke laste inngangen. Med k = 3:
+        <li>Basebias fra en spenningsdeler. «Stivhetsfaktoren» k = 3 er bevisst
+            valgt på den myke siden. Kildemotstanden er 5,6 kΩ, så deleren må
+            ikke laste inngangen. Med k = 3:
             <strong>R<sub>2</sub></strong> = 280 kΩ, <strong>R<sub>1</sub></strong> =
             140 kΩ.</li>
-        <li>22 µF AC-koblingskondensatorer ved inngang og utgang.</li>
+        <li>22 µF AC-koblingskondensatorer på inngang og utgang.</li>
       </ul>
     </section>
 
@@ -97,11 +97,11 @@
     <section class="project-section">
       <h2>Hva jeg ville gjort annerledes</h2>
       <p>
-        Stivere deler hvis kilden tåler det (5–20× I<sub>B</sub>
-        i stedet for 3×), for mer β-uavhengighet. Større koblingskondensatorer hvis lavfrekvensrespons
-        betyr noe. Og hvis presisjon er målet, ikke bygg en emitterfølger
-        i det hele tatt. Bruk en op-amp med bufret utgang. Den diskrete transistoren var
-        oppgaven, ikke det optimale.
+        Stivere spenningsdeler hvis kilden tåler det (5–20× I<sub>B</sub>
+        i stedet for 3×), for mer uavhengighet av β. Større koblingskondensatorer
+        hvis lavfrekvensresponsen betyr noe. Og dersom presisjon er målet, dropp
+        emitterfølgeren helt og bruk en op-amp med bufret utgang. Den diskrete
+        transistoren var oppgaven, ikke det optimale valget.
       </p>
     </section>
 

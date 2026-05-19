@@ -41,7 +41,7 @@
 
     <p class="project-lede">
       Et selvlærende nettverk som spilte nettleserspillet <em>Slope</em>. Modellen så
-      ikke piksler direkte. Et håndskrevet preprosesseringspass hentet ut banens geometri
+      ikke piksler direkte. Et håndskrevet preprosesseringsledd hentet ut banens geometri
       først, og nettet lærte å styre ut fra det.
     </p>
 
@@ -49,7 +49,7 @@
       <h2>Hvorfor preprosessere?</h2>
       <p>
         Å trene et convnet på rå piksler på en personlig GPU i 2018, som videregåendeelev,
-        gikk bare ikke. Så jeg jukset: et lite datasyn-pass hentet ut banekantene
+        gikk rett og slett ikke. Så jeg jukset: et lite datasyn-ledd hentet ut banekantene
         og gjorde dem om til en liten featurevektor. Det nevrale nettet var lite
         nok til å trene hjemme, og lærte likevel spillet.
       </p>

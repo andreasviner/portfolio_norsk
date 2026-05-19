@@ -38,27 +38,27 @@
     <h1 class="project-title">Fra støy <em>til tone</em></h1>
 
     <p class="project-lede">
-      Generer hvit støy digitalt på en FPGA, så båndpassér den så skarpt i
-      det analoge domenet at utgangen høres ut som en tone i stedet for hvesing. Digital
-      side: et Linear Feedback Shift Register på en Lattice ICE40HX1K. Analog side: et
-      Delyiannis-Friend aktivt båndpassfilter på et loddet veroboard.
+      Hvit støy generert digitalt på en FPGA, deretter båndpassfiltrert så skarpt
+      i det analoge domenet at utgangen høres ut som en tone i stedet for hvesing.
+      På digital side: et Linear Feedback Shift Register på en Lattice ICE40HX1K.
+      På analog side: et aktivt Delyiannis-Friend-båndpassfilter på et loddet veroboard.
     </p>
 
     <section class="project-section">
       <h2>Støygeneratoren</h2>
       <p>
-        Et Linear Feedback Shift Register (LFSR) er et skiftregister hvis inngang er en
-        XOR av noen utvalgte avgreninger. Hvis avgreningene velges av et primitivt polynom,
-        gir registeret en pseudotilfeldig sekvens med maksimal lengde
-        <code>2<sup>L</sup> − 1</code> før den repeterer. Dette er en såkalt m-sekvens,
-        hvis autokorrelasjonsegenskaper gjør at den ser ut som hvit støy på relevant
-        tidsskala.
+        Et Linear Feedback Shift Register (LFSR) er et skiftregister der inngangen er
+        en XOR av noen utvalgte avgreninger. Hvis avgreningene følger et primitivt
+        polynom, gir registeret en pseudotilfeldig sekvens med maksimal lengde
+        <code>2<sup>L</sup> − 1</code> før den gjentar seg. Dette er en såkalt
+        m-sekvens, med autokorrelasjonsegenskaper som gjør at den oppfører seg
+        som hvit støy på relevant tidsskala.
       </p>
       <p>
-        Bygd i IceStudio med en knapp på utviklingskortet som mater reset-linjen, så et
-        knappetrykk sparker registeret ut av enhver alt-null-låst tilstand. FPGA-utgangen
-        er en 3,3 V pulsstrøm, i praksis en 1-bits DAC, ført gjennom et
-        passivt RC-lavpass for å ta toppen av de verste svitsjekantene.
+        Bygd i IceStudio med en knapp på utviklingskortet koblet til reset-linjen,
+        slik at et knappetrykk slår registeret ut av en eventuell all-null-tilstand.
+        FPGA-utgangen er en 3,3 V pulsstrøm, i praksis en 1-bits DAC, ført gjennom
+        et passivt RC-lavpass for å ta av de verste svitsjekantene.
       </p>
 
       <figure class="project-figure">
@@ -76,7 +76,7 @@
       <h2>Delyiannis-Friend-filteret</h2>
       <p>
         En aktiv båndpasstopologi med én op-amp som gir høy Q med få
-        komponenter. Designsenter <code>f₀ = 920 Hz</code>, <code>Q = 12</code>.
+        komponenter. Designfrekvens <code>f₀ = 920 Hz</code>, <code>Q = 12</code>.
         Formler for komponentverdier:
       </p>
       <pre><code>R₃ = 1 / (πBC)
@@ -108,15 +108,15 @@ R₂ = R₃ / (4Q² − 2H₀)</code></pre>
         <li><strong>Q-faktor:</strong> 6,6 målt (12 designet). Betydelig fall.</li>
       </ul>
       <p>
-        Q-fallet er den viktigste feilmoden. Tre plausible skyldige: kondensatortoleranser
-        ved denne frekvensen er 5 % eller mer og dominerer båndformen. Op-ampen
-        har endelig forsterknings-båndbredde ved høyere Q-faktorer og runder i praksis av
-        toppen. Brødbrett-/veroboard-layouten introduserer parasittisk kapasitans og
-        motstand i parallell med designet.
+        Q-fallet er den viktigste feilkilden. Tre plausible årsaker: kondensatortoleranser
+        ved denne frekvensen er 5 % eller mer, og dominerer båndformen. Op-ampen har
+        endelig forsterknings-båndbredde ved høyere Q-faktorer og runder av toppen i
+        praksis. Veroboard-layouten gir parasittisk kapasitans og motstand i parallell
+        med designet.
       </p>
       <p>
-        Til tross for lavere Q viser utgangs-FFT-en en tydelig spektral topp rundt f₀, og
-        lyttetesten bekreftet en gjenkjennelig tonal karakter. Oppdraget var fullført,
+        Tross lavere Q viser utgangs-FFT-en en tydelig spektral topp rundt f₀, og
+        lyttetesten bekreftet en gjenkjennelig tonal karakter. Oppdraget var i mål,
         selv om båndet ble bredere enn designet.
       </p>
 

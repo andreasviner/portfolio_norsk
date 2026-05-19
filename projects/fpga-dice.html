@@ -38,14 +38,14 @@
     <h1 class="project-title">En elektronisk terning <em>på en FPGA</em></h1>
 
     <p class="project-lede">
-      Sju LED-er i terningmønster, én knapp, én Lattice ICE40 FPGA. Hold knappen
-      og terningen ruller gjennom 1–6 for fort til å følge med. Slipp, og den stopper på et tall.
-      Mitt første praktiske FPGA-prosjekt, bygd i IceStudio, det grafiske alternativet til
-      å skrive Verilog.
+      Sju LED-er i terningmønster, én knapp, én Lattice ICE40 FPGA. Hold inne
+      knappen og terningen ruller gjennom 1–6 raskere enn du klarer å følge med.
+      Slipp, og den stopper på et tall. Mitt første praktiske FPGA-prosjekt,
+      bygd i IceStudio, det grafiske alternativet til å skrive Verilog.
     </p>
 
     <section class="project-section">
-      <h2>Hvordan "tilfeldigheten" funker her</h2>
+      <h2>Hvordan «tilfeldigheten» fungerer her</h2>
       <p>
         Den er ikke tilfeldig. Det er en 3-bits teller som ruller 1 → 6 → 1, drevet av et
         klokkesignal styrt av knappen:
@@ -69,15 +69,15 @@
       <h2>LED-logikk</h2>
       <p>
         Sju LED-er, men bare fire logiske grupper (senter, to NØ/SV-gule, to NV/SØ-gule,
-        to sideoransje). Med tellerutgangene <code>(C, B, A)</code> =
-        binær, gir en liten sannhetstabell:
+        to sideoransje). Med tellerutgangene <code>(C, B, A)</code> i binær form,
+        faller en liten sannhetstabell ut:
       </p>
       <pre><code>Rød    = A
 Gul / = B + C
 Gul \ = C
 Oransje  = B · C</code></pre>
       <p>
-        Implementert i IceStudio som noen porter rett fra tabellen.
+        Implementert i IceStudio som et knippe logikkporter rett ut fra tabellen.
       </p>
 
       <figure class="project-figure wide">
@@ -87,23 +87,23 @@ Oransje  = B · C</code></pre>
     </section>
 
     <section class="project-section">
-      <h2>Historien om strømbegrensning</h2>
+      <h2>Om strømbegrensningen</h2>
       <p>
-        Første design hadde en serie-motstand per LED (~65 Ω for rød, 60 Ω for oransje,
-        55 Ω for gul ved 20 mA). Det realiserte designet bruker én delt 66,6 Ω-motstand
-        på tvers av alle LED-ene. Hver LED kjøres litt under det den tåler, men de
+        Første design hadde en seriemotstand per LED (~65 Ω for rød, 60 Ω for oransje,
+        55 Ω for gul ved 20 mA). Det realiserte designet bruker én felles 66,6 Ω-motstand
+        for alle LED-ene. Hver LED kjøres litt under det den tåler, men de
         lyser fortsatt rent, og den totale lysstyrken varierer mindre mellom sidene fordi
         jo flere LED-er som tennes, jo mindre strøm får hver av dem.
       </p>
       <p>
         Målte strømmer per side: 13 mA (1) → 19 mA (6). Realisert effekt ≈ 0,044 W
-        (1) → 0,063 W (6), vesentlig under de teoretiske tallene i designet
+        (1) → 0,063 W (6), godt under de teoretiske tallene i designet
         med motstand per LED.
       </p>
 
       <figure class="project-figure narrow">
-        <img src="../projects_data/2025-fpga-dice/designnotat_2_figures/figure14.png" alt="Det fysiske bygget: Lattice ICE40 FPGA-utbrudd med sju LED-er i terningmønster, pluss knapp og den delte serie-motstanden.">
-        <figcaption>Endelig bygg. ICE40-utbrudd, sju LED-er i terningmønster, én delt 66,6 Ω strømbegrensning.</figcaption>
+        <img src="../projects_data/2025-fpga-dice/designnotat_2_figures/figure14.png" alt="Det fysiske bygget: Lattice ICE40 FPGA-breakout med sju LED-er i terningmønster, pluss knapp og den delte serie-motstanden.">
+        <figcaption>Endelig bygg. ICE40-breakout, sju LED-er i terningmønster, én felles 66,6 Ω strømbegrensning.</figcaption>
       </figure>
     </section>
 

@@ -32,7 +32,7 @@
     <div class="project-meta-row">
       <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
       <span class="sep"></span>
-      <span>Nov 2023</span>
+      <span>nov 2023</span>
     </div>
 
     <h1 class="project-title">Oda, en norsk stemme<em>assistent</em></h1>
@@ -65,13 +65,13 @@
       <h2>Wake-word fra bunnen av</h2>
       <p>
         Den vanskeligste delen av prosjektet var data, ikke modellering. Det finnes
-        veldig lite offentlig norsk taledata med pålitelige undertekster, så jeg
-        bygget min egen pipeline: 27 000 klipp fra Språkbanken, pluss rundt 750 000
+        svært lite offentlig norsk taledata med pålitelige undertekster, så jeg
+        bygde min egen pipeline: 27 000 klipp fra Språkbanken, pluss rundt 750 000
         klipp skrapet fra 251 norske YouTube-kanaler med teksting. Tekstkvaliteten
-        varierte vilt. TV-kanaler som NRK og TV2 hadde av og til norsk tekst over
-        engelsk lyd, så jeg kjørte alle klipp gjennom Whisper-large og beholdt bare
-        de der Whisper var enig med originalteksten. Omtrent 30 % overlevde. Det
-        etterlot meg med rundt 30 000 høykvalitetsklipp å trene på.
+        varierte voldsomt. TV-kanaler som NRK og TV2 hadde av og til norsk tekst over
+        engelsk lyd, så jeg kjørte alle klippene gjennom Whisper-large og beholdt
+        bare de der Whisper var enig med originalteksten. Omtrent 30 % overlevde,
+        og jeg satt igjen med rundt 30 000 høykvalitetsklipp å trene på.
       </p>
       <p>
         For å gjøre modellen mindre byttet jeg det vanlige norske alfabetet med et
@@ -86,7 +86,7 @@
       <h2>Pipelinen</h2>
       <ul>
         <li><strong>Alltid-på-RNN</strong> overvåker en strøm med mel-spektrogrammer etter ordet «Oda».</li>
-        <li><strong>Når den fyrer av</strong>, tar serveren opp lyd til rundt 0,36 s med stillhet, og sender deretter lyden til <strong>Whisper-medium</strong> for transkripsjon.</li>
+        <li><strong>Når den utløses</strong>, tar serveren opp lyd inntil rundt 0,36 s med stillhet, og sender deretter lyden til <strong>Whisper-medium</strong> for transkripsjon.</li>
         <li><strong>Kommandoruter</strong> sjekker om transkripsjonen matcher en kjent intensjon. Hvis ja, utfør den. Hvis ikke, rut til LLM-en.</li>
         <li><strong>Offline LLM</strong>: <code>orca-mini-3b-gguf2-q4_0</code> via gpt4all. Snakker ikke norsk særlig godt, så systemet oversetter NO→EN→prompt→EN→NO via deep_translator.</li>
         <li><strong>TTS-cache</strong> for repetitive svar («klokka er…», alle tall under 10¹¹). 419 KB på disk, holder svarstien offline for enkle spørsmål.</li>
@@ -138,10 +138,10 @@
       <p>
         Modellen var aldri flaskehalsen. Norske taledata var det, og å finne ut
         hvordan jeg skulle hente og filtrere dem fra YouTube (ved å bruke en større
-        modell til å bedømme en mindre), var den mest brukbare ferdigheten jeg
-        plukket opp. Den nest mest brukbare var å lære hvor PyTorch og TensorFlow
-        hver gjør seg fortjent til plassen sin: PyTorch føltes bedre for trening
-        og iterasjon, TF føltes raskere når modellen var fryst.
+        modell til å bedømme en mindre), var den mest nyttige ferdigheten jeg
+        lærte meg. Den nest mest nyttige var å forstå hvor henholdsvis PyTorch og
+        TensorFlow gjør seg fortjent til plassen sin: PyTorch føltes bedre for
+        trening og iterasjon, TF føltes raskere når modellen var fryst.
       </p>
     </section>
 

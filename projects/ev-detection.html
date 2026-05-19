@@ -32,16 +32,16 @@
     <div class="project-meta-row">
       <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
       <span class="sep"></span>
-      <span>Mar 2024</span>
+      <span>mar 2024</span>
     </div>
 
     <h1 class="project-title">Er bilen <em>elektrisk?</em></h1>
 
     <p class="project-lede">
       Et gruppeprosjekt ved NTNU som avgjør om en bil er elektrisk, ende til ende
-      fra ett enkelt bilde. Jeg bygde datasyn-siden: en finjustert YOLOv8 som finner
-      skiltet, så et CNN trent fra bunnen for å lese det, og til slutt et oppslag mot Statens
-      vegvesen for å løse motortype.
+      fra ett enkelt bilde. Jeg bygde datasyn-delen: en finjustert YOLOv8 som finner
+      skiltet, så et CNN trent fra bunnen for å lese det, og til slutt et oppslag mot
+      Statens vegvesen for å avgjøre motortype.
     </p>
 
     <section class="project-section">
@@ -104,10 +104,10 @@
     <section class="project-section">
       <h2>Hva jeg ville forbedret</h2>
       <p>
-        Klassifikatoren nøler av og til på skilt med mye bevegelsesuskarphet, det du får
-        fra biler som faktisk kjører. En liten tidsstabel med bilder, eller et raskt
-        deblurring-pre-pass, ville lukke det gapet. Vegvesen-API-et var også det tregeste
-        steget med god margin. Caching på skiltprefiks ville hjulpet.
+        Klassifikatoren nøler av og til på skilt med mye bevegelsesuskarphet, slik
+        du får det fra biler som faktisk kjører. Et lite tidsvindu med bilder, eller
+        et raskt deblurring-pre-pass, kunne tettet gapet. Vegvesen-API-et var også
+        det desidert tregeste steget. Caching på skiltprefiks ville hjulpet.
       </p>
     </section>
 
