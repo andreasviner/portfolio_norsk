@@ -1,5 +1,5 @@
 {
-  "id": "colour-polygraph",
+  "id": "color-polygraph",
   "title": "Fargepolygraf",
   "category": "hobby",
   "isProject": true,
@@ -15,5 +15,5 @@
     "ml"
   ],
   "importance": 100,
-  "projectPage": "projects/colour-polygraph"
+  "projectPage": "projects/color-polygraph"
 }
