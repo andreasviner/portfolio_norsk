@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ladestasjon bygget inn i sofaen · Andreas Lindeman</title>
+  <meta name="description" content="Fire USB-ladeporter bygget inn i stuesofaen i et delt studentkollektiv, i et 3D-printet hus designet i Fusion 360 med én av/på-bryter, slik at ladekabler slutter å krysse rommet." />
+  <link rel="alternate" hreflang="en" href="https://andreaslindeman.com/projects/charge-dock" />
+  <link rel="alternate" hreflang="no" href="https://andreaslindeman.no/projects/charge-dock" />
+  <link rel="alternate" hreflang="x-default" href="https://andreaslindeman.com/projects/charge-dock" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links-list" aria-label="Åpne meny">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <ul id="nav-links-list" class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+    <a class="lang-switch" data-lang-base="https://andreaslindeman.com" href="https://andreaslindeman.com/" hreflang="en" aria-label="Switch to English">
+      <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+      <span class="lang-pair"><span class="lang-current">NO</span><span class="lang-sep" aria-hidden="true">/</span><span class="lang-target">EN</span></span>
+    </a>
+  </nav>
+  <script>
+    (function(){
+      var s=document.querySelector('.lang-switch');
+      if(s&&s.dataset.langBase)s.href=s.dataset.langBase+location.pathname+location.search+location.hash;
+      var nav=document.querySelector('.site-nav'), btn=document.querySelector('.nav-toggle');
+      if(btn&&nav){
+        function closeMenu(){
+          nav.classList.remove('is-open');
+          btn.setAttribute('aria-expanded','false');
+          btn.setAttribute('aria-label','Åpne meny');
+        }
+        btn.addEventListener('click',function(e){
+          e.stopPropagation();
+          var open=nav.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded',open?'true':'false');
+          btn.setAttribute('aria-label',open?'Lukk meny':'Åpne meny');
+        });
+        nav.querySelectorAll('.nav-links a').forEach(function(a){
+          a.addEventListener('click',closeMenu);
+        });
+        document.addEventListener('click',function(e){
+          if(nav.classList.contains('is-open')&&!nav.contains(e.target))closeMenu();
+        });
+        document.addEventListener('keydown',function(e){
+          if(e.key==='Escape'&&nav.classList.contains('is-open'))closeMenu();
+        });
+      }
+    })();
+  </script>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch hobby"></span> hobby</span>
+      <span class="sep"></span>
+      <span>jun 2023</span>
+    </div>
+
+    <h1 class="project-title">En ladestasjon bygget inn i <em>sofaen</em></h1>
+
+    <p class="project-lede">
+      Da jeg begynte på studiet, flyttet jeg inn i et kollektiv med seks andre
+      gutter. Stua hadde ett problem alle merket daglig: å lade en laptop eller en
+      spillenhet betød å dra en kabel tvers over rommet til nærmeste stikkontakt.
+      Løsningen var å slutte å kjempe mot kablene og bygge ladingen inn i møblene:
+      fire USB-C-porter koblet rett inn i sofaen i et 3D-printet hus, matet av en
+      24 V DC-forsyning dimensjonert slik at alle fire kan kjøre på full effekt
+      samtidig, med én bryter som kutter alt.
+    </p>
+
+    <section class="project-section">
+      <h2>Byggingen</h2>
+      <p>
+        Huset ble modellert i Fusion 360 og 3D-printet, dimensjonert til å holde de
+        fire portene og bryteren, og til å sitte rent inntil sofarammen. Du kan
+        snurre modellen rundt nedenfor:
+      </p>
+      <model-viewer
+        id="dock-model"
+        src="../projects_data/2023-charge-dock/3d2.glb"
+        alt="3D-modell av det printede huset som holder de fire USB-portene og bryteren, bygget inn i sofaen."
+        camera-controls
+        touch-action="pan-y"
+        camera-orbit="0deg 90deg auto"
+        interaction-prompt="none"
+        auto-rotate
+        auto-rotate-delay="0"
+        rotation-per-second="12deg"
+        exposure="0.85"
+        shadow-intensity="2"
+        shadow-softness="0.75"
+        style="width:100%;height:420px;background:var(--surface,#16161a);border-radius:12px;">
+      </model-viewer>
+      <script>
+        (function(){
+          var mv = document.getElementById('dock-model');
+          if (!mv) return;
+          mv.addEventListener('load', function(){
+            try {
+              var pbr = mv.model.materials[0].pbrMetallicRoughness;
+              pbr.setMetallicFactor(0.1);
+              pbr.setRoughnessFactor(0.55);
+              pbr.setBaseColorFactor([0.30, 0.32, 0.36, 1]); // mørkere skifergrå så detaljene i printet kommer fram
+            } catch (e) {}
+          });
+        })();
+      </script>
+      <p>
+        Bak portene sitter en 24&nbsp;V DC-forsyning som mater alle fire
+        USB-C-utgangene. Den er dimensjonert med nok effektbudsjett til at hver
+        port kan levere full effekt samtidig, uten struping eller deling av én
+        felles skinne når sofaen er full av enheter som lader på én gang.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Problemet</h2>
+      <p>
+        Et kollektiv betyr delte møbler og aldri nok stikkontakter der du faktisk
+        sitter. Syv personer som lader telefoner, kontrollere og laptoper fra et
+        par veggkontakter gjorde stua til en snublefelle av kabler tvers over
+        gulvet og over setene. I stedet for å legge til enda en skjøteledning, la
+        jeg portene der enhetene allerede var: i selve sofaen.
+      </p>
+
+      <div class="figure-row">
+        <figure class="project-figure">
+          <img src="../projects_data/2023-charge-dock/off.jpg" alt="Ladestasjonen bygget inn i kanten av en grå sofa, bryteren av, en ladekabel koblet i én port.">
+          <figcaption>Av. Stasjonen sitter i flukt under sofakanten, med portene ut.</figcaption>
+        </figure>
+        <figure class="project-figure">
+          <img src="../projects_data/2023-charge-dock/on.jpg" alt="Den samme stasjonen med av/på-knappen lyst opp i blått og en portindikator som gløder, en kabel koblet i.">
+          <figcaption>På. Bryteren lyser blått og portene blir aktive.</figcaption>
+        </figure>
+      </div>
+      <p>
+        Én bryter kutter strømmen til alle fire portene, greit når man drar
+        hjemmefra, eller bare for å slippe å trikle strøm inn i en kontroller hele
+        natta.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>I bruk</h2>
+      <p>
+        Til daglig betyr det bare at du tar en kabel og plugger i uten å tenke på
+        hvor nærmeste kontakt er. Bildet under er det vanlige tilfellet: en Switch
+        Pro-kontroller som lader på puta, matet fra stasjonen bygget inn i sofaen
+        under.
+      </p>
+      <figure class="project-figure wide">
+        <img src="../projects_data/2023-charge-dock/charging.jpg" alt="En Nintendo Switch Pro-kontroller som ligger på en sofapute og lader via en hvit kabel som går ned til stasjonen bygget inn i sofaen under.">
+        <figcaption>Hverdagstilfellet: lad fra sofaen, ingen kabel tvers over rommet.</figcaption>
+      </figure>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foredrag om datasikkerhet · Andreas Lindeman</title>
+  <meta name="description" content="Et foredrag jeg holdt på en nærliggende videregående skole om å være trygg på nett: hvilke data du lekker, hvordan de samles inn, og hvordan du unngår å bli lurt." />
+  <link rel="alternate" hreflang="en" href="https://andreaslindeman.com/projects/cybersecurity-lecture" />
+  <link rel="alternate" hreflang="no" href="https://andreaslindeman.no/projects/cybersecurity-lecture" />
+  <link rel="alternate" hreflang="x-default" href="https://andreaslindeman.com/projects/cybersecurity-lecture" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Hoved">
+    <a href="../" class="brand">
+      <span class="brand-mark">AL</span>
+      <span class="brand-name">Andreas Lindeman</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links-list" aria-label="Åpne meny">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
+    <ul id="nav-links-list" class="nav-links">
+      <li><a href="../#about">Om</a></li>
+      <li><a href="../#timeline">Tidslinje</a></li>
+      <li><a href="../#stack">Verktøy</a></li>
+      <li><a href="../#contact">Kontakt</a></li>
+    </ul>
+    <a class="lang-switch" data-lang-base="https://andreaslindeman.com" href="https://andreaslindeman.com/" hreflang="en" aria-label="Switch to English">
+      <svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+      <span class="lang-pair"><span class="lang-current">NO</span><span class="lang-sep" aria-hidden="true">/</span><span class="lang-target">EN</span></span>
+    </a>
+  </nav>
+  <script>
+    (function(){
+      var s=document.querySelector('.lang-switch');
+      if(s&&s.dataset.langBase)s.href=s.dataset.langBase+location.pathname+location.search+location.hash;
+      var nav=document.querySelector('.site-nav'), btn=document.querySelector('.nav-toggle');
+      if(btn&&nav){
+        function closeMenu(){
+          nav.classList.remove('is-open');
+          btn.setAttribute('aria-expanded','false');
+          btn.setAttribute('aria-label','Åpne meny');
+        }
+        btn.addEventListener('click',function(e){
+          e.stopPropagation();
+          var open=nav.classList.toggle('is-open');
+          btn.setAttribute('aria-expanded',open?'true':'false');
+          btn.setAttribute('aria-label',open?'Lukk meny':'Åpne meny');
+        });
+        nav.querySelectorAll('.nav-links a').forEach(function(a){
+          a.addEventListener('click',closeMenu);
+        });
+        document.addEventListener('click',function(e){
+          if(nav.classList.contains('is-open')&&!nav.contains(e.target))closeMenu();
+        });
+        document.addEventListener('keydown',function(e){
+          if(e.key==='Escape'&&nav.classList.contains('is-open'))closeMenu();
+        });
+      }
+    })();
+  </script>
+
+  <main class="project-page">
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+
+    <div class="project-meta-row">
+      <span class="cat-tag"><span class="cat-swatch school"></span> skole</span>
+      <span class="sep"></span>
+      <span>nov 2021</span>
+    </div>
+
+    <h1 class="project-title">Et foredrag om <em>datasikkerhet</em></h1>
+
+    <p class="project-lede">
+      Den videregående skolen min hadde en uke der alle skulle gjøre noe for å gi
+      tilbake til lokalsamfunnet. De fleste valgte noe praktisk. Med bakgrunnen
+      min fra å rote med sikkerhet var det mest nyttige jeg kunne bidra med
+      kunnskap, så jeg satte sammen et foredrag om å være trygg på nett og holdt
+      det for elever på en nærliggende videregående skole.
+    </p>
+
+    <section class="project-section">
+      <h2>Hvorfor akkurat dette</h2>
+      <p>
+        Noen år tidligere hadde jeg brukt mye tid på å lære meg selv hvordan
+        nettverk og nettbaserte systemer faktisk fungerer: den typen selvlærte
+        sikkerhetsutforskning jeg nå ordlegger meg forsiktig om, fordi noe av det
+        var en tenåring som lærte ved å pirke borti ting han ikke burde. Baksiden
+        av den nysgjerrigheten er at jeg forsto, helt konkret, hvordan vanlige
+        folk lekker data og blir utnyttet. En uke med samfunnsbidrag var en god
+        anledning til å gjøre det om til noe virkelig nyttig: å hjelpe yngre
+        elever med å ikke bli lurt.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva foredraget dekket</h2>
+      <p>
+        Jeg bygde lysbildene (på norsk, «Datasikkerhet») rundt en enkel bue: start
+        med «hva er egentlig data», vis hvor mye av det du gir fra deg uten å merke
+        det, og gjør det så praktisk.
+      </p>
+      <ul>
+        <li><strong>Hva data er</strong>, og hvor mye det spenner over: posisjon, økonomi, kultur, vitenskap, atferd.</li>
+        <li><strong>Data du sender</strong>: hva som forlater enheten din hver gang du surfer, og hva en server i andre enden ser.</li>
+        <li><strong>Cookies</strong>: hva de faktisk lagrer, og hvorfor «godta alle» sjelden er i din interesse.</li>
+        <li><strong>Hva data brukes til</strong>: reklame, profilering, og forskjellen på irriterende og skadelig.</li>
+        <li><strong>Andre måter folk skaffer seg dataene dine</strong>: sosial manipulering, lyssky nettverk, og den menneskelige siden av angrep.</li>
+        <li><strong>Lokale nettverk</strong>: hvorfor kafé-Wi-Fi-et fortjener mer skepsis enn folk gir det.</li>
+        <li><strong>Viktige data</strong>: hva som faktisk er verdt å beskytte, og hvordan.</li>
+        <li><strong>Hvordan ikke bli et lett bytte</strong>: en sjekkliste i klartekst for hverdagsvaner.</li>
+      </ul>
+    </section>
+
+    <section class="project-section">
+      <h2>Hva jeg tok med meg</h2>
+      <p>
+        Det vanskelige var ikke innholdet. Det var å legge det fram slik at et rom
+        fullt av tenåringer brydde seg. Konkrete eksempler («her er nøyaktig hva
+        denne siden vet om deg akkurat nå») traff; abstrakte advarsler gjorde det
+        ikke. Det var første gang jeg måtte oversette teknisk kunnskap til noe
+        nyttig for folk uten teknisk bakgrunn, som er det meste av hva god teknisk
+        formidling viser seg å være.
+      </p>
+    </section>
+
+    <section class="project-section">
+      <h2>Lysbildene</h2>
+      <p>
+        Hele presentasjonen, på norsk:
+      </p>
+      <div class="project-links">
+        <a href="../projects_data/2021-cybersecurity-lecture/Datasikkerhet.pdf" target="_blank" rel="noopener" download>Last ned: Datasikkerhet.pdf (foredragslysbilder)</a>
+      </div>
+    </section>
+
+    <a href="../#timeline" class="project-back">Tilbake til tidslinjen</a>
+  </main>
+
+  <footer class="site-footer">
+    <span>© <span id="year"></span> Andreas Lindeman</span>
+    <span class="footer-meta">Håndbygget · Uten rammeverk · Servert av GitHub Pages</span>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

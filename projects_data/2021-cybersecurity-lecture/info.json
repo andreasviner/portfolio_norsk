@@ -1,0 +1,16 @@
+{
+  "id": "cybersecurity-lecture-2021",
+  "title": "Foredrag om datasikkerhet",
+  "category": "school",
+  "isProject": true,
+  "start": "2021-11",
+  "shortDescription": "Et bidrag til lokalsamfunnet: et foredrag på en nærliggende videregående skole om å være trygg på nett, om hvilke data du lekker, hvordan de samles inn, og hvordan du unngår å bli lurt.",
+  "tags": [
+    "datasikkerhet",
+    "nettvett",
+    "undervisning",
+    "formidling"
+  ],
+  "importance": 30,
+  "projectPage": "projects/cybersecurity-lecture"
+}

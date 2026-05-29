@@ -1,0 +1,19 @@
+{
+  "id": "charge-dock-2023",
+  "title": "Ladestasjon i sofaen",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2023-06",
+  "shortDescription": "Fire USB-C-porter bygget inn i stuesofaen i et delt studentkollektiv. En 24 V DC-forsyning dimensjonert for full effekt på alle fire, i et 3D-printet hus designet i Fusion 360 med én av/på-bryter.",
+  "tags": [
+    "3D-printing",
+    "Fusion 360",
+    "USB-C",
+    "smartløsning"
+  ],
+  "types": [
+    "hardware"
+  ],
+  "importance": 30,
+  "projectPage": "projects/charge-dock"
+}
