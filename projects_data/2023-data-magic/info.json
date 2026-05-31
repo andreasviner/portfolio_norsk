@@ -1,0 +1,19 @@
+{
+  "id": "data-magic-2023",
+  "title": "En sang gjemt i en frosk",
+  "category": "hobby",
+  "isProject": true,
+  "start": "2023-05",
+  "shortDescription": "En egenlaget komprimeringsalgoritme som presset hele ASCII-versjonen av en viss sang inn i de laveste bitene i ett enkelt froskebilde. Et bittelite dekomprimeringsskript leser de skjulte bitene rett ut av bildet og spiller resultatet av som en levende terminalanimasjon.",
+  "tags": [
+    "steganografi",
+    "datakomprimering",
+    "Python",
+    "CTF"
+  ],
+  "types": [
+    "software"
+  ],
+  "importance": 45,
+  "projectPage": "projects/data-magic"
+}
