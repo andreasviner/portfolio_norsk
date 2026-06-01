@@ -13,6 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Geist:wght@300..700&family=Geist+Mono:wght@300..600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" type="image/png" href="../icon.png" />
+  <style>
+    /* splitscreen: the real remote on the left, the live photo on the right, equal size */
+    .tl-demo{display:flex;gap:14px;align-items:stretch;height:clamp(420px,74vh,660px);margin:.5rem 0;}
+    .tl-pane{flex:1 1 0;min-width:0;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 32px rgba(0,0,0,.45);}
+    .tl-remote-frame{display:block;background:#696969;}
+    .tl-stack{position:relative;background:#0c0c0c;}
+    .tl-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:opacity .075s linear;-webkit-user-drag:none;user-select:none;}
+    #tl-b{opacity:0;}
+    @media (max-width:640px){ .tl-demo{flex-direction:column;height:auto;} .tl-pane{height:64vh;} }
+  </style>
 </head>
 <body>
 
@@ -86,6 +96,23 @@
     </p>
 
     <section class="project-section">
+      <h2>Prøv fjernkontrollen</h2>
+      <p>
+        Dette er den samme kontrollen vi brukte fra telefonene våre. Trykk på en lampe
+        for å skru den av eller på; bildet til høyre er det ekte lyset i akkurat den
+        tilstanden. Fordi hver lampe bare er sitt eget nettspenningsrelé, kan du tenne
+        kombinasjoner et ekte fotgjengerkryss aldri ville gjort.
+      </p>
+      <div class="tl-demo">
+        <iframe class="tl-pane tl-remote-frame" src="../projects_data/2024-traff-light/code/remote/remote_embed.html" title="Fjernkontroll for trafikklys" loading="lazy"></iframe>
+        <div class="tl-pane tl-stack">
+          <img class="tl-frame" id="tl-a" draggable="false" alt="Det ekte trafikklyset i tilstanden satt av fjernkontrollen." />
+          <img class="tl-frame" id="tl-b" draggable="false" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
       <h2>Steg 1: få det opp</h2>
       <p>
         Jeg 3D-printet et åpningsverktøy, tok fronten av og fikk oversikt over
@@ -93,11 +120,6 @@
         ut av stolpen var én per lampe, hver styrt av om den fikk 240 V AC eller ikke.
         Så kontroll betydde å skifte tre uavhengige nettspenningsforbindelser.
       </p>
-
-      <figure class="project-figure narrow">
-        <img src="../projects_data/2024-traff-light/trafikklys_figures/figure1.png" alt="Fotgjengertrafikklyset står på kjøkkenet, slukket. Tre stablede lampehus på en betongsokkel.">
-        <figcaption>Som mottatt. Tre uavhengige 240 V-lamper, ingen kontroller, klar for ombygging.</figcaption>
-      </figure>
     </section>
 
     <section class="project-section">
@@ -118,17 +140,10 @@
         <code>trafikklys.local</code> via mDNS. Fra hvilken som helst telefon i huset:
         velg modus, kjør en sekvens, utløs engangs-effekter.
       </p>
-
-      <div class="figure-row">
-        <figure class="project-figure">
-          <img src="../projects_data/2024-traff-light/trafikklys_figures/figure2.png" alt="iPhone-skjermbilde av web-UI-et på trafikklys.local: tre rendrede lampesirkler, øverste rød og nederste grønn er aktive.">
-          <figcaption>Web-UI på <code>trafikklys.local</code>. Direkte lampekontroll fra hvilken som helst telefon på LAN-et.</figcaption>
-        </figure>
-        <figure class="project-figure">
-          <img src="../projects_data/2024-traff-light/trafikklys_figures/figure3.png" alt="Det fysiske trafikklyset med rødt topplys og grønt bunnlys tent samtidig.">
-          <figcaption>Og samme tilstand på den fysiske maskinvaren: rødt og grønt samtidig, noe et ekte fotgjengerkryss aldri ville gjort.</figcaption>
-        </figure>
-      </div>
+      <p>
+        Det er den samme kontrollen som er bygget inn øverst på denne siden: trykk på en
+        lampe, så viser bildet det ekte lyset i den tilstanden.
+      </p>
     </section>
 
     <section class="project-section">
@@ -140,11 +155,6 @@
         brukte funksjonen, og slår både den opprinnelige lampefunksjonen og den
         musikkreaktive modusen.
       </p>
-
-      <figure class="project-figure narrow">
-        <img src="../projects_data/2024-traff-light/trafikklys_figures/figure5.png" alt="Det fysiske trafikklyset med to røde lamper tent og den grønne mørk. En tilstand som bare finnes fordi vi nå kan gjøre hva vi vil med de tre lampene.">
-        <figcaption>To røde samtidig. En tilstand den originale kontrolleren aldri ville produsert.</figcaption>
-      </figure>
     </section>
 
     <section class="project-section">
@@ -180,5 +190,47 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+  <script>
+  (function(){
+    var BASE = '../projects_data/2024-traff-light/light_status/';
+    var a = document.getElementById('tl-a'), b = document.getElementById('tl-b');
+    if (!a) return;
+    var front = a, back = b, cur = '110'; // remote starts on red + amber
+
+    // preload all eight states so the 0.1s crossfade is instant, never a flash
+    for (var r=0;r<2;r++) for (var y=0;y<2;y++) for (var g=0;g<2;g++){
+      var im = new Image(); im.src = BASE + r + '' + y + '' + g + '.jpg';
+    }
+    front.src = BASE + cur + '.jpg';
+    front.style.opacity = '1'; front.style.zIndex = '1';
+    back.style.opacity = '0';
+
+    function setState(s){
+      if (s === cur) return;
+      cur = s;
+      // keep the current photo fully opaque underneath and fade the new one in
+      // on top, so the picture never dips through the dark background mid-switch
+      back.src = BASE + s + '.jpg';
+      back.style.transition = 'none';
+      back.style.opacity = '0';
+      back.style.zIndex = '2';
+      front.style.zIndex = '1';
+      void back.offsetWidth; // reflow so the fade starts cleanly from 0
+      back.style.transition = 'opacity .075s linear';
+      back.style.opacity = '1';
+      var t = front; front = back; back = t;
+    }
+
+    // the embedded remote posts its lamp state ("tl:RYG") whenever it changes
+    window.addEventListener('message', function(e){
+      var d = e.data;
+      if (typeof d === 'string' && d.slice(0,3) === 'tl:'){
+        var s = d.slice(3);
+        if (/^[01]{3}$/.test(s)) setState(s);
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
