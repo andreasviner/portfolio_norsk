@@ -117,7 +117,7 @@ def refresh():
         finarr.append(temp)
 
 
-    with open("save.ligma", "w") as file:
+    with open("save.json", "w") as file:
         file.write(json.dumps(finarr))
     print("Lagret ny data")
 def count():
@@ -236,7 +236,7 @@ def nutral_refresh():
         temp.append(farger)
         finarr.append(temp)
 
-    with open("save.ligma", "w") as file:
+    with open("save.json", "w") as file:
         file.write(json.dumps(finarr))
         
     return finarr
@@ -371,7 +371,7 @@ sort_min_valg; Minste forskellige valg de kan ha tatt, så hvis de bare har tryk
         
 class data:
     def __init__(self):
-        with open("save.ligma", "r") as file:
+        with open("save.json", "r") as file:
             x = file.read()
         self.data = json.loads(x)
         self.update_data()
@@ -415,7 +415,7 @@ class data:
         self.farger = [x[8] for x in self.data]
     def refresh(self):
         refresh()
-        with open("save.ligma", "r") as file:
+        with open("save.json", "r") as file:
             x = file.read()
         self.data = json.loads(x)
         self.update_data()
@@ -471,7 +471,7 @@ class data:
     def sort(self, what):
         
         if what == 1:
-            with open("save.ligma", "r") as file:
+            with open("save.json", "r") as file:
                 x = file.read()
             self.data = json.loads(x)
             self.update_data()
@@ -501,7 +501,7 @@ class data:
         for item in self.temp_data:
             self.data.append(item)
     def save(self):
-        with open("save.ligma", "w") as file:
+        with open("save.json", "w") as file:
             file.write(json.dumps(self.data))
 
         
